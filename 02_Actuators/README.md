@@ -2,6 +2,8 @@
 
 ![Welcome Image](images/sensors.jpg)
 
+![alt text](image.png)
+
 Welcome to the **Sensors** lesson of the Robotics Workshop. In this lesson, we will cover the following topics:
 
 1. [Introduction](#introduction)
