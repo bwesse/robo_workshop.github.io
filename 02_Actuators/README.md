@@ -2,7 +2,7 @@
 
 ![Welcome Image](images/sensors.jpg)
 
-![alt text](image.png)
+![alt text](drone.png)
 
 Welcome to the **Sensors** lesson of the Robotics Workshop. In this lesson, we will cover the following topics:
 
