@@ -1,0 +1,7 @@
+{
+    "configuration": "cpu=atmega328old",
+    "board": "arduino:avr:nano",
+    "programmer": "arduinoisp",
+    "port": "COM7",
+    "sketch": "01_Sensors\\MPU_6050\\mpu6050.ino"
+}
