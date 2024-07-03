@@ -39,5 +39,3 @@ We want our robot to follow commands perfectly, so we need some backup plans for
 - **Error Checking**: We can use checksums (like a summary of the message) to make sure nothing’s been messed up in transit.
 - **Acknowledgment and Retransmission**: The receiver sends back a little “Got it!” message, and if the sender doesn’t get this, it sends the message again.
 - **Buffering and Flow Control**: Think of this as having a little waiting area for messages so they don’t get lost if they arrive too quickly.
-
-[Untitled Database](https://www.notion.so/c7828accca054a7a811df774b732c055?pvs=21)
