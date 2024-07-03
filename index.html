@@ -3,81 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Workshop</title>
+    <title>Robo Workshop</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            text-align: center;
         }
         header {
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
-            padding: 1em;
-            text-align: center;
-            width: 100%;
+            padding: 1em 0;
         }
-        main {
-            max-width: 800px;
-            margin: 2em;
-            padding: 1em;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            box-sizing: border-box;
-        }
-        h1, h2 {
+        h1 {
             margin: 0.5em 0;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1em;
         }
-        li {
-            margin: 0.5em 0;
+        .gallery-item {
+            margin: 0.5em;
+            width: 30%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
-        a {
+        .gallery-item:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+        .gallery-item a {
             text-decoration: none;
-            color: #333;
+            color: black;
         }
-        a:hover {
-            text-decoration: underline;
+        .gallery-item h3 {
+            margin: 0;
+            padding: 0.5em;
+            background-color: #f4f4f4;
         }
         footer {
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
-            padding: 1em;
-            text-align: center;
+            padding: 1em 0;
+            position: fixed;
             width: 100%;
-            position: absolute;
             bottom: 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Robotics Workshop</h1>
-    </header>
-    <main>
-        <h2>Lessons</h2>
-        <ul>
-            <li><a href="01_Sensors/">01. Sensors</a></li>
-            <li><a href="02_Actuators/">02. Actuators</a></li>
-            <li><a href="03_Power/">03. Power</a></li>
-            <li><a href="04_Communication/">04. Communication</a></li>
-            <li><a href="05_Assembly/">05. Assembly</a></li>
-            <li><a href="06_Drive/">06. Drive</a></li>
-            <li><a href="07_Robo_Drone/">07. Robo Drone</a></li>
-            <li><a href="08_Outlook/">08. Outlook</a></li>
-        </ul>
-    </main>
-    <footer>
-        <p>&copy; 2024 Robotics Workshop. All rights reserved.</p>
-    </footer>
+
+<header>
+    <h1>Robo Workshop</h1>
+    <p>Welcome to the Robo Workshop! Explore our lessons below.</p>
+</header>
+
+<div class="gallery">
+    <div class="gallery-item">
+        <a href="00_Getting_started/">
+            <img src="images/lesson1.jpg" alt="Getting Started">
+            <h3>Getting Started</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="01_Sensors/">
+            <img src="images/lesson2.jpg" alt="Sensors">
+            <h3>Sensors</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="02_Actuators/">
+            <img src="images/lesson3.jpg" alt="Actuators">
+            <h3>Actuators</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="03_Power/">
+            <img src="images/lesson4.jpg" alt="Power">
+            <h3>Power</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="04_Communication/">
+            <img src="images/lesson5.jpg" alt="Communication">
+            <h3>Communication</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="05_Assembly/">
+            <img src="images/lesson6.jpg" alt="Assembly">
+            <h3>Assembly</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="06_Drive/">
+            <img src="images/lesson7.jpg" alt="Drive">
+            <h3>Drive</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="07_Robo_Drone/">
+            <img src="images/lesson8.jpg" alt="Robo Drone">
+            <h3>Robo Drone</h3>
+        </a>
+    </div>
+    <div class="gallery-item">
+        <a href="08_Outlook/">
+            <img src="images/lesson9.jpg" alt="Outlook">
+            <h3>Outlook</h3>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Robo Workshop. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
