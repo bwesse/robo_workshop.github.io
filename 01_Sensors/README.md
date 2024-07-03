@@ -40,4 +40,3 @@ Sensors play a **vital role** in robotics by providing the data needed for:
 - **Environmental Awareness**: Enabling robots to detect and respond to changes in their surroundings.
 - **Safety**: Helping robots avoid collisions and operate safely in dynamic environments.
 - **Precision Control**: Allowing precise movements and adjustments based on real-time feedback.
-
