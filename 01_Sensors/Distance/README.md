@@ -36,3 +36,7 @@
 
 ## Why They Matter
 These sensors are the key to making your robots smart and aware of their environment. Whether you want your robot to navigate a maze, avoid obstacles, or interact with objects, distance sensors are your go-to tech. Ready to start building? Let's get those sensors hooked up and get your robot moving!
+
+
+## Practical tasks
+[VL53L0X Time of Flight Sensor](VL53L0X_ToF/)

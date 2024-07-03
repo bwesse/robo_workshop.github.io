@@ -71,3 +71,7 @@
    - **Experiment:** Modify existing sketches and create your own projects to deepen understanding.
 
 By following these steps and understanding the basic concepts of Arduino programming, you'll be well-prepared to embark on more advanced robotic projects in your tutoring course.
+
+
+[Controlling LEDs](../LEDs/)
+
