@@ -69,3 +69,5 @@
     - Realize that with the skills you’ll gain, you can create endless robotic projects.
 
 Welcome aboard! Let’s build something amazing together.
+
+[Getting started with Arduino](Arduino/)

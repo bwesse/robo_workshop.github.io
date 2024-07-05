@@ -1,0 +1,53 @@
+site_name: Robo Workshop
+site_url: https://github.com/bwesse/robo_workshop.github.io
+site_author: "Ben Wesse"
+site_description: "Documentation for the Robo Workshop project."
+theme:
+  name: material
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo: 'images/logo.png'
+  favicon: 'images/favicon.ico'
+
+nav:
+  - Home: index.md
+  - Lessons:
+      - Getting Started: 00_Getting_started.md
+      - Sensors: 01_Sensors.md
+      - Actuators: 02_Actuators.md
+      - Power: 03_Power.md
+      - Communication: 04_Communication.md
+      - Assembly: 05_Assembly.md
+      - Drive: 06_Drive.md
+      - Robo Drone: 07_Robo_Drone.md
+      - Outlook: 08_Outlook.md
+  - About: about.md
+  - All Pages: all_pages.md
+  - GitHub: https://github.com/bwesse/robo_workshop.github.io
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+
+extra_css:
+  - css/custom.css
+extra_javascript:
+  - js/custom.js
+
+# Configure plugins
+plugins:
+  - search
+ # - mkdocs-material-extensions
+
+# Configure repository
+repo_name: "Your Name/robo_workshop.github.io"
+repo_url: https://github.com/username/repository
+edit_uri: edit/main/docs/
