@@ -34,8 +34,8 @@ nav:
   - Drive:
       - Overview: 06_Drive/README.md
       #- Custom Receiver: 06_Drive/custom_receiver/README.md
-      - Receiver: 06_Drive/custom_receiver_car/README.md
-      - Transmitter: 06_Drive/custom_transmitter/README.md
+      - Receiver: 06_Drive/receiver_code.md #custom_receiver_car/README.md
+      - Transmitter: 06_Drive/transmitter_code.md #custom_transmitter/README.md
       #- Receiver: 06_Drive/receiver/README.md
       #- Transmitter: 06_Drive/transmitter/README.md
   - Transition to Drone: 
