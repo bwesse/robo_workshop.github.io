@@ -67,7 +67,27 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#9-expand-your-knowledge">9. Expand Your Knowledge:</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-guide-for-starting-with-the-arduino-ide">Troubleshooting Guide for Starting with the Arduino IDE</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-installation-issues">1. Installation Issues:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-driver-problems">2. Driver Problems:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-serial-port-issues">3. Serial Port Issues:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-compilation-errors">4. Compilation Errors:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-uploading-issues">5. Uploading Issues:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-board-specific-issues">6. Board Specific Issues:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-ide-crashes-or-freezes">7. IDE Crashes or Freezes:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-general-connectivity-issues">8. General Connectivity Issues:</a>
+    </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Components/">Components</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../LEDs/">LEDs</a>
                   </li>
@@ -116,12 +136,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/remote/">Remote</a>
@@ -129,7 +143,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -175,33 +191,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="quick-start-guide-for-arduino-robotic-tutoring-course">Quick Start Guide for Arduino - Robotic Tutoring Course</h3>
-<h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong></h4>
+                <h3 id="quick-start-guide-for-arduino-robotic-tutoring-course">Quick Start Guide for Arduino - Robotic Tutoring Course<a class="headerlink" href="#quick-start-guide-for-arduino-robotic-tutoring-course" title="Permanent link">&para;</a></h3>
+<h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong><a class="headerlink" href="#1-gather-necessary-components" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Arduino Board:</strong> Choose an appropriate board (e.g., Arduino Uno, Nano).</li>
 <li><strong>USB Cable:</strong> For connecting the Arduino to your computer.</li>
 <li><strong>Computer:</strong> To install software and write code.</li>
 <li><strong>Breadboard and Jumper Wires:</strong> For prototyping circuits.</li>
-<li><strong>Basic Components:</strong> LEDs, resistors, sensors, etc., for initial projects.</li>
+<li><strong>Basic Components:</strong> LEDs, sensors, etc., for initial projects.
+         <a href="../Components/">Components used in our project</a></li>
 </ul>
-<h4 id="2-install-arduino-ide">2. <strong>Install Arduino IDE:</strong></h4>
+<h4 id="2-install-arduino-ide">2. <strong>Install Arduino IDE:</strong><a class="headerlink" href="#2-install-arduino-ide" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Download:</strong> Go to the <a href="https://www.arduino.cc/en/software">Arduino Software page</a>.</li>
 <li><strong>Install:</strong> Follow installation instructions for your operating system (Windows, Mac, Linux).</li>
 </ul>
-<h4 id="3-set-up-arduino-ide">3. <strong>Set Up Arduino IDE:</strong></h4>
+<div class="admonition note">
+<p class="admonition-title">Install driver</p>
+<p>For our chip we need to install a driver that allows us to program our processor.
+<a href="../../99_Resources/drivers/ch340.zip">Click to download</a>
+After downloading -&gt; unzip -&gt; install</p>
+</div>
+<h4 id="3-set-up-arduino-ide">3. <strong>Set Up Arduino IDE:</strong><a class="headerlink" href="#3-set-up-arduino-ide" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Launch Arduino IDE:</strong> Open the installed Arduino IDE.</li>
 <li><strong>Select Board:</strong> Navigate to <code>Tools</code> &gt; <code>Board</code> &gt; Select your Arduino model.</li>
-<li><strong>Select Port:</strong> Navigate to <code>Tools</code> &gt; <code>Port</code> &gt; Select the appropriate COM port (often named "Arduino").</li>
+<li><strong>Select Port:</strong> Navigate to <code>Tools</code> &gt; <code>Port</code> &gt; Select the appropriate COM port.</li>
 </ul>
-<h4 id="4-write-your-first-sketch">4. <strong>Write Your First Sketch:</strong></h4>
+<h4 id="4-write-your-first-sketch">4. <strong>Write Your First Sketch:</strong><a class="headerlink" href="#4-write-your-first-sketch" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Open Example:</strong> Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>01.Basics</code> &gt; <code>Blink</code>.</li>
 <li><strong>Upload Sketch:</strong> Click the <code>Upload</code> button (right arrow icon) to upload the sketch to the board.</li>
 <li><strong>Observe:</strong> The LED on the Arduino should start blinking.</li>
 </ul>
-<h4 id="5-understand-arduino-code-structure">5. <strong>Understand Arduino Code Structure:</strong></h4>
+<h4 id="5-understand-arduino-code-structure">5. <strong>Understand Arduino Code Structure:</strong><a class="headerlink" href="#5-understand-arduino-code-structure" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>File Extension:</strong> Arduino code files have a <code>.ino</code> extension.</li>
 <li><strong>Setup and Loop Functions:</strong><ul>
@@ -210,7 +233,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="6-basic-arduino-code-example-blink">6. <strong>Basic Arduino Code Example (Blink):</strong></h4>
+<h4 id="6-basic-arduino-code-example-blink">6. <strong>Basic Arduino Code Example (Blink):</strong><a class="headerlink" href="#6-basic-arduino-code-example-blink" title="Permanent link">&para;</a></h4>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// The setup function runs once when you press reset or power the board</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
@@ -225,7 +248,7 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
 </span></code></pre></div>
-<h4 id="7-key-concepts-in-arduino-programming">7. <strong>Key Concepts in Arduino Programming:</strong></h4>
+<h4 id="7-key-concepts-in-arduino-programming">7. <strong>Key Concepts in Arduino Programming:</strong><a class="headerlink" href="#7-key-concepts-in-arduino-programming" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Functions:</strong><ul>
 <li><strong><code>pinMode(pin, mode)</code>:</strong> Sets the mode of a specified pin to input or output.</li>
@@ -244,7 +267,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="8-using-libraries">8. <strong>Using Libraries:</strong></h4>
+<h4 id="8-using-libraries">8. <strong>Using Libraries:</strong><a class="headerlink" href="#8-using-libraries" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Include Libraries:</strong><ul>
 <li>Libraries extend the functionality of Arduino.</li>
@@ -258,20 +281,98 @@
 </ul>
 </li>
 </ul>
-<h4 id="9-expand-your-knowledge">9. <strong>Expand Your Knowledge:</strong></h4>
+<h4 id="9-expand-your-knowledge">9. <strong>Expand Your Knowledge:</strong><a class="headerlink" href="#9-expand-your-knowledge" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Explore Examples:</strong> The Arduino IDE comes with many built-in examples to help you learn.</li>
 <li><strong>Online Resources:</strong> Utilize tutorials, documentation, and community forums.</li>
 <li><strong>Experiment:</strong> Modify existing sketches and create your own projects to deepen understanding.</li>
 </ul>
-<p>By following these steps and understanding the basic concepts of Arduino programming, you'll be well-prepared to embark on more advanced robotic projects in your tutoring course.</p>
-<p><a href="../LEDs/">Controlling LEDs</a></p>
+<h4 id="troubleshooting-guide-for-starting-with-the-arduino-ide">Troubleshooting Guide for Starting with the Arduino IDE<a class="headerlink" href="#troubleshooting-guide-for-starting-with-the-arduino-ide" title="Permanent link">&para;</a></h4>
+<h4 id="1-installation-issues">1. <strong>Installation Issues:</strong><a class="headerlink" href="#1-installation-issues" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Unable to Install the Arduino IDE:</strong><ul>
+<li>Ensure you have the latest version of the installer from the official <a href="https://www.arduino.cc/en/software">Arduino website</a>.</li>
+<li>Verify that your operating system meets the minimum requirements for the Arduino IDE.</li>
+<li>Run the installer as an administrator (right-click the installer and select "Run as administrator").</li>
+<li>Disable any antivirus software temporarily, as it may interfere with the installation process.</li>
+<li>Check that you have sufficient disk space on your system drive.</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-driver-problems">2. <strong>Driver Problems:</strong><a class="headerlink" href="#2-driver-problems" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Arduino Board Not Recognized:</strong><ul>
+<li>Install the necessary drivers for your Arduino board. During the Arduino IDE installation, make sure you agree to install the drivers.</li>
+<li>On Windows, manually install drivers from the Arduino IDE installation directory (typically <code>C:\Program Files (x86)\Arduino\drivers</code>).</li>
+<li>On macOS and Linux, ensure you have the correct permissions to access the USB port.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-serial-port-issues">3. <strong>Serial Port Issues:</strong><a class="headerlink" href="#3-serial-port-issues" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Serial Port Not Available:</strong><ul>
+<li>Check if the Arduino board is properly connected to your computer via USB.</li>
+<li>Use a different USB cable or port to rule out hardware issues.</li>
+<li>Restart the Arduino IDE and your computer.</li>
+<li>On Windows, ensure that the correct COM port is selected in the Arduino IDE under <code>Tools &gt; Port</code>.</li>
+<li>On macOS and Linux, the port name will typically start with <code>/dev/tty.usbmodem</code> or <code>/dev/ttyUSB</code>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-compilation-errors">4. <strong>Compilation Errors:</strong><a class="headerlink" href="#4-compilation-errors" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Sketch Fails to Compile:</strong><ul>
+<li>Verify that your sketch code is correct and free of syntax errors.</li>
+<li>Ensure that all necessary libraries are installed and correctly referenced in your code. You can install libraries via the Arduino Library Manager under <code>Sketch &gt; Include Library &gt; Manage Libraries</code>.</li>
+<li>Update the Arduino IDE to the latest version to benefit from the latest bug fixes and features.</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-uploading-issues">5. <strong>Uploading Issues:</strong><a class="headerlink" href="#5-uploading-issues" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Unable to Upload Sketch to the Arduino Board:</strong><ul>
+<li>Make sure the correct board is selected under <code>Tools &gt; Board</code>.</li>
+<li>Ensure the correct serial port is selected under <code>Tools &gt; Port</code>.</li>
+<li>Check if any other applications are using the serial port, and close them.</li>
+<li>Reset the board by pressing the reset button before uploading.</li>
+<li>Try a different USB cable or port.</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-board-specific-issues">6. <strong>Board Specific Issues:</strong><a class="headerlink" href="#6-board-specific-issues" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Issues Specific to Certain Arduino Boards:</strong><ul>
+<li>Refer to the board-specific documentation and troubleshooting guides on the Arduino website or forums.</li>
+<li>Ensure you have installed the correct board package from <code>Tools &gt; Board &gt; Boards Manager</code>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-ide-crashes-or-freezes">7. <strong>IDE Crashes or Freezes:</strong><a class="headerlink" href="#7-ide-crashes-or-freezes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Arduino IDE Freezes or Crashes:</strong><ul>
+<li>Clear the Arduino IDE cache by deleting the <code>.arduino15</code> folder located in your user directory.</li>
+<li>Increase the available memory for the IDE by closing other applications.</li>
+<li>Update Java on your system, as the Arduino IDE relies on Java to run.</li>
+<li>Reinstall the Arduino IDE.</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-general-connectivity-issues">8. <strong>General Connectivity Issues:</strong><a class="headerlink" href="#8-general-connectivity-issues" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Poor or No Communication with the Arduino Board:</strong><ul>
+<li>Check the USB connection and ensure the board is powered.</li>
+<li>Try a different USB cable or port.</li>
+<li>Ensure that the board is not in a low-power state by pressing the reset button.</li>
+</ul>
+</li>
+</ul>
+<p>By following these troubleshooting steps, you should be able to resolve common issues when starting with the Arduino IDE. For more specific problems or advanced troubleshooting, refer to the Arduino community forums or the official support resources.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../LEDs/" class="btn btn-neutral float-right" title="LEDs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Components/" class="btn btn-neutral float-right" title="Components">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -297,7 +398,7 @@
       <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../LEDs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Components/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

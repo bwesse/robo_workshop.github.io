@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Receiver - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Receiver";
+        var mkdocs_page_input_path = "05_Assembly\\receiver.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../03_Power/README.md">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Receiver</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#components-needed">Components Needed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tools-needed">Tools Needed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-by-step-assembly">Step-by-Step Assembly</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-prepare-the-chassis">Step 1: Prepare the Chassis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-wiring-the-components-on-the-breadboard">Step 2: Wiring the Components on the Breadboard</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-powering-up">Step 3: Powering Up</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-4-final-check">Step 4: Final Check</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diagram">Diagram</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/README.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_receiver_car/README.md">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_transmitter/README.md">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Assembly</li>
+      <li class="breadcrumb-item active">Receiver</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="robot-assembly">Robot assembly<a class="headerlink" href="#robot-assembly" title="Permanent link">&para;</a></h1>
+<p>This tutorial will guide you through assembling a robot using the components discussed so far. We'll integrate an Arduino Nano, nRF24L01 module, L298N motor driver, motors, an LED strip, and a ToF sensor.</p>
+<h2 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Arduino Nano</li>
+<li>Breadboard</li>
+<li>nRF24L01 Module</li>
+<li>L298N Motor Driver</li>
+<li>2 x DC Motors (with wheels)</li>
+<li>Chassis for mounting components</li>
+<li>Distance ToF Sensor (VL53L0X)</li>
+<li>LED Strip (WS2812B)</li>
+<li>9V battery (or appropriate power supply)</li>
+<li>FlySky FS-i6 Transmitter and Receiver (if using FlySky for control)</li>
+<li>Jumper wires</li>
+<li>Screws, nuts, and mounting accessories</li>
+</ul>
+<h2 id="tools-needed">Tools Needed<a class="headerlink" href="#tools-needed" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Screwdriver</li>
+<li>Double-sided tape or mounting brackets</li>
+<li>Wire cutters/strippers</li>
+<li>Soldering iron (optional for more secure connections)</li>
+</ul>
+<h2 id="step-by-step-assembly">Step-by-Step Assembly<a class="headerlink" href="#step-by-step-assembly" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-prepare-the-chassis">Step 1: Prepare the Chassis<a class="headerlink" href="#step-1-prepare-the-chassis" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Mount the Motors</strong>:</li>
+<li>
+<p>Attach the DC motors to the chassis using screws or mounting brackets. Ensure they are securely fixed and aligned.</p>
+</li>
+<li>
+<p><strong>Attach the Wheels</strong>:</p>
+</li>
+<li>
+<p>Fix the wheels to the motor shafts. Ensure they are tightly secured.</p>
+</li>
+<li>
+<p><strong>Mount the Breadboard</strong>:</p>
+</li>
+<li>
+<p>Place the breadboard on the chassis. You can use double-sided tape or mounting brackets to secure it in place.</p>
+</li>
+<li>
+<p><strong>Mount the L298N Motor Driver</strong>:</p>
+</li>
+<li>
+<p>Fix the L298N motor driver to the chassis using screws or double-sided tape.</p>
+</li>
+<li>
+<p><strong>Mount the Distance ToF Sensor</strong>:</p>
+</li>
+<li>
+<p>Place the ToF sensor on the chassis. Secure it with screws or double-sided tape.</p>
+</li>
+<li>
+<p><strong>Mount the LED Strip</strong>:</p>
+</li>
+<li>Attach the LED strip to the chassis in a visible location.</li>
+</ol>
+<h3 id="step-2-wiring-the-components-on-the-breadboard">Step 2: Wiring the Components on the Breadboard<a class="headerlink" href="#step-2-wiring-the-components-on-the-breadboard" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Place the Arduino Nano on the Breadboard</strong>:</li>
+<li>
+<p>Ensure it is placed in a central location for easy access to all pins.</p>
+</li>
+<li>
+<p><strong>Connect the Motors to the L298N Motor Driver</strong>:</p>
+</li>
+<li><strong>Motor 1</strong>:<ul>
+<li>Connect one motor terminal to <strong>OUT1</strong> on the L298N.</li>
+<li>Connect the other motor terminal to <strong>OUT2</strong> on the L298N.</li>
+</ul>
+</li>
+<li>
+<p><strong>Motor 2</strong>:</p>
+<ul>
+<li>Connect one motor terminal to <strong>OUT3</strong> on the L298N.</li>
+<li>Connect the other motor terminal to <strong>OUT4</strong> on the L298N.</li>
+</ul>
+</li>
+<li>
+<p><strong>Power the L298N Motor Driver</strong>:</p>
+</li>
+<li>Connect the positive terminal of the battery to the <strong>12V</strong> input on the L298N.</li>
+<li>Connect the negative terminal of the battery to the <strong>GND</strong> input on the L298N.</li>
+<li>Ensure a separate wire connects the <strong>5V</strong> output of the L298N to the <strong>5V</strong> rail on the breadboard.</li>
+<li>
+<p>Connect the <strong>GND</strong> on the L298N to the <strong>GND</strong> rail on the breadboard.</p>
+</li>
+<li>
+<p><strong>Connect the nRF24L01 Module to the Arduino Nano</strong>:</p>
+</li>
+<li><strong>VCC</strong> (3.3V) on nRF24L01 to <strong>3.3V</strong> on Arduino Nano</li>
+<li><strong>GND</strong> on nRF24L01 to <strong>GND</strong> on Arduino Nano</li>
+<li><strong>CE</strong> to <strong>D9</strong> on Arduino Nano</li>
+<li><strong>CSN</strong> to <strong>D10</strong> on Arduino Nano</li>
+<li><strong>SCK</strong> to <strong>D13</strong> on Arduino Nano</li>
+<li><strong>MOSI</strong> to <strong>D11</strong> on Arduino Nano</li>
+<li>
+<p><strong>MISO</strong> to <strong>D12</strong> on Arduino Nano</p>
+</li>
+<li>
+<p><strong>Connect the Distance ToF Sensor (VL53L0X) to the Arduino Nano</strong>:</p>
+</li>
+<li><strong>VCC</strong> to <strong>5V</strong> on the breadboard</li>
+<li><strong>GND</strong> to <strong>GND</strong> on the breadboard</li>
+<li><strong>SCL</strong> to <strong>A5</strong> on Arduino Nano</li>
+<li>
+<p><strong>SDA</strong> to <strong>A4</strong> on Arduino Nano</p>
+</li>
+<li>
+<p><strong>Connect the LED Strip (WS2812B) to the Arduino Nano</strong>:</p>
+</li>
+<li><strong>DIN</strong> to <strong>D2</strong> on Arduino Nano</li>
+<li><strong>VCC</strong> to <strong>5V</strong> on the breadboard</li>
+<li>
+<p><strong>GND</strong> to <strong>GND</strong> on the breadboard</p>
+</li>
+<li>
+<p><strong>Connect the L298N Control Pins to the Arduino Nano</strong>:</p>
+</li>
+<li><strong>ENA</strong> to <strong>D3</strong> on Arduino Nano</li>
+<li><strong>IN1</strong> to <strong>D4</strong> on Arduino Nano</li>
+<li><strong>IN2</strong> to <strong>D5</strong> on Arduino Nano</li>
+<li><strong>IN3</strong> to <strong>D6</strong> on Arduino Nano</li>
+<li><strong>IN4</strong> to <strong>D7</strong> on Arduino Nano</li>
+<li><strong>ENB</strong> to <strong>D8</strong> on Arduino Nano</li>
+</ol>
+<h3 id="step-3-powering-up">Step 3: Powering Up<a class="headerlink" href="#step-3-powering-up" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Connect the Battery</strong>:</li>
+<li>Ensure all connections are secure.</li>
+<li>Connect the battery to power up the system.</li>
+<li>If using a 9V battery, ensure it can provide sufficient current for the motors and electronics. You might need a battery pack with multiple batteries for higher current requirements.</li>
+</ol>
+<h3 id="step-4-final-check">Step 4: Final Check<a class="headerlink" href="#step-4-final-check" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Inspect Wiring</strong>:</li>
+<li>Double-check all connections to ensure they are correct and secure.</li>
+<li>
+<p>Ensure there are no short circuits.</p>
+</li>
+<li>
+<p><strong>Test the Setup</strong>:</p>
+</li>
+<li>Power on the Arduino Nano and check if all components (motors, LED strip, ToF sensor) are receiving power.</li>
+<li>Use the nRF24L01 module for communication tests if applicable.</li>
+</ol>
+<h2 id="diagram">Diagram<a class="headerlink" href="#diagram" title="Permanent link">&para;</a></h2>
+<p>Here's a simplified wiring diagram to help with the assembly:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Breadboard Power Rails:             Arduino Nano         nRF24L01           L298N Motor Driver          Motors
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-----------------------             -------------        --------           -------------------         ------
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(5V Rail) --- (5V)                   (5V)  --- (5V)       (VCC) --- (3.3V)   (12V) --- (+ Battery)       Motor 1 Terminal 1 --- (OUT1)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>(GND Rail) --- (GND)                 (GND) --- (GND)      (GND) --- (GND)    (GND) --- (- Battery)       Motor 1 Terminal 2 --- (OUT2)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                    (D9)  --- (CE)       (D13) --- (SCK)     (5V) --- (5V Rail)          Motor 2 Terminal 1 --- (OUT3)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                                    (D10) --- (CSN)      (D11) --- (MOSI)    (GND) --- (GND Rail)        Motor 2 Terminal 2 --- (OUT4)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                                    (D13) --- (SCK)      (D12) --- (MISO)
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                                    (D11) --- (MOSI)
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                                    (D12) --- (MISO)
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                                    (A5)  --- (SCL) (ToF)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                                    (A4)  --- (SDA) (ToF)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                                    (D2)  --- (DIN) (LED Strip)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                                    (D3)  --- (ENA)
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                                    (D4)  --- (IN1)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                                    (D5)  --- (IN2)
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                                    (D6)  --- (IN3)
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                                    (D7)  --- (IN4)
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                                    (D8)  --- (ENB)
+</span></code></pre></div>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use zip ties or cable organizers to keep the wiring neat and secure.</li>
+<li>Ensure the power supply can handle the current requirements of the motors and electronics.</li>
+<li>If using a breadboard, ensure all connections are firm to avoid intermittent issues.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>No Power</strong>: Check the battery connections and ensure the power switch (if any) is turned on.</li>
+<li><strong>Motors Not Responding</strong>: Verify the PWM signals from the Arduino Nano and check the connections to the L298N motor driver.</li>
+<li><strong>Intermittent Connections</strong>: Ensure all jumper wires are firmly connected and not loose.</li>
+</ul>
+<p>This guide should help you assemble your robot with the components discussed. Once assembled, you can proceed with programming the Arduino Nano to control the robot using the nRF24L01 module and the FlySky remote. Happy building!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../04_Communication/remote/" class="btn btn-neutral float-left" title="Remote"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../transmitter/" class="btn btn-neutral float-right" title="Transmitter">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../04_Communication/remote/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../transmitter/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Introduction to Distance Sensors in Robotics - Robotics Workshop</title>
+    <title>Components - Robotics Workshop</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Introduction to Distance Sensors in Robotics";
-        var mkdocs_page_input_path = "01_Sensors\\Distance\\README.md";
+        var mkdocs_page_name = "Components";
+        var mkdocs_page_input_path = "00_Getting_started\\Components.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -44,31 +44,33 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/">Overview</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Arduino/">Arduino</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Components/">Components</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Components</a>
+    <ul class="current">
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../LEDs/">LEDs</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Sensors</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_Sensors/">Overview</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Distance</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="ultraschall/README.md">Ultrasonic</a>
+                <li class="toctree-l2"><a class="" href="../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="VL53L0X_ToF/">VL53L0X ToF</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >IMU</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../MPU_6050/">MPU 6050</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/MPU_6050/">MPU 6050</a>
                 </li>
     </ul>
                   </li>
@@ -143,7 +145,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Introduction to Distance Sensors in Robotics</li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Components</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -152,52 +155,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="introduction-to-distance-sensors-in-robotics">Introduction to Distance Sensors in Robotics<a class="headerlink" href="#introduction-to-distance-sensors-in-robotics" title="Permanent link">&para;</a></h1>
-<p><img alt="ToF" src="../../99_Resources/images/vl53l0x.jpeg" /></p>
-<p>In the world of robotics, distance sensors are like the eyes of your robot. They help your robot "see" its surroundings, avoid obstacles, and interact with objects. Let's dive into the cool world of distance sensors and see how they work.</p>
-<h2 id="types-of-distance-sensors">Types of Distance Sensors<a class="headerlink" href="#types-of-distance-sensors" title="Permanent link">&para;</a></h2>
-<h3 id="ultrasonic-sensors">Ultrasonic Sensors<a class="headerlink" href="#ultrasonic-sensors" title="Permanent link">&para;</a></h3>
+                <h3 id="components-overview">Components Overview<a class="headerlink" href="#components-overview" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>How They Work:</strong> They send out high-frequency sound waves (ultrasound) and measure how long it takes for the echo to bounce back.</li>
-<li><strong>Pros:</strong> Cheap, good for mid-range distances, work in any light.</li>
-<li><strong>Cons:</strong> Struggle with soft or angled surfaces, can be noisy.</li>
-<li><strong>Example:</strong> HC-SR04.</li>
+<li><strong>MPU6050</strong>:</li>
+<li>
+<p>Inertial Measurement Unit (IMU) with accelerometer and gyroscope.</p>
+</li>
+<li>
+<p><strong>VL53L0X TOF</strong>:</p>
+</li>
+<li>
+<p>Time-of-Flight (TOF) distance sensor for precise distance measurements.</p>
+</li>
+<li>
+<p><strong>WS2812 LED Strip</strong>:</p>
+</li>
+<li>
+<p>Addressable RGB LED strip for colorful lighting effects.</p>
+</li>
+<li>
+<p><strong>Breadboard</strong>:</p>
+</li>
+<li>
+<p>Prototyping board for creating and testing circuits without soldering.</p>
+</li>
+<li>
+<p><strong>Wires</strong>:</p>
+</li>
+<li>
+<p>Connect various components on the breadboard and between devices.</p>
+</li>
+<li>
+<p><strong>N20 Gearmotors</strong>:</p>
+</li>
+<li>
+<p>Small DC motors with integrated gearboxes for mechanical movement.</p>
+</li>
+<li>
+<p><strong>L298 Motor Bridge</strong>:</p>
+</li>
+<li>
+<p>Dual H-bridge motor driver for controlling the direction and speed of two motors.</p>
+</li>
+<li>
+<p><strong>NRF24</strong>:</p>
+</li>
+<li>
+<p>2.4GHz wireless transceiver module for wireless communication.</p>
+</li>
+<li>
+<p><strong>9V Battery</strong>:</p>
+</li>
+<li>
+<p>Power source for the project components.</p>
+</li>
+<li>
+<p><strong>Arduino Board</strong>:</p>
+</li>
+<li>Microcontroller board for controlling and interfacing with all the components.</li>
 </ul>
-<h3 id="infrared-ir-sensors">Infrared (IR) Sensors<a class="headerlink" href="#infrared-ir-sensors" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>How They Work:</strong> They emit infrared light and measure the reflection from an object.</li>
-<li><strong>Pros:</strong> Low cost, great for short distances, good for quick proximity checks.</li>
-<li><strong>Cons:</strong> Affected by sunlight and object colors.</li>
-<li><strong>Example:</strong> Sharp GP2Y0A21YK0F.</li>
-</ul>
-<h3 id="time-of-flight-tof-sensors">Time-of-Flight (ToF) Sensors<a class="headerlink" href="#time-of-flight-tof-sensors" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>How They Work:</strong> They send out a light pulse and measure how long it takes to return.</li>
-<li><strong>Pros:</strong> Super accurate, good for short to mid-range.</li>
-<li><strong>Cons:</strong> Pricier than ultrasonic and IR.</li>
-<li><strong>Example:</strong> VL53L0X.</li>
-</ul>
-<h3 id="lidar-light-detection-and-ranging">Lidar (Light Detection and Ranging)<a class="headerlink" href="#lidar-light-detection-and-ranging" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>How They Work:</strong> They shoot out laser beams and measure the return time to create a 3D map.</li>
-<li><strong>Pros:</strong> High precision, long-range, creates detailed 3D maps.</li>
-<li><strong>Cons:</strong> Expensive, needs more power, can struggle in bad weather.</li>
-<li><strong>Example:</strong> RPLIDAR A1.</li>
-</ul>
-<h3 id="radar-sensors">Radar Sensors<a class="headerlink" href="#radar-sensors" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>How They Work:</strong> They use radio waves to detect object distances.</li>
-<li><strong>Pros:</strong> Long-range, works in any weather, sees through some materials.</li>
-<li><strong>Cons:</strong> Complex and expensive, not as detailed as lidar.</li>
-<li><strong>Example:</strong> Automotive radar sensors.</li>
-</ul>
-<h2 id="why-they-matter">Why They Matter<a class="headerlink" href="#why-they-matter" title="Permanent link">&para;</a></h2>
-<p>These sensors are the key to making your robots smart and aware of their environment. Whether you want your robot to navigate a maze, avoid obstacles, or interact with objects, distance sensors are your go-to tech. Ready to start building? Let's get those sensors hooked up and get your robot moving!</p>
-<h2 id="practical-tasks">Practical tasks<a class="headerlink" href="#practical-tasks" title="Permanent link">&para;</a></h2>
-<p><a href="VL53L0X_ToF/">VL53L0X Time of Flight Sensor</a></p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Arduino/" class="btn btn-neutral float-left" title="Arduino"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../LEDs/" class="btn btn-neutral float-right" title="LEDs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -219,6 +242,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../Arduino/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../LEDs/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -49,6 +49,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Components/">Components</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
                   </li>
               </ul>
@@ -96,22 +98,68 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Remote</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#understanding-the-flysky-remote-system">Understanding the FlySky Remote System</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#components-needed">Components Needed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wiring-the-flysky-receiver-to-the-arduino">Wiring the FlySky Receiver to the Arduino</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#connections">Connections</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reading-pwm-signals-from-the-receiver">Reading PWM Signals from the Receiver</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-code-for-reading-pwm-signals">Example Code for Reading PWM Signals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interpreting-the-pwm-signals">Interpreting the PWM Signals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#controlling-a-robot-with-pwm-signals">Controlling a Robot with PWM Signals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-controlling-a-motor">Example: Controlling a Motor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#task-1-reading-additional-channels-easy">Task 1: Reading Additional Channels (Easy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#task-2-control-multiple-leds-medium">Task 2: Control Multiple LEDs (Medium)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advanced-task-control-motors-using-pwm-signals">Advanced Task: Control Motors Using PWM Signals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#objective">Objective</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#wiring-the-motors-and-l298n-motor-driver">Wiring the Motors and L298N Motor Driver</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-example">Code Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-explanation">Code Explanation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-the-code">Running the Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a>
+    </li>
     </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -157,23 +205,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="using-a-standard-flysky-remote-and-receiver-with-arduino">Using a Standard FlySky Remote and Receiver with Arduino</h3>
+                <h1 id="using-a-standard-flysky-remote-and-receiver-with-arduino">Using a Standard FlySky Remote and Receiver with Arduino<a class="headerlink" href="#using-a-standard-flysky-remote-and-receiver-with-arduino" title="Permanent link">&para;</a></h1>
+<p><img alt="Flysky_remot" src="../../99_Resources/images/flysky.jpg" /></p>
 <p>In this section, we'll learn how to integrate a standard FlySky remote control and its corresponding receiver with an Arduino. This setup allows you to remotely control your robot with a professional-grade RC transmitter.</p>
-<h3 id="understanding-the-flysky-remote-system">Understanding the FlySky Remote System</h3>
+<h2 id="understanding-the-flysky-remote-system">Understanding the FlySky Remote System<a class="headerlink" href="#understanding-the-flysky-remote-system" title="Permanent link">&para;</a></h2>
 <p>FlySky remotes are popular in the RC (radio control) hobby community due to their reliability and ease of use. They typically come with a transmitter (the remote control) and a receiver, which communicates wirelessly with the transmitter to relay commands to your project.</p>
-<h3 id="components-needed">Components Needed</h3>
+<h2 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h2>
 <ul>
 <li>FlySky FS-i6 Transmitter</li>
 <li>FlySky FS-iA6B Receiver</li>
-<li>Arduino board (e.g., Arduino Uno)</li>
+<li>Arduino Nano</li>
 <li>Jumper wires</li>
-<li>Breadboard (optional)</li>
-<li>Power supply (appropriate for the receiver, typically 5V from the Arduino)</li>
+<li>Breadboard</li>
 </ul>
-<p><img alt="flysky-i6x-radio-transmitter-w-fs-ia6b-receiver-for-rc-airplane-rc-helicopter-fpv-drone-157417.webp" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/b333f334-e0e6-48d1-aedc-47ceea98427f/73fac80b-9f8e-4e3a-94f7-15f918254aa0/flysky-i6x-radio-transmitter-w-fs-ia6b-receiver-for-rc-airplane-rc-helicopter-fpv-drone-157417.webp" /></p>
-<h3 id="wiring-the-flysky-receiver-to-the-arduino">Wiring the FlySky Receiver to the Arduino</h3>
+<h2 id="wiring-the-flysky-receiver-to-the-arduino">Wiring the FlySky Receiver to the Arduino<a class="headerlink" href="#wiring-the-flysky-receiver-to-the-arduino" title="Permanent link">&para;</a></h2>
 <p>The FlySky FS-iA6B receiver outputs PWM (Pulse Width Modulation) signals for each channel. Each channel corresponds to a control on the transmitter, such as a joystick or switch.</p>
-<p><strong>Connections:</strong></p>
+<h3 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Power the Receiver:</strong><ul>
 <li><strong>VCC</strong> (5V) on the receiver to <strong>5V</strong> on the Arduino</li>
@@ -187,110 +234,180 @@
 </ul>
 </li>
 </ol>
-<h3 id="reading-pwm-signals-from-the-receiver">Reading PWM Signals from the Receiver</h3>
+<h2 id="reading-pwm-signals-from-the-receiver">Reading PWM Signals from the Receiver<a class="headerlink" href="#reading-pwm-signals-from-the-receiver" title="Permanent link">&para;</a></h2>
 <p>The receiver outputs PWM signals, which the Arduino can read and interpret. Each PWM signal consists of a series of pulses where the pulse width represents the position of the control on the transmitter.</p>
-<h3 id="example-code-for-reading-pwm-signals">Example Code for Reading PWM Signals</h3>
+<h2 id="example-code-for-reading-pwm-signals">Example Code for Reading PWM Signals<a class="headerlink" href="#example-code-for-reading-pwm-signals" title="Permanent link">&para;</a></h2>
 <p>We'll use the <code>pulseIn</code> function to measure the duration of the high pulse from the receiver, which corresponds to the position of the joystick or other control.</p>
-<div class="language-arduino highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">ch1Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH1</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">ch2Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH2</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ch1Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH1</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ch2Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH2</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">INPUT</span><span class="p">);</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">INPUT</span><span class="p">);</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="c1">// Read the pulse width from CH1</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">HIGH</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="c1">// Read the pulse width from CH2</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">ch2PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pulseIn</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">HIGH</span><span class="p">);</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch2PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="c1">// Print the pulse widths to the Serial Monitor</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;CH1: &quot;</span><span class="p">);</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">);</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot; CH2: &quot;</span><span class="p">);</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">ch2PulseWidth</span><span class="p">);</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;CH1: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">);</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; CH2: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ch2PulseWidth</span><span class="p">);</span>
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="interpreting-the-pwm-signals">Interpreting the PWM Signals</h3>
+<h2 id="interpreting-the-pwm-signals">Interpreting the PWM Signals<a class="headerlink" href="#interpreting-the-pwm-signals" title="Permanent link">&para;</a></h2>
 <p>The <code>pulseIn</code> function measures the duration of the high pulse in microseconds. The pulse width typically ranges from 1000 to 2000 microseconds:</p>
 <ul>
 <li><strong>1000 microseconds</strong>: Control is at one extreme (e.g., joystick fully left or down)</li>
 <li><strong>1500 microseconds</strong>: Control is centered</li>
 <li><strong>2000 microseconds</strong>: Control is at the other extreme (e.g., joystick fully right or up)</li>
 </ul>
-<h3 id="controlling-a-robot-with-pwm-signals">Controlling a Robot with PWM Signals</h3>
+<h2 id="controlling-a-robot-with-pwm-signals">Controlling a Robot with PWM Signals<a class="headerlink" href="#controlling-a-robot-with-pwm-signals" title="Permanent link">&para;</a></h2>
 <p>Once you have the pulse widths, you can map these values to control various aspects of your robot, such as motor speed, direction, or servo position.</p>
-<p><strong>Example: Controlling a Motor</strong></p>
+<h3 id="example-controlling-a-motor">Example: Controlling a Motor<a class="headerlink" href="#example-controlling-a-motor" title="Permanent link">&para;</a></h3>
 <p>Let's assume you want to control the speed of a motor using the joystick on your FlySky transmitter.</p>
-<div class="language-arduino highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">motorPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to the motor driver</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">motorPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to the motor driver</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">INPUT</span><span class="p">);</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="kr">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="kr">HIGH</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="c1">// Map the pulse width to a PWM value (0-255) for motor speed</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="c1">// Set the motor speed</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nf">analogWrite</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="n">motorSpeed</span><span class="p">);</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="n">motorSpeed</span><span class="p">);</span>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Motor Speed: &quot;</span><span class="p">);</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">motorSpeed</span><span class="p">);</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Motor Speed: &quot;</span><span class="p">);</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">motorSpeed</span><span class="p">);</span>
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="tasks">Tasks</h3>
-<h3 id="task-1-reading-additional-channels-easy">Task 1: Reading Additional Channels (Easy)</h3>
-<p><strong>Context:</strong>
-Extend the example to read additional channels from the receiver, such as CH3 and CH4. Display these values on the Serial Monitor.</p>
+<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
+<h3 id="task-1-reading-additional-channels-easy">Task 1: Reading Additional Channels (Easy)<a class="headerlink" href="#task-1-reading-additional-channels-easy" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Extend the example to read additional channels from the receiver, such as CH3 and CH4. Display these values on the Serial Monitor.</p>
+<p><strong>Hint</strong>: 
+- Connect additional channels (CH3, CH4) to digital pins on the Arduino.
+- Use the <code>pulseIn</code> function to read the pulse widths from these channels.
+- Display the pulse widths for all channels on the Serial Monitor.</p>
+<h3 id="task-2-control-multiple-leds-medium">Task 2: Control Multiple LEDs (Medium)<a class="headerlink" href="#task-2-control-multiple-leds-medium" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Use the FlySky remote to control multiple LEDs connected to the receiver Arduino. For example, use one channel to control the brightness of an LED and another channel to switch between different LEDs.</p>
+<p><strong>Hint</strong>:
+- Connect multiple LEDs to different digital pins on the Arduino.
+- Map the PWM values from the remote to control LED brightness using <code>analogWrite</code>.
+- Implement logic to switch between different LEDs based on the received PWM values.</p>
+<h2 id="advanced-task-control-motors-using-pwm-signals">Advanced Task: Control Motors Using PWM Signals<a class="headerlink" href="#advanced-task-control-motors-using-pwm-signals" title="Permanent link">&para;</a></h2>
+<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
+<p>Use the PWM signals from the FlySky remote to control motors using the L298N motor driver.</p>
+<h3 id="wiring-the-motors-and-l298n-motor-driver">Wiring the Motors and L298N Motor Driver<a class="headerlink" href="#wiring-the-motors-and-l298n-motor-driver" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Connect the L298N Motor Driver</strong>: Follow the wiring instructions from previous tutorials to connect the motor driver to the Arduino Nano and motors.</li>
+<li><strong>Connect PWM Outputs</strong>: Use the PWM values from the FlySky remote to control the speed and direction of the motors.</li>
+</ol>
+<h3 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MotorShield.h&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Create the motor shield object with the default I2C address</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">Adafruit_MotorShield</span><span class="w"> </span><span class="n">AFMS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_MotorShield</span><span class="p">();</span><span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// Connect a DC motor to port M1</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">Adafruit_DCMotor</span><span class="w"> </span><span class="o">*</span><span class="n">motor1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AFMS</span><span class="p">.</span><span class="n">getMotor</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kt">int</span><span class="w"> </span><span class="n">ch1Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Channel 1 on D2</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="kt">int</span><span class="w"> </span><span class="n">ch2Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Channel 2 on D3</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="c1">// Set pins as input</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="c1">// Start the motor shield</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="n">AFMS</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="c1">// Set the speed to 0 to start</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="c1">// Read the PWM values</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ch1Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ch2Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="c1">// Map the PWM values to motor speed (0-255)</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">ch1Value</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span><span class="c1">// Set motor direction based on Channel 2</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch2Value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">(</span><span class="n">FORWARD</span><span class="p">);</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">(</span><span class="n">BACKWARD</span><span class="p">);</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">  </span><span class="c1">// Set motor speed</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">  </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">  </span><span class="c1">// Print the values to the Serial Monitor</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Channel 1: &quot;</span><span class="p">);</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ch1Value</span><span class="p">);</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;  Channel 2: &quot;</span><span class="p">);</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ch2Value</span><span class="p">);</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Hint to Get Started:</strong><ul>
-<li>Connect additional channels (CH3, CH4) to digital pins on the Arduino.</li>
-<li>Use the <code>pulseIn</code> function to read the pulse widths from these channels.</li>
-<li>Display the pulse widths for all channels on the Serial Monitor.</li>
+<li><strong>Motor Control</strong>: The motor speed is set based on the PWM value from Channel 1, and the direction is controlled by Channel 2.</li>
+<li><strong>Mapping PWM Values</strong>: The <code>map</code> function converts the PWM values from the FlySky receiver to a range suitable for motor control.</li>
 </ul>
-</li>
-</ul>
-<h3 id="task-2-control-multiple-leds-medium">Task 2: Control Multiple LEDs (Medium)</h3>
-<p><strong>Context:</strong>
-Use the FlySky remote to control multiple LEDs connected to the receiver Arduino. For example, use one channel to control the brightness of an LED and another channel to switch between different LEDs.</p>
+<h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Connect your FlySky receiver and motors to your Arduino Nano as described.</li>
+<li>Open the Arduino IDE and paste the advanced code.</li>
+<li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
+<li>Upload the code to your Arduino Nano.</li>
+<li>Use the FlySky remote to control the motors.</li>
+</ol>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Hint to Get Started:</strong><ul>
-<li>Connect multiple LEDs to different digital pins on the Arduino.</li>
-<li>Map the PWM values from the remote to control LED brightness using <code>analogWrite</code>.</li>
-<li>Implement logic to switch between different LEDs based on the received PWM values.</li>
+<li><strong>Secure Connections</strong>: Ensure your wiring is secure to avoid intermittent connections.</li>
+<li><strong>Power Supply</strong>: Use a stable power supply to avoid fluctuations in motor speed.</li>
+<li><strong>Calibration</strong>: Calibrate the PWM values if needed to match the range of your remote.</li>
 </ul>
-</li>
-</ul>
-<h3 id="task-3-control-a-servo-motor-hard">Task 3: Control a Servo Motor (Hard)</h3>
-<p><strong>Context:</strong>
-Use the FlySky remote to control the position of a servo motor. This requires interpreting the PWM signal and mapping it to the servo’s range of motion.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Hint to Get Started:</strong><ul>
-<li>Connect the servo motor to a PWM-capable pin on the Arduino.</li>
-<li>Use the <code>Servo</code> library to control the servo.</li>
-<li>Map the received PWM values to the servo’s angle range (0 to 180 degrees) and adjust the servo position accordingly.</li>
+<li><strong>No Response</strong>: Check the wiring, ensure the correct power supply is used, and verify the PWM pins are correctly connected.</li>
+<li><strong>Incorrect Motor Behavior</strong>: Ensure the motor driver is correctly connected and the PWM values are properly mapped.</li>
 </ul>
-</li>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.flysky-cn.com/download.html">FlySky FS-i6 Manual</a></li>
+<li><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein/">Arduino PulseIn Function Documentation</a></li>
+<li><a href="https://learn.adafruit.com/adafruit-motor-shield">Adafruit Motor Shield Documentation</a></li>
 </ul>
-<h3 id="conclusion">Conclusion</h3>
-<p>Integrating a FlySky remote and receiver with your Arduino allows for precise and responsive control over your robotic projects. By completing these tasks, you'll gain a deeper understanding of using PWM signals to control various components, enhancing the functionality and interactivity of your robot. Keep experimenting and pushing the boundaries of your project!</p>
+<p>This tutorial should help you get started with using the FlySky remote and receiver to control motors with your Arduino Nano. Experiment with different configurations and setups to fully explore the capabilities of your project. Happy experimenting!</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../nRF/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../07_Robo_Drone/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../05_Assembly/receiver/" class="btn btn-neutral float-right" title="Receiver">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -316,7 +433,7 @@ Use the FlySky remote to control the position of a servo motor. This requires in
       <span><a href="../nRF/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../07_Robo_Drone/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../05_Assembly/receiver/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

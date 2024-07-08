@@ -49,6 +49,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Components/">Components</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
                   </li>
               </ul>
@@ -98,12 +100,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../remote/">Remote</a>
@@ -111,7 +107,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -158,22 +156,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="quick-tutorial-on-i2c-bus-for-18-year-olds">Quick Tutorial on I2C Bus for 18-Year-Olds</h3>
+                <h3 id="quick-tutorial-on-i2c-bus-for-18-year-olds">Quick Tutorial on I2C Bus for 18-Year-Olds<a class="headerlink" href="#quick-tutorial-on-i2c-bus-for-18-year-olds" title="Permanent link">&para;</a></h3>
 <p><strong>What is I2C?</strong>
 I2C stands for Inter-Integrated Circuit. It’s a communication protocol used to connect low-speed devices like sensors, microcontrollers, and other peripherals to a microcontroller (like Arduino) or single-board computer (like Raspberry Pi).</p>
-<h3 id="key-concepts">Key Concepts</h3>
+<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
 <p><strong>1. Master-Slave Architecture:</strong>
 - <strong>Master</strong>: The device that initiates communication (usually a microcontroller).
 - <strong>Slave</strong>: The devices that respond to the master (sensors, displays, etc.).</p>
 <p><strong>2. Two-Wire Communication:</strong>
 - <strong>SDA (Serial Data Line)</strong>: Carries the data.
 - <strong>SCL (Serial Clock Line)</strong>: Carries the clock signal.</p>
-<h3 id="advantages">Advantages</h3>
+<h3 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Simplicity</strong>: Only two wires needed.</li>
 <li><strong>Scalability</strong>: Multiple devices can be connected to the same two wires.</li>
 </ul>
-<h3 id="basic-terms">Basic Terms</h3>
+<h3 id="basic-terms">Basic Terms<a class="headerlink" href="#basic-terms" title="Permanent link">&para;</a></h3>
 <p><strong>1. Address:</strong>
 Each I2C device has a unique address (usually 7 bits) that the master uses to communicate with it.</p>
 <p><strong>2. Data Frame:</strong>
@@ -182,147 +180,176 @@ Communication is done in frames:
 - <strong>Address Frame</strong>: The master sends the address of the target slave.
 - <strong>Data Frame</strong>: The data being sent or received.
 - <strong>Stop Condition</strong>: The master sends a signal to stop communication.</p>
-<h3 id="how-to-use-i2c-with-arduino">How to Use I2C with Arduino</h3>
-<p><strong>1. Hardware Setup:</strong>
-- Connect the SDA and SCL pins of your I2C device to the corresponding pins on the Arduino.
-  - For Arduino Uno: SDA (A4), SCL (A5)
-  - For Arduino Nano: SDA (A4), SCL (A5)</p>
-<p><strong>2. Software Setup:</strong>
-- Use the <code>Wire</code> library to handle I2C communication.</p>
-<p>To demonstrate how both an MPU6050 accelerometer/gyroscope sensor and a 1.3-inch OLED display can communicate over the same I2C bus with an Arduino Nano, we'll need to use the Wire library for I2C communication, along with specific libraries for the MPU6050 and the OLED display.</p>
-<h3 id="prerequisites">Prerequisites:</h3>
-<ol>
-<li><strong>Hardware</strong>:</li>
+<h1 id="oled-display-with-i2c-mpu6050-and-vl53l0x-integration-tutorial">OLED Display with I2C, MPU6050, and VL53L0X Integration Tutorial<a class="headerlink" href="#oled-display-with-i2c-mpu6050-and-vl53l0x-integration-tutorial" title="Permanent link">&para;</a></h1>
+<p>This tutorial will guide you through the integration of a 1.3-inch OLED display with I2C, MPU6050 sensor, and VL53L0X ToF sensor using an Arduino Nano. We will display data from both sensors on the OLED.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>1.3-inch OLED Display with I2C</li>
+<li>MPU6050 Sensor</li>
+<li>VL53L0X ToF Sensor</li>
 <li>Arduino Nano</li>
-<li>MPU6050 sensor</li>
-<li>1.3-inch OLED display (assuming it's an SSD1306 or SH1106 based display)</li>
-<li>Jumper wires</li>
-<li>
-<p>Pull-up resistors (typically 4.7kΩ) if not already on the breakout boards</p>
-</li>
-<li>
-<p><strong>Connections</strong>:</p>
-</li>
-<li><strong>MPU6050</strong>:<ul>
-<li>VCC to 5V (or 3.3V if required)</li>
-<li>GND to GND</li>
-<li>SDA to A4</li>
-<li>SCL to A5</li>
+<li>Breadboard and jumper wires</li>
+<li>Arduino IDE installed on your computer</li>
+<li>Necessary libraries: <code>SSD1306AsciiWire</code>, <code>Wire</code>, <code>Adafruit_VL53L0X</code>, <code>MPU6050</code></li>
 </ul>
-</li>
-<li><strong>OLED Display</strong>:<ul>
-<li>VCC to 5V (or 3.3V if required)</li>
-<li>GND to GND</li>
-<li>SDA to A4</li>
-<li>SCL to A5</li>
-</ul>
-</li>
-</ol>
-<p>Both devices will share the SDA and SCL lines.</p>
-<h3 id="libraries-to-install">Libraries to Install:</h3>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<h3 id="wiring-the-sensors-and-display-to-arduino-nano">Wiring the Sensors and Display to Arduino Nano<a class="headerlink" href="#wiring-the-sensors-and-display-to-arduino-nano" title="Permanent link">&para;</a></h3>
+<h4 id="oled-display">OLED Display<a class="headerlink" href="#oled-display" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>MPU6050 Library</strong>: <code>MPU6050 by Electronic Cats</code></li>
-<li><strong>Adafruit SSD1306 Library</strong>: <code>Adafruit SSD1306</code></li>
-<li><strong>Adafruit GFX Library</strong>: <code>Adafruit GFX Library</code></li>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino Nano 5V</li>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino Nano GND</li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino Nano A5 (SCL)</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino Nano A4 (SDA)</li>
 </ul>
-<h3 id="example-code">Example Code:</h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_GFX.h&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_SSD1306.h&gt;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// Define the OLED display dimensions</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#define SCREEN_WIDTH 128</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cp">#define SCREEN_HEIGHT 64</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">Adafruit_SSD1306</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span><span class="w"> </span><span class="n">SCREEN_HEIGHT</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// Create an MPU6050 object</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="c1">// Initialize serial communication</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="c1">// Initialize I2C communication</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="c1">// Initialize the OLED display</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">display</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">SSD1306_I2C_ADDRESS</span><span class="p">,</span><span class="w"> </span><span class="n">SCREEN_WIDTH</span><span class="p">,</span><span class="w"> </span><span class="n">SCREEN_HEIGHT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;SSD1306 allocation failed&quot;</span><span class="p">));</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;);</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Pause for 2 seconds</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="c1">// Clear the buffer</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span><span class="c1">// Initialize the MPU6050 sensor</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">testConnection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;MPU6050 connection failed&quot;</span><span class="p">));</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="c1">// Read accelerometer and gyroscope values</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="n">az</span><span class="p">,</span><span class="w"> </span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="n">gz</span><span class="p">;</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getMotion6</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">az</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gz</span><span class="p">);</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="c1">// Print values to serial monitor</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;aX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | aY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ay</span><span class="p">);</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | aZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">az</span><span class="p">);</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;gX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gx</span><span class="p">);</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | gY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gy</span><span class="p">);</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | gZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gz</span><span class="p">);</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="c1">// Display values on the OLED display</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">setTextColor</span><span class="p">(</span><span class="n">SSD1306_WHITE</span><span class="p">);</span>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 Values:&quot;</span><span class="p">);</span>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;aX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;aY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ay</span><span class="p">);</span>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;aZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">az</span><span class="p">);</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;gX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gx</span><span class="p">);</span>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;gY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gy</span><span class="p">);</span>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;gZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gz</span><span class="p">);</span>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">  </span><span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="c1">// Delay before next reading</span>
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="explanation">Explanation:</h3>
+<h4 id="mpu6050">MPU6050<a class="headerlink" href="#mpu6050" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino Nano 3.3V or 5V (Check sensor specifications)</li>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino Nano GND</li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino Nano A5 (SCL)</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino Nano A4 (SDA)</li>
+</ul>
+<h4 id="vl53l0x">VL53L0X<a class="headerlink" href="#vl53l0x" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino Nano 3.3V or 5V (Check sensor specifications)</li>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino Nano GND</li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino Nano A5 (SCL)</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino Nano A4 (SDA)</li>
+</ul>
+<h3 id="installing-required-libraries">Installing Required Libraries<a class="headerlink" href="#installing-required-libraries" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Setup</strong>: Initialize the serial communication, I2C bus, OLED display, and MPU6050 sensor.</li>
-<li><strong>Reading Values</strong>: Read the accelerometer and gyroscope values from the MPU6050.</li>
-<li><strong>Display Values</strong>: Print the values to the serial monitor and display them on the OLED screen.</li>
-<li><strong>Loop</strong>: Continuously read and display the sensor values every second.</li>
-</ol>
-<h3 id="how-to-run">How to Run:</h3>
-<ol>
-<li>Connect your Arduino Nano to your computer.</li>
 <li>Open the Arduino IDE.</li>
-<li>Copy and paste the above code into a new sketch.</li>
-<li>Select the correct board and port in the Arduino IDE.</li>
-<li>Upload the code to the Arduino Nano.</li>
-<li>Open the Serial Monitor (Tools -&gt; Serial Monitor) to see the sensor values and check the OLED display for the same information.</li>
+<li>Go to <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Manage Libraries</strong>.</li>
+<li>Install the following libraries:</li>
+<li><code>SSD1306AsciiWire</code></li>
+<li><code>Adafruit_VL53L0X</code></li>
+<li><code>MPU6050</code></li>
 </ol>
-<p>This code will help you test and visualize how both the MPU6050 sensor and the OLED display can communicate over the same I2C bus. Make sure to install the required libraries through the Arduino Library Manager before uploading the code.</p>
-<h3 id="conclusion">Conclusion</h3>
-<p>I2C is a simple and efficient way to communicate with multiple devices using just two wires. Understanding the basics of I2C communication can help you integrate a variety of sensors and peripherals into your projects, making your designs more powerful and flexible.</p>
-<h3 id="useful-tips">Useful Tips</h3>
+<h2 id="basic-code-example">Basic Code Example<a class="headerlink" href="#basic-code-example" title="Permanent link">&para;</a></h2>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SSD1306AsciiWire.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Adafruit_VL53L0X.h&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// Create OLED display object</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">SSD1306AsciiWire</span><span class="w"> </span><span class="n">oled</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// Create MPU6050 object</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1">// Create VL53L0X object</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">Adafruit_VL53L0X</span><span class="w"> </span><span class="n">tof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_VL53L0X</span><span class="p">();</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1">// Variables to store sensor data</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="kt">float</span><span class="w"> </span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="n">az</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">VL53L0X_RangingMeasurementData_t</span><span class="w"> </span><span class="n">measure</span><span class="p">;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">setClock</span><span class="p">(</span><span class="mf">400000L</span><span class="p">);</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="c1">// Initialize OLED display</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Adafruit128x64</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3C</span><span class="p">);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">Callibri15</span><span class="p">);</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="c1">// Initialize MPU6050</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">MPU6050_SCALE_2000DPS</span><span class="p">,</span><span class="w"> </span><span class="n">MPU6050_RANGE_2G</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Could not find a valid MPU6050 sensor, check wiring!&quot;</span><span class="p">);</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="c1">// Initialize VL53L0X</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tof</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to boot VL53L0X&quot;</span><span class="p">);</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="c1">// Display setup labels</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 x:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 y:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Distance:&quot;</span><span class="p">);</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="p">}</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="c1">// Read MPU6050 data</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">rawAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">readRawAccel</span><span class="p">();</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rawAccel</span><span class="p">.</span><span class="n">XAxis</span><span class="p">;</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span><span class="n">ay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rawAccel</span><span class="p">.</span><span class="n">YAxis</span><span class="p">;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="c1">// Read VL53L0X data</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="n">tof</span><span class="p">.</span><span class="n">rangingTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">measure</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="c1">// Clear display</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="c1">// Display MPU6050 data</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;MPU6050 x: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;MPU6050 y: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ay</span><span class="p">);</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="c1">// Display VL53L0X data</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: &quot;</span><span class="p">);</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">measure</span><span class="p">.</span><span class="n">RangeStatus</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">measure</span><span class="p">.</span><span class="n">RangeMilliMeter</span><span class="p">);</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; mm&quot;</span><span class="p">);</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Out of range&quot;</span><span class="p">);</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Always check the datasheet of your I2C device for the correct address and data format.</li>
-<li>Use pull-up resistors (typically 4.7kΩ) on the SDA and SCL lines to ensure proper communication.</li>
-<li>Start with simple examples and gradually integrate more complex devices as you get comfortable with I2C.</li>
+<li><strong>Libraries</strong>: Includes the necessary libraries for OLED display, MPU6050, and VL53L0X sensors.</li>
+<li><strong>Initialization</strong>: Initializes the sensors and the OLED display in the <code>setup</code> function.</li>
+<li><strong>Sensor Reading</strong>: Reads data from MPU6050 and VL53L0X sensors in the <code>loop</code> function.</li>
+<li><strong>Display Data</strong>: Clears the OLED display and then updates it with the latest sensor data.</li>
 </ul>
+<h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Connect your Arduino Nano to your computer via USB.</li>
+<li>Open the Arduino IDE and paste the code above.</li>
+<li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
+<li>Upload the code to your Arduino Nano.</li>
+<li>The OLED display should show the data from the MPU6050 and VL53L0X sensors.</li>
+</ol>
+<h2 id="advanced-tasks">Advanced Tasks<a class="headerlink" href="#advanced-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="task-1-change-the-display-update-speed">Task 1: Change the Display Update Speed<a class="headerlink" href="#task-1-change-the-display-update-speed" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Adjust the <code>delay</code> value in the <code>loop</code> function to change how often the display updates.</p>
+<p><strong>Instructions</strong>:
+- Change the <code>delay(500);</code> line to a different value (e.g., <code>delay(100);</code> for faster updates or <code>delay(1000);</code> for slower updates).</p>
+<h3 id="task-2-add-more-sensor-data-to-display">Task 2: Add More Sensor Data to Display<a class="headerlink" href="#task-2-add-more-sensor-data-to-display" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Display the Z-axis acceleration from the MPU6050.</p>
+<p><strong>Instructions</strong>:
+1. Modify the setup and loop functions to include the Z-axis data.
+2. Update the OLED display to show the new data.</p>
+<h3 id="task-3-implement-a-trigger-based-on-sensor-data">Task 3: Implement a Trigger Based on Sensor Data<a class="headerlink" href="#task-3-implement-a-trigger-based-on-sensor-data" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Implement a trigger that changes the display color or shows a message when certain conditions are met (e.g., distance is within a certain range).</p>
+<p><strong>Instructions</strong>:
+1. Add a condition in the <code>loop</code> function to check if the distance is within a specified range.
+2. Display a message or change the display color when the condition is met.</p>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Ensure your wiring is secure to avoid intermittent connections.</li>
+<li>Use a stable power supply to avoid fluctuations in sensor readings.</li>
+<li>Calibrate the sensors if you notice significant drift in the readings.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Sensor Not Detected</strong>: Check the wiring, ensure the correct voltage is supplied.</li>
+<li><strong>Incorrect Readings</strong>: Make sure the sensors are not subjected to excessive vibrations or movements during initialization.</li>
+<li><strong>No Output on OLED</strong>: Verify the I2C address of the OLED display and ensure it matches the address used in the code.</li>
+</ul>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">MPU6050 Datasheet</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/vl53l0x.pdf">VL53L0X Datasheet</a></li>
+<li><a href="https://github.com/greiman/SSD1306Ascii">SSD1306Ascii Library Documentation</a></li>
+</ul>
+<p>This tutorial and the tasks provided should help you integrate and use the OLED display, MPU6050, and VL53L0X sensors with your Arduino Nano. Experiment with different setups and configurations to fully explore the capabilities of your project. Happy experimenting!</p>
               
             </div>
           </div><footer>

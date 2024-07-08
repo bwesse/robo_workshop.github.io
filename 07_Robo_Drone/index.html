@@ -49,6 +49,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Arduino/">Arduino</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Components/">Components</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/LEDs/">LEDs</a>
                   </li>
               </ul>
@@ -96,12 +98,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../04_Communication/nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../04_Communication/remote/">Remote</a>
@@ -109,7 +105,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -158,9 +156,9 @@
             <div class="section" itemprop="articleBody">
               
                 <p>Transitioning from Robot to Drone</p>
-<h3 id="introduction">Introduction</h3>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
 <p>Congratulations on your progress! The components we've used in our robot project are similar to those used in many other robotic projects, including drones. Understanding this will help you see the versatility of these components and the skills you’ve acquired.</p>
-<h3 id="how-a-drone-works">How a Drone Works</h3>
+<h3 id="how-a-drone-works">How a Drone Works<a class="headerlink" href="#how-a-drone-works" title="Permanent link">&para;</a></h3>
 <p>A drone, specifically a quadcopter, operates using several key components:</p>
 <ul>
 <li><strong>Frame</strong>: The structure that holds all the components together.</li>
@@ -170,14 +168,14 @@
 <li><strong>Propellers</strong>: Convert motor power into thrust to lift and maneuver the drone.</li>
 <li><strong>Battery</strong>: Powers all the components, similar to how a 9V battery powers our robot.</li>
 </ul>
-<h3 id="energy-flow-in-a-drone">Energy Flow in a Drone</h3>
+<h3 id="energy-flow-in-a-drone">Energy Flow in a Drone<a class="headerlink" href="#energy-flow-in-a-drone" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Battery</strong>: Supplies power to the flight controller and ESCs.</li>
 <li><strong>Flight Controller</strong>: Receives input from the remote control and IMU sensors, processes data, and sends signals to the ESCs.</li>
 <li><strong>ESCs</strong>: Receive signals from the flight controller and adjust the speed of the motors accordingly.</li>
 <li><strong>Motors</strong>: Spin the propellers to generate lift and control movement.</li>
 </ol>
-<h3 id="similarities-with-our-robot">Similarities with Our Robot</h3>
+<h3 id="similarities-with-our-robot">Similarities with Our Robot<a class="headerlink" href="#similarities-with-our-robot" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Flight Controller vs. Arduino</strong>: Both act as the central processing unit, receiving inputs and controlling outputs.</li>
 <li><strong>IMU Sensors</strong>: The MPU6050 in drones measures orientation and acceleration, similar to our robot.</li>
@@ -188,21 +186,21 @@
 <p><img alt="full_flight_controller.png" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/b333f334-e0e6-48d1-aedc-47ceea98427f/43de876a-68bf-49f9-82c7-b0e77ed22783/full_flight_controller.png" /></p>
 </li>
 </ul>
-<h3 id="practical-example-flying-a-drone-with-arduino-and-mpu6050">Practical Example: Flying a Drone with Arduino and MPU6050</h3>
+<h3 id="practical-example-flying-a-drone-with-arduino-and-mpu6050">Practical Example: Flying a Drone with Arduino and MPU6050<a class="headerlink" href="#practical-example-flying-a-drone-with-arduino-and-mpu6050" title="Permanent link">&para;</a></h3>
 <p>You have a drone that uses an Arduino and MPU6050, controlled by the MultiWii software. This is an excellent demonstration of how the components we've used in our robot can be adapted for drone flight.</p>
-<h3 id="demonstration">Demonstration</h3>
+<h3 id="demonstration">Demonstration<a class="headerlink" href="#demonstration" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Setup</strong>: Your drone's Arduino acts as the flight controller, receiving input from the MPU6050 to stabilize and control the flight.</li>
 <li><strong>Software</strong>: MultiWii, an open-source software, processes the sensor data and adjusts motor speeds via the ESCs to maintain stability.</li>
 <li><strong>Flying</strong>: When you show your drone flying, note how the MPU6050 constantly sends orientation data to the Arduino, which then makes real-time adjustments to the motors.</li>
 </ul>
-<h3 id="summary">Summary</h3>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
 <p>You’ve successfully built a robot using components that are foundational in many robotics projects, including drones. The skills and knowledge you’ve gained are directly applicable to more advanced projects. Be proud of what you’ve achieved and confident in your ability to tackle new challenges in robotics!</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../04_Communication/remote/" class="btn btn-neutral float-left" title="Remote"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../05_Assembly/transmitter/" class="btn btn-neutral float-left" title="Transmitter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../08_Outlook/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -226,7 +224,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../04_Communication/remote/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../05_Assembly/transmitter/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../08_Outlook/" style="color: #fcfcfc">Next &raquo;</a></span>

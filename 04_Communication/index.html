@@ -49,6 +49,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Arduino/">Arduino</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Components/">Components</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/LEDs/">LEDs</a>
                   </li>
               </ul>
@@ -98,12 +100,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="remote/">Remote</a>
@@ -111,7 +107,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -157,18 +155,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="communicating-between-sender-and-receiver-in-robotics">Communicating Between Sender and Receiver in Robotics</h3>
+                <h3 id="communicating-between-sender-and-receiver-in-robotics">Communicating Between Sender and Receiver in Robotics<a class="headerlink" href="#communicating-between-sender-and-receiver-in-robotics" title="Permanent link">&para;</a></h3>
 <p>Hey there! So far, we've done some amazing work together. We've built sensors, hooked up actuators, and learned how to use prebuilt commands to make everything work. Now, let's take it to the next level by learning how to send instructions wirelessly—kind of like giving our robot its own remote control!</p>
-<h3 id="why-communication-is-important">Why Communication is Important</h3>
+<h3 id="why-communication-is-important">Why Communication is Important<a class="headerlink" href="#why-communication-is-important" title="Permanent link">&para;</a></h3>
 <p>Think of your robot as a team member. To get the best performance, you need to communicate clearly. Instead of manually sending commands, we’ll use technology to do it for us. This way, we can control the robot remotely and make it respond in real time to the data it collects.</p>
-<h3 id="key-players-in-communication">Key Players in Communication</h3>
+<h3 id="key-players-in-communication">Key Players in Communication<a class="headerlink" href="#key-players-in-communication" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Sender</strong>: This is like our command center. It sends instructions or data. For our project, an Arduino can serve as the sender, broadcasting signals to control our robot.</li>
 <li><strong>Receiver</strong>: This is our robot’s ear. It listens for instructions and acts on them. Another Arduino on the robot can be the receiver, taking in commands and making the robot move.</li>
 </ul>
-<h3 id="wired-vs-wireless-communication">Wired vs. Wireless Communication</h3>
+<h3 id="wired-vs-wireless-communication">Wired vs. Wireless Communication<a class="headerlink" href="#wired-vs-wireless-communication" title="Permanent link">&para;</a></h3>
 <p>We've already connected our Arduinos to various components, like motor drivers, using wires. This direct connection is reliable and straightforward but limits mobility. Now, let's explore wireless communication, which allows our robot to move freely without being tethered by wires.</p>
-<h3 id="communication-protocols">Communication Protocols</h3>
+<h3 id="communication-protocols">Communication Protocols<a class="headerlink" href="#communication-protocols" title="Permanent link">&para;</a></h3>
 <p>To make this communication work smoothly, we use protocols—rules for how data is sent and received.</p>
 <ul>
 <li><strong>Serial Communication</strong>: Think of it as passing notes in class, one letter at a time. It’s simple and great for short distances.</li>
@@ -176,14 +174,14 @@
 <li><strong>SPI</strong>: Think of SPI as a fast, direct conversation between a master (main controller) and slaves (other devices).</li>
 <li><strong>Wireless (e.g., NRF24L01)</strong>: Perfect for when we want our robot to be free to move around while staying in touch with the controller.</li>
 </ul>
-<h3 id="setting-up-communication">Setting Up Communication</h3>
+<h3 id="setting-up-communication">Setting Up Communication<a class="headerlink" href="#setting-up-communication" title="Permanent link">&para;</a></h3>
 <p>Here's how we get our sender and receiver talking:</p>
 <ul>
 <li><strong>Initialization</strong>: We need to set up both the sender and receiver with the right settings (like tuning a radio to the right station).</li>
 <li><strong>Pairing and Addressing</strong>: In wireless setups, we need to make sure our devices recognize each other. This is like saving each other’s contact info.</li>
 <li><strong>Data Transmission and Reception</strong>: The sender sends the message, and the receiver gets it, understands it, and acts on it.</li>
 </ul>
-<h3 id="making-it-reliable">Making It Reliable</h3>
+<h3 id="making-it-reliable">Making It Reliable<a class="headerlink" href="#making-it-reliable" title="Permanent link">&para;</a></h3>
 <p>We want our robot to follow commands perfectly, so we need some backup plans for when things go wrong:</p>
 <ul>
 <li><strong>Error Checking</strong>: We can use checksums (like a summary of the message) to make sure nothing’s been messed up in transit.</li>

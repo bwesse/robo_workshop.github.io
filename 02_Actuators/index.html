@@ -49,6 +49,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Arduino/">Arduino</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Components/">Components</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/LEDs/">LEDs</a>
                   </li>
               </ul>
@@ -108,12 +110,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../04_Communication/nRF/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/nrf_receiver/README.md">nRF Receiver</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="../04_Communication/nRF/nrf_transmitter/README.md">nRF Transmitter</a>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../04_Communication/remote/">Remote</a>
@@ -121,7 +117,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Assembly</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../05_Assembly/README.md">Instrctions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/transmitter/">Transmitter</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Drive</span></p>
@@ -167,15 +165,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="actuators-in-robotics">Actuators in Robotics</h2>
+                <h2 id="actuators-in-robotics">Actuators in Robotics<a class="headerlink" href="#actuators-in-robotics" title="Permanent link">&para;</a></h2>
 <p>Actuators are critical components in robotics, responsible for converting electrical energy into mechanical motion. They enable robots to interact with their environment, move, and perform tasks. Understanding actuators is essential for designing and building efficient robotic systems. Here's an overview of key concepts and types of actuators used in robotics.</p>
-<h3 id="key-concepts">Key Concepts</h3>
+<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Functionality</strong>: Actuators are devices that produce motion. They are driven by electrical, hydraulic, or pneumatic energy sources.</li>
 <li><strong>Control</strong>: Actuators are controlled by microcontrollers or processors that send signals to initiate and regulate their movement.</li>
 <li><strong>Power Source</strong>: The choice of power source (electricity, compressed air, hydraulic fluid) impacts the actuator's performance and suitability for different applications.</li>
 </ul>
-<h3 id="types-of-actuators">Types of Actuators</h3>
+<h3 id="types-of-actuators">Types of Actuators<a class="headerlink" href="#types-of-actuators" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Electric Actuators</strong>:<ul>
 <li><strong>DC Motors</strong>: Common in robotics for their simplicity and ease of control. They convert direct current electrical energy into rotational motion.</li>
@@ -194,7 +192,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="selection-criteria">Selection Criteria</h3>
+<h3 id="selection-criteria">Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permanent link">&para;</a></h3>
 <p>When choosing an actuator for your robot, consider the following factors:</p>
 <ul>
 <li><strong>Application Requirements</strong>: Define the motion type, range, and precision needed for the task.</li>
@@ -203,13 +201,13 @@
 <li><strong>Power Efficiency</strong>: Opt for actuators that provide efficient power usage to extend battery life or reduce energy costs.</li>
 <li><strong>Environmental Conditions</strong>: Choose actuators that can withstand the operating environment, including temperature, humidity, and exposure to elements.</li>
 </ul>
-<h3 id="integration-and-control">Integration and Control</h3>
+<h3 id="integration-and-control">Integration and Control<a class="headerlink" href="#integration-and-control" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Microcontrollers</strong>: Use microcontrollers like Arduino to send control signals to actuators. Program the microcontroller to handle different motion profiles and respond to sensor inputs.</li>
 <li><strong>Feedback Systems</strong>: Incorporate sensors to provide feedback on the actuator's position and performance. This enables closed-loop control systems for precise and adaptive movement.</li>
 <li><strong>Driver Circuits</strong>: Utilize appropriate driver circuits to interface between the microcontroller and the actuator, ensuring safe and efficient operation.</li>
 </ul>
-<h3 id="common-applications">Common Applications</h3>
+<h3 id="common-applications">Common Applications<a class="headerlink" href="#common-applications" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Robotic Arms</strong>: Servo motors for precise joint control.</li>
 <li><strong>Mobile Robots</strong>: DC motors for driving wheels or tracks.</li>
