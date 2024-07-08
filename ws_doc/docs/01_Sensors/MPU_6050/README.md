@@ -1,56 +1,36 @@
+# MPU6050 Sensor Tutorial for Arduino Nano
 
-# MPU6050 Tutorial
+![MPU6050](../../99_Resources/images/MPU6050-Module-Gyroscope-Axis.webp)
 
-![MPU6050](path/to/your/mpu6050_image.jpg)
+The MPU6050 is a 6-axis motion tracking device that combines a 3-axis gyroscope and a 3-axis accelerometer. This tutorial will guide you through the basics of setting up and using the MPU6050 sensor with an Arduino Nano.
 
-Welcome to the MPU6050 tutorial! In this guide, you'll learn about the MPU6050 sensor, how it works, and how to use it with an Arduino. Let's get started!
+## Requirements
 
-## Table of Contents
+- MPU6050 Sensor
+- Arduino Nano
+- Breadboard and jumper wires
+- Arduino IDE installed on your computer
+- MPU6050 Arduino library
 
-1. [Introduction](#introduction)
-2. [Theory](#theory)
-3. [Connecting the MPU6050](#connecting-the-mpu6050)
-4. [Arduino Code](#arduino-code)
-5. [Troubleshooting](#troubleshooting)
-6. [Tasks](#tasks)
+## Setup
 
----
+### Wiring the Sensor to Arduino Nano
 
-## Introduction
+![mpu6050pinout](../../99_Resources/images/MPU6050-Pinout.png)
 
-The MPU6050 is a sensor that combines a 3-axis gyroscope and a 3-axis accelerometer. It is commonly used in robotics and motion tracking applications.
+- **VCC** (Power) -> Connect to Arduino Nano 3.3V or 5V (Check sensor specifications for exact voltage)
+- **GND** (Ground) -> Connect to Arduino Nano GND
+- **SCL** (Clock) -> Connect to Arduino Nano A5 (SCL pin)
+- **SDA** (Data) -> Connect to Arduino Nano A4 (SDA pin)
 
-## Theory
+### Installing the MPU6050 Library
 
-The MPU6050 measures acceleration and rotation along the X, Y, and Z axes. Here's a quick overview:
+1. Open the Arduino IDE.
+2. Go to **Sketch** > **Include Library** > **Manage Libraries**.
+3. In the Library Manager, search for "MPU6050".
+4. Find the "MPU6050 by Electronic Cats" library and click **Install**.
 
-- **Accelerometer:** Measures the rate of change of velocity (acceleration).
-- **Gyroscope:** Measures the rate of rotation around an axis.
-
-By combining data from both sensors, you can get a good understanding of the orientation and movement of the sensor.
-
-![MPU6050 Diagram](images/mpu6050_connections.png)
-
-## Connecting the MPU6050
-
-Here’s how to connect the MPU6050 to an Arduino:
-
-1. **VCC**: Connect to 3.3V or 5V on the Arduino.
-2. **GND**: Connect to Ground (GND) on the Arduino.
-3. **SCL**: Connect to A5 on the Arduino.
-4. **SDA**: Connect to A4 on the Arduino.
-
-![MPU6050 Connections](path/to/your/mpu6050_connections.jpg)
-
-## Arduino Code
-
-Here is a simple example of how to read data from the MPU6050 using Arduino. 
-
-### Step-by-Step Code
-
-1. **Include the Library**: First, include the Wire library and the MPU6050 library.
-2. **Initialize the Sensor**: In the setup, initialize communication and the sensor.
-3. **Read and Print Data**: In the loop, read the sensor data and print it to the Serial Monitor.
+## Basic Code Example
 
 ```cpp
 #include <Wire.h>
@@ -63,72 +43,61 @@ void setup() {
   Wire.begin();
   mpu.initialize();
 
-  if (mpu.testConnection()) {
-    Serial.println("MPU6050 connection successful");
-  } else {
-    Serial.println("MPU6050 connection failed");
+  if (!mpu.testConnection()) {
+    Serial.println("Failed to connect to MPU6050!");
+    while (1) {}
   }
 }
 
 void loop() {
-  int16_t ax, ay, az, gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  int16_t ax, ay, az;
+  int16_t gx, gy, gz;
 
-  Serial.print("a/g:\t");
-  Serial.print(ax); Serial.print("\t");
-  Serial.print(ay); Serial.print("\t");
-  Serial.print(az); Serial.print("\t");
-  Serial.print(gx); Serial.print("\t");
-  Serial.print(gy); Serial.print("\t");
-  Serial.println(gz);
+  mpu.getAcceleration(&ax, &ay, &az);
+  mpu.getRotation(&gx, &gy, &gz);
 
-  delay(500);
+  Serial.print("aX = "); Serial.print(ax);
+  Serial.print(" | aY = "); Serial.print(ay);
+  Serial.print(" | aZ = "); Serial.println(az);
+
+  Serial.print("gX = "); Serial.print(gx);
+  Serial.print(" | gY = "); Serial.print(gy);
+  Serial.print(" | gZ = "); Serial.println(gz);
+
+  delay(1000);
 }
 ```
 
+### Code Explanation
+
+- **Libraries**: Includes the Wire library for I2C communication and the MPU6050 library for sensor functions.
+- **Sensor Initialization**: Sets up serial communication, initializes the I2C communication, and the sensor itself.
+- **Reading Data**: In the `loop` function, reads acceleration and gyroscope data and prints it to the Serial Monitor.
+
+## Running the Code
+
+1. Connect your Arduino Nano to your computer via USB.
+2. Open the Arduino IDE and paste the code above.
+3. Select the correct board (Arduino Nano) and port under **Tools**.
+4. Upload the code to your Arduino Nano.
+5. Open the Serial Monitor (**Tools** > **Serial Monitor**) and set the baud rate to 9600.
+6. You should see the acceleration and gyroscope readings displayed.
+
+## Tips
+
+- Ensure your wiring is secure to avoid intermittent connections.
+- Place the sensor on a stable surface to get accurate readings.
+- Calibrate the sensor if you notice significant drift in the readings.
+
 ## Troubleshooting
 
-Here are some common issues and solutions:
+- **Sensor Not Detected**: Check the wiring, ensure the correct voltage is supplied.
+- **Incorrect Readings**: Make sure the sensor is not subjected to excessive vibrations or movements during initialization.
+- **No Output**: Verify the baud rate of the Serial Monitor matches the one set in the code.
 
-- **No Data on Serial Monitor**: Check the connections and ensure the MPU6050 is properly powered.
-- **MPU6050 Connection Failed**: Make sure the SCL and SDA lines are correctly connected. Check for loose wires.
-- **Random Values**: Ensure your sensor is still and on a flat surface during testing.
+## Additional Resources
 
-## Tasks
+- [MPU6050 Datasheet](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf)
+- [Arduino MPU6050 Library Documentation](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050)
 
-Here are some tasks to help you practice using the MPU6050:
-
-<details>
-  <summary>Task 1: Basic Data Reading</summary>
-
-  - Read acceleration and gyroscope data from the MPU6050.
-  - Print the data to the Serial Monitor.
-  - **Hint**: Use the provided code as a reference.
-</details>
-
-<details>
-  <summary>Task 2: Calculate Pitch and Roll</summary>
-
-  - Use the accelerometer data to calculate the pitch and roll of the sensor.
-  - Print the calculated values to the Serial Monitor.
-  - **Hint**: You can use the `atan2` function to calculate angles.
-</details>
-
-<details>
-  <summary>Task 3: Simple Motion Detection</summary>
-
-  - Detect when the sensor is moved.
-  - Turn on an LED when motion is detected.
-  - **Hint**: Compare the current and previous acceleration values to detect motion.
-</details>
-
----
-
-### Navigation
-
-- [Home](../index.html)
-
----
-
-![Footer Image](path/to/your/footer_image.jpg)
-```
+This simple tutorial should get you started with using the MPU6050 sensor with your Arduino Nano. Experiment with different setups and movements to fully explore its capabilities. Happy experimenting!

@@ -1,11 +1,59 @@
 ### Controlling a WS2812B LED Strip with Arduino
 
 #### 1. **Gather Necessary Components:**
-   - **Arduino Board:** (e.g., Arduino Uno, Nano).
+   - **Arduino Board:** (e.g., Arduino Nano).
+   - **Cable:** mini-usb to usb
    - **WS2812B LED Strip:** Ensure it has 8 LEDs.
-   - **Power Supply:** 5V power supply appropriate for the LED strip.
    - **Connecting Wires:** Jumper wires for connections.
-   - **Breadboard:** Optional, for prototyping.
+   - **Breadboard,** for prototyping.
+
+#### Breadboards
+
+![Breadboard](../../99_Resources/images/BB-01.jpg)
+
+#### **1. Purpose:**
+   - Used for prototyping electronic circuits without soldering.
+
+#### **2. Structure:**
+   - **Rows and Columns:**
+     - Consist of a grid of holes arranged in rows and columns.
+   - **Metal Strips:**
+     - Metal strips underneath the board connect the holes electrically.
+
+#### **3. Power Rails:**
+   - **Lines:**
+     - Two long rows typically run along the top and bottom for power distribution.
+   - **Purpose:**
+     - Used to connect power supply (positive and negative).
+
+#### **4. Terminal Strips:**
+   - **Rows:**
+     - Consist of short horizontal rows in the middle.
+   - **Connections:**
+     - Each row of five holes is electrically connected, allowing components to be inserted and interconnected.
+
+#### **5. Component Placement:**
+   - **Insertion:**
+     - Components like resistors, capacitors, and ICs are inserted into the holes.
+   - **Connections:**
+     - Wires or jumper cables are used to connect different components.
+
+#### **6. Integration:**
+   - **Circuits:**
+     - Allows easy creation and modification of circuits.
+   - **Testing:**
+     - Facilitates testing and troubleshooting before finalizing designs.
+
+#### **7. Advantages:**
+   - **Non-permanent:**
+     - Components can be easily removed or replaced.
+   - **Reusable:**
+     - Breadboards can be reused for multiple projects.
+
+#### **8. Common Uses:**
+   - Ideal for learning, prototyping, and debugging electronic circuits.
+
+------------------------------------------
 
 #### 2. **Circuit Connections:**
    - **Power Connections:**
@@ -13,7 +61,7 @@
    - **Data Connection:**
      - Connect the Data Input (DIN) of the LED strip to a digital pin on the Arduino (e.g., pin 6).
    - **Arduino Power:**
-     - Connect the Arduino to your computer via USB or a separate power supply.
+     - Connect the Arduino to your computer via USB
 
    **Basic Wiring Diagram:**
    ```
@@ -24,15 +72,16 @@
    ```
 
 #### 3. **Install Necessary Library:**
-   - **Adafruit NeoPixel Library:**
+   - **Fastled Library:**
      - Open Arduino IDE.
      - Navigate to `Sketch` > `Include Library` > `Manage Libraries`.
-     - Search for "Adafruit NeoPixel" and install the library.
+     - Search for "Fastled" and install the library.
+
 
 #### 4. **Write the Arduino Code:**
 
    ```cpp
-   #include <Adafruit_NeoPixel.h>
+   #include <FastLED.h>
 
    // Define the pin that is connected to the DIN of the LED strip
    #define LED_PIN 6
@@ -40,13 +89,14 @@
    // Define the number of LEDs in the strip
    #define NUM_LEDS 8
 
-   // Create an object for the strip
-   Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
+   // Create an array of LED objects
+   CRGB leds[NUM_LEDS];
 
    void setup() {
-     // Initialize the strip
-     strip.begin();
-     strip.show(); // Initialize all pixels to 'off'
+     // Initialize the LED strip
+     FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
+     FastLED.clear();
+     FastLED.show(); // Initialize all pixels to 'off'
    }
 
    void loop() {
@@ -56,29 +106,27 @@
 
    // Function to fill the strip with a rainbow pattern
    void rainbowCycle(uint8_t wait) {
-     uint16_t i, j;
-
-     for (j = 0; j < 256 * 5; j++) { // 5 cycles of all colors on the wheel
-       for (i = 0; i < strip.numPixels(); i++) {
-         strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+     for (int j = 0; j < 256 * 5; j++) { // 5 cycles of all colors on the wheel
+       for (int i = 0; i < NUM_LEDS; i++) {
+         leds[i] = Wheel(((i * 256 / NUM_LEDS) + j) & 255);
        }
-       strip.show();
+       FastLED.show();
        delay(wait);
      }
    }
 
    // Function to generate rainbow colors across 0-255 positions
-   uint32_t Wheel(byte WheelPos) {
+   CRGB Wheel(byte WheelPos) {
      WheelPos = 255 - WheelPos;
      if (WheelPos < 85) {
-       return strip.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+       return CRGB(255 - WheelPos * 3, 0, WheelPos * 3);
      }
      if (WheelPos < 170) {
        WheelPos -= 85;
-       return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+       return CRGB(0, WheelPos * 3, 255 - WheelPos * 3);
      }
      WheelPos -= 170;
-     return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+     return CRGB(WheelPos * 3, 255 - WheelPos * 3, 0);
    }
    ```
 
@@ -94,5 +142,3 @@
 
 #### 7. **Experiment with Other Animations:**
    - Try creating other animations such as solid colors, color wipes, theater chase, etc., by writing new functions and calling them in the `loop()`.
-
-By following these steps, you'll be able to control an 8-LED WS2812B strip with your Arduino and create stunning light effects for your projects.

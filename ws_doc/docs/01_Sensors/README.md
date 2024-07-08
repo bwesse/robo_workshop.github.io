@@ -1,5 +1,7 @@
 ### Introduction to Sensors in Robotics
 
+![Sensors](../99_Resources/images/sensors.webp)
+
 Sensors are **critical components** in robotics, enabling robots to **perceive and interact** with their environment. They provide data that can be used for **navigation**, **object detection**, **orientation**, and more. In this section, we will give a general overview of sensors and introduce the specific sensors we will be using in our project.
 
 ### What Are Sensors?

@@ -2,7 +2,7 @@
 
 - **Welcome to the Workshop!**
     - Get ready to dive into the exciting world of robotics with Arduino.
-    - By the end of this workshop, you’ll build and control your own robot.
+    - By the end of this workshop, you’ll build and control your own robot and possibly use that aquiered knowledge to build a drone.
 
 ### Goals of the Workshop
 
@@ -68,6 +68,3 @@
 - **Endless Possibilities**
     - Realize that with the skills you’ll gain, you can create endless robotic projects.
 
-Welcome aboard! Let’s build something amazing together.
-
-[Getting started with Arduino](Arduino/)

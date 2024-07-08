@@ -3,25 +3,34 @@
 ![ToF](../../../99_Resources/images/vl53l0x.jpeg)
 
 
-## Introduction
-The VL53L0X is a time-of-flight (ToF) distance sensor that measures the time it takes for light to travel to an object and back, providing accurate distance measurements. 
+The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.
 
-### Theory
-- **Time-of-Flight (ToF):** Measures the time taken for a light pulse to travel to a target and return.
-- **Laser Emission:** Uses a 940nm laser for distance measurement.
-- **Range:** Capable of measuring distances from 30mm to 2m.
-- **Accuracy:** Highly accurate with a low error rate.
-- **I2C Communication:** Uses I2C protocol for communication with microcontrollers like Arduino.
+## Requirements
 
-## Wiring
-Connect the VL53L0X sensor to the Arduino as follows:
-- **VCC:** 5V
-- **GND:** GND
-- **SDA:** A4 (SDA)
-- **SCL:** A5 (SCL)
+- VL53L0X Sensor
+- Arduino (Uno, Mega, etc.)
+- Breadboard and jumper wires
+- Arduino IDE installed on your computer
+- VL53L0X Arduino library
 
-## Code Example
-Here's a simple Arduino sketch to test the VL53L0X sensor:
+## Setup
+
+### Wiring the Sensor to Arduino
+
+- **GND** (Ground) -> Connect to Arduino GND
+- **VCC** (Power) -> Connect to Arduino 3.3V or 5V (Check sensor specifications for exact voltage)
+- **SCL** (Clock) -> Connect to Arduino A5 (Uno) or the corresponding SCL pin on other models
+- **SDA** (Data) -> Connect to Arduino A4 (Uno) or the corresponding SDA pin on other models
+
+
+### Installing the VL53L0X Library
+
+1. Open the Arduino IDE.
+2. Go to **Sketch** > **Include Library** > **Manage Libraries**.
+3. In the Library Manager, search for "VL53L0X".
+4. Find the "VL53L0X by Pololu" library and click **Install**.
+
+## Basic Code Example
 
 ```cpp
 #include <Wire.h>
@@ -32,178 +41,60 @@ VL53L0X sensor;
 void setup() {
   Serial.begin(9600);
   Wire.begin();
-  
-  sensor.init();
   sensor.setTimeout(500);
   
-  Serial.println("VL53L0X sensor test");
+  if (!sensor.init()) {
+    Serial.println("Failed to detect and initialize sensor!");
+    while (1) {}
+  }
+  
+  sensor.startContinuous();
 }
 
 void loop() {
-  // Measure distance
-  uint16_t distance = sensor.readRangeSingleMillimeters(); 
+  Serial.print("Distance: ");
+  Serial.print(sensor.readRangeContinuousMillimeters());
+  Serial.println(" mm");
   
   if (sensor.timeoutOccurred()) {
-    Serial.print("Timeout occurred");
-  } else {
-    Serial.print("Distance: ");
-    Serial.print(distance);
-    Serial.println(" mm");
+    Serial.print(" TIMEOUT");
   }
-
-  delay(1000); // (1)
+  
+  delay(100);
 }
-
-```
-1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be written in Markdown.
-
-
-# Code Examples
-
-## Example: Switching Between receiver.cpp and transmitter.cpp
-
-# Code Examples
-
-```cpp
-#include <iostream>
-using namespace std;
-
-void bubbleSort(int arr[], int n) {  // (1)
-    for (int i = 0; i < n - 1; i++) {  // (2)
-        for (int j = 0; j < n - i - 1; j++) {  // (3)
-            if (arr[j] > arr[j + 1]) {  // (4)
-                swap(arr[j], arr[j + 1]);  // (5)
-            }
-        }
-    }
-}
-
-int main() {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    bubbleSort(arr, n);
-    cout << "Sorted array: \n";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-    return 0;
-}
-{ .annotate }
-
-1. This is the function definition for bubble sort.
-2. Outer loop to traverse through all elements.
-3. Inner loop to compare adjacent elements.
-4. Compare the adjacent elements.
-5. Swap the elements if they are in the wrong order.
 ```
 
-## Example: Switching Between receiver.cpp and transmitter.cpp
+### Code Explanation
 
-=== "receiver.cpp"
-    ```cpp
-    // receiver.cpp
-    #include <SPI.h>
-    #include <nRF24L01.h>
-    #include <RF24.h>
+- **Libraries**: Includes the Wire library for I2C communication and the VL53L0X library for sensor functions.
+- **Sensor Initialization**: Sets up serial communication, initializes the I2C communication, and the sensor itself.
+- **Continuous Measurement**: Starts continuous distance measurement in the `setup` function.
+- **Reading Distance**: In the `loop` function, reads the distance and prints it to the Serial Monitor.
 
-    RF24 radio(9, 10); // CE, CSN
+## Running the Code
 
-    void setup() {
-        Serial.begin(9600);
-        radio.begin();
-        radio.openReadingPipe(1, "00001");
-        radio.startListening();
-    }
+1. Connect your Arduino to your computer via USB.
+2. Open the Arduino IDE and paste the code above.
+3. Select the correct board and port under **Tools**.
+4. Upload the code to your Arduino.
+5. Open the Serial Monitor (**Tools** > **Serial Monitor**) and set the baud rate to 9600.
+6. You should see the distance measurements displayed.
 
-    void loop() {
-        if (radio.available()) {
-            char text[32] = "";
-            radio.read(&text, sizeof(text));
-            Serial.println(text);
-        }
-    }
-    ```
+## Tips
 
-=== "transmitter.cpp"
-    ```cpp
-    // transmitter.cpp
-    #include <SPI.h>
-    #include <nRF24L01.h>
-    #include <RF24.h>
-
-    RF24 radio(9, 10); // CE, CSN
-
-    void setup() {
-        Serial.begin(9600);
-        radio.begin();
-        radio.openWritingPipe("00001");
-        radio.stopListening();
-    }
-
-    void loop() {
-        const char text[] = "Hello, World!";
-        radio.write(&text, sizeof(text));
-        delay(1000);
-    }
-    ```
+- Ensure your wiring is secure to avoid intermittent connections.
+- Place the sensor on a stable surface to get accurate readings.
 
 
-## Tasks
+## Troubleshooting
 
-### Task 1: Basic Distance Measurement
-**Objective:** Measure and display the distance on the Serial Monitor.
+- **Sensor Not Detected**: Check the wiring, ensure the correct voltage is supplied.
+- **Incorrect Readings**: Make sure the sensor is not obstructed and is placed perpendicular to the surface you are measuring.
+- **Timeouts**: Increase the timeout duration if you experience frequent timeouts.
 
-**Instructions:**
-1. Set up the VL53L0X sensor with your Arduino.
-2. Upload the provided code to your Arduino.
-3. Open the Serial Monitor to view the distance readings.
+## Additional Resources
 
-**Hints:**
-<details>
-  <summary>Hint 1</summary>
-  Ensure that the sensor is connected correctly to the I2C pins (SDA and SCL).
-</details>
-<details>
-  <summary>Hint 2</summary>
-  If you receive a "Timeout" message, check the wiring and ensure the sensor is not obstructed.
-</details>
+- [VL53L0X Datasheet](https://www.st.com/resource/en/datasheet/vl53l0x.pdf)
+- [Arduino VL53L0X Library Documentation](https://www.pololu.com/docs/0J77)
 
-### Task 2: Distance-Based LED Indicator
-**Objective:** Use an LED to indicate if an object is within a certain distance.
-
-**Instructions:**
-1. Connect an LED to pin 13 of the Arduino.
-2. Modify the code to turn on the LED if the distance is less than 100mm.
-3. Upload the modified code and test with different distances.
-
-**Hints:**
-<details>
-  <summary>Hint 1</summary>
-  Use a conditional statement to check the distance.
-</details>
-<details>
-  <summary>Hint 2</summary>
-  Use `digitalWrite(13, HIGH)` to turn on the LED and `digitalWrite(13, LOW)` to turn it off.
-</details>
-
-### Task 3: Distance Threshold Alarm
-**Objective:** Create an alarm system that activates a buzzer if the distance falls below a threshold.
-
-**Instructions:**
-1. Connect a buzzer to pin 8 of the Arduino.
-2. Modify the code to activate the buzzer if the distance is less than 50mm.
-3. Upload the code and test the system.
-
-**Hints:**
-<details>
-  <summary>Hint 1</summary>
-  Use a similar conditional statement as in Task 2 to check the distance.
-</details>
-<details>
-  <summary>Hint 2</summary>
-  Use `digitalWrite(8, HIGH)` to turn on the buzzer and `digitalWrite(8, LOW)` to turn it off.
-</details>
-
-## Conclusion
-The VL53L0X distance sensor is a versatile and accurate ToF sensor, useful in various applications such as robotics and automation. This tutorial provided basic examples and tasks to help you get started with this sensor.
+This simple tutorial should get you started with using the VL53L0X sensor. Experiment with different setups and distances to fully explore its capabilities. Happy measuring!

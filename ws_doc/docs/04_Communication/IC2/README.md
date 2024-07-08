@@ -29,142 +29,190 @@ Communication is done in frames:
 - **Data Frame**: The data being sent or received.
 - **Stop Condition**: The master sends a signal to stop communication.
 
-### How to Use I2C with Arduino
+# OLED Display with I2C, MPU6050, and VL53L0X Integration Tutorial
 
-**1. Hardware Setup:**
-- Connect the SDA and SCL pins of your I2C device to the corresponding pins on the Arduino.
-  - For Arduino Uno: SDA (A4), SCL (A5)
-  - For Arduino Nano: SDA (A4), SCL (A5)
+This tutorial will guide you through the integration of a 1.3-inch OLED display with I2C, MPU6050 sensor, and VL53L0X ToF sensor using an Arduino Nano. We will display data from both sensors on the OLED.
 
-**2. Software Setup:**
-- Use the `Wire` library to handle I2C communication.
+## Requirements
 
-To demonstrate how both an MPU6050 accelerometer/gyroscope sensor and a 1.3-inch OLED display can communicate over the same I2C bus with an Arduino Nano, we'll need to use the Wire library for I2C communication, along with specific libraries for the MPU6050 and the OLED display.
+- 1.3-inch OLED Display with I2C
+- MPU6050 Sensor
+- VL53L0X ToF Sensor
+- Arduino Nano
+- Breadboard and jumper wires
+- Arduino IDE installed on your computer
+- Necessary libraries: `SSD1306AsciiWire`, `Wire`, `Adafruit_VL53L0X`, `MPU6050`
 
-### Prerequisites:
-1. **Hardware**:
-   - Arduino Nano
-   - MPU6050 sensor
-   - 1.3-inch OLED display (assuming it's an SSD1306 or SH1106 based display)
-   - Jumper wires
-   - Pull-up resistors (typically 4.7kΩ) if not already on the breakout boards
+## Setup
 
-2. **Connections**:
-   - **MPU6050**:
-     - VCC to 5V (or 3.3V if required)
-     - GND to GND
-     - SDA to A4
-     - SCL to A5
-   - **OLED Display**:
-     - VCC to 5V (or 3.3V if required)
-     - GND to GND
-     - SDA to A4
-     - SCL to A5
+### Wiring the Sensors and Display to Arduino Nano
 
-Both devices will share the SDA and SCL lines.
+#### OLED Display
 
-### Libraries to Install:
-- **MPU6050 Library**: `MPU6050 by Electronic Cats`
-- **Adafruit SSD1306 Library**: `Adafruit SSD1306`
-- **Adafruit GFX Library**: `Adafruit GFX Library`
+- **VCC** (Power) -> Connect to Arduino Nano 5V
+- **GND** (Ground) -> Connect to Arduino Nano GND
+- **SCL** (Clock) -> Connect to Arduino Nano A5 (SCL)
+- **SDA** (Data) -> Connect to Arduino Nano A4 (SDA)
 
-### Example Code:
+#### MPU6050
+
+- **VCC** (Power) -> Connect to Arduino Nano 3.3V or 5V (Check sensor specifications)
+- **GND** (Ground) -> Connect to Arduino Nano GND
+- **SCL** (Clock) -> Connect to Arduino Nano A5 (SCL)
+- **SDA** (Data) -> Connect to Arduino Nano A4 (SDA)
+
+#### VL53L0X
+
+- **VCC** (Power) -> Connect to Arduino Nano 3.3V or 5V (Check sensor specifications)
+- **GND** (Ground) -> Connect to Arduino Nano GND
+- **SCL** (Clock) -> Connect to Arduino Nano A5 (SCL)
+- **SDA** (Data) -> Connect to Arduino Nano A4 (SDA)
+
+### Installing Required Libraries
+
+1. Open the Arduino IDE.
+2. Go to **Sketch** > **Include Library** > **Manage Libraries**.
+3. Install the following libraries:
+   - `SSD1306AsciiWire`
+   - `Adafruit_VL53L0X`
+   - `MPU6050`
+
+## Basic Code Example
 
 ```cpp
 #include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include <SSD1306AsciiWire.h>
 #include <MPU6050.h>
+#include "Adafruit_VL53L0X.h"
 
-// Define the OLED display dimensions
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
+// Create OLED display object
+SSD1306AsciiWire oled;
 
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
-
-// Create an MPU6050 object
+// Create MPU6050 object
 MPU6050 mpu;
 
+// Create VL53L0X object
+Adafruit_VL53L0X tof = Adafruit_VL53L0X();
+
+// Variables to store sensor data
+float ax, ay, az;
+VL53L0X_RangingMeasurementData_t measure;
+
 void setup() {
-  // Initialize serial communication
-  Serial.begin(9600);
-
-  // Initialize I2C communication
   Wire.begin();
+  Wire.setClock(400000L);
+  
+  Serial.begin(115200);
 
-  // Initialize the OLED display
-  if (!display.begin(SSD1306_I2C_ADDRESS, SCREEN_WIDTH, SCREEN_HEIGHT)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    for (;;);
-  }
-  display.display();
-  delay(2000); // Pause for 2 seconds
+  // Initialize OLED display
+  oled.begin(&Adafruit128x64, 0x3C);
+  oled.setFont(Callibri15);
+  oled.clear();
 
-  // Clear the buffer
-  display.clearDisplay();
-
-  // Initialize the MPU6050 sensor
-  mpu.initialize();
-  if (!mpu.testConnection()) {
-    Serial.println(F("MPU6050 connection failed"));
+  // Initialize MPU6050
+  if (!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G)) {
+    Serial.println("Could not find a valid MPU6050 sensor, check wiring!");
     while (1);
   }
+
+  // Initialize VL53L0X
+  if (!tof.begin()) {
+    Serial.println("Failed to boot VL53L0X");
+    while (1);
+  }
+
+  // Display setup labels
+  oled.println("MPU6050 x:");
+  oled.println("MPU6050 y:");
+  oled.println("Distance:");
 }
 
 void loop() {
-  // Read accelerometer and gyroscope values
-  int16_t ax, ay, az, gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Read MPU6050 data
+  Vector rawAccel = mpu.readRawAccel();
+  ax = rawAccel.XAxis;
+  ay = rawAccel.YAxis;
 
-  // Print values to serial monitor
-  Serial.print("aX = "); Serial.print(ax);
-  Serial.print(" | aY = "); Serial.print(ay);
-  Serial.print(" | aZ = "); Serial.println(az);
-  Serial.print("gX = "); Serial.print(gx);
-  Serial.print(" | gY = "); Serial.print(gy);
-  Serial.print(" | gZ = "); Serial.println(gz);
+  // Read VL53L0X data
+  tof.rangingTest(&measure, false);
 
-  // Display values on the OLED display
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println("MPU6050 Values:");
-  display.print("aX = "); display.println(ax);
-  display.print("aY = "); display.println(ay);
-  display.print("aZ = "); display.println(az);
-  display.print("gX = "); display.println(gx);
-  display.print("gY = "); display.println(gy);
-  display.print("gZ = "); display.println(gz);
-  display.display();
+  // Clear display
+  oled.clear();
+  
+  // Display MPU6050 data
+  oled.setCursor(0, 0);
+  oled.print("MPU6050 x: "); oled.println(ax);
+  oled.print("MPU6050 y: "); oled.println(ay);
 
-  // Delay before next reading
-  delay(1000);
+  // Display VL53L0X data
+  oled.print("Distance: ");
+  if (measure.RangeStatus != 4) {
+    oled.print(measure.RangeMilliMeter);
+    oled.println(" mm");
+  } else {
+    oled.println("Out of range");
+  }
+
+  delay(500);
 }
 ```
 
-### Explanation:
-1. **Setup**: Initialize the serial communication, I2C bus, OLED display, and MPU6050 sensor.
-2. **Reading Values**: Read the accelerometer and gyroscope values from the MPU6050.
-3. **Display Values**: Print the values to the serial monitor and display them on the OLED screen.
-4. **Loop**: Continuously read and display the sensor values every second.
+### Code Explanation
 
-### How to Run:
-1. Connect your Arduino Nano to your computer.
-2. Open the Arduino IDE.
-3. Copy and paste the above code into a new sketch.
-4. Select the correct board and port in the Arduino IDE.
-5. Upload the code to the Arduino Nano.
-6. Open the Serial Monitor (Tools -> Serial Monitor) to see the sensor values and check the OLED display for the same information.
+- **Libraries**: Includes the necessary libraries for OLED display, MPU6050, and VL53L0X sensors.
+- **Initialization**: Initializes the sensors and the OLED display in the `setup` function.
+- **Sensor Reading**: Reads data from MPU6050 and VL53L0X sensors in the `loop` function.
+- **Display Data**: Clears the OLED display and then updates it with the latest sensor data.
 
-This code will help you test and visualize how both the MPU6050 sensor and the OLED display can communicate over the same I2C bus. Make sure to install the required libraries through the Arduino Library Manager before uploading the code.
+## Running the Code
 
+1. Connect your Arduino Nano to your computer via USB.
+2. Open the Arduino IDE and paste the code above.
+3. Select the correct board (Arduino Nano) and port under **Tools**.
+4. Upload the code to your Arduino Nano.
+5. The OLED display should show the data from the MPU6050 and VL53L0X sensors.
 
-### Conclusion
-I2C is a simple and efficient way to communicate with multiple devices using just two wires. Understanding the basics of I2C communication can help you integrate a variety of sensors and peripherals into your projects, making your designs more powerful and flexible.
+## Advanced Tasks
 
-### Useful Tips
-- Always check the datasheet of your I2C device for the correct address and data format.
-- Use pull-up resistors (typically 4.7kΩ) on the SDA and SCL lines to ensure proper communication.
-- Start with simple examples and gradually integrate more complex devices as you get comfortable with I2C.
+### Task 1: Change the Display Update Speed
+
+**Objective**: Adjust the `delay` value in the `loop` function to change how often the display updates.
+
+**Instructions**:
+- Change the `delay(500);` line to a different value (e.g., `delay(100);` for faster updates or `delay(1000);` for slower updates).
+
+### Task 2: Add More Sensor Data to Display
+
+**Objective**: Display the Z-axis acceleration from the MPU6050.
+
+**Instructions**:
+1. Modify the setup and loop functions to include the Z-axis data.
+2. Update the OLED display to show the new data.
+
+### Task 3: Implement a Trigger Based on Sensor Data
+
+**Objective**: Implement a trigger that changes the display color or shows a message when certain conditions are met (e.g., distance is within a certain range).
+
+**Instructions**:
+1. Add a condition in the `loop` function to check if the distance is within a specified range.
+2. Display a message or change the display color when the condition is met.
+
+## Tips
+
+- Ensure your wiring is secure to avoid intermittent connections.
+- Use a stable power supply to avoid fluctuations in sensor readings.
+- Calibrate the sensors if you notice significant drift in the readings.
+
+## Troubleshooting
+
+- **Sensor Not Detected**: Check the wiring, ensure the correct voltage is supplied.
+- **Incorrect Readings**: Make sure the sensors are not subjected to excessive vibrations or movements during initialization.
+- **No Output on OLED**: Verify the I2C address of the OLED display and ensure it matches the address used in the code.
+
+## Additional Resources
+
+- [MPU6050 Datasheet](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf)
+- [VL53L0X Datasheet](https://www.st.com/resource/en/datasheet/vl53l0x.pdf)
+- [SSD1306Ascii Library Documentation](https://github.com/greiman/SSD1306Ascii)
+
+This tutorial and the tasks provided should help you integrate and use the OLED display, MPU6050, and VL53L0X sensors with your Arduino Nano. Experiment with different setups and configurations to fully explore the capabilities of your project. Happy experimenting!
