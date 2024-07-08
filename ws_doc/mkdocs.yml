@@ -1,53 +1,74 @@
-site_name: Robo Workshop
-site_url: https://github.com/bwesse/robo_workshop.github.io
-site_author: "Ben Wesse"
-site_description: "Documentation for the Robo Workshop project."
-theme:
-  name: material
-  palette:
-    primary: 'indigo'
-    accent: 'indigo'
-  font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
-  logo: 'images/logo.png'
-  favicon: 'images/favicon.ico'
+site_name: Robotics Workshop
 
 nav:
-  - Home: index.md
-  - Lessons:
-      - Getting Started: 00_Getting_started.md
-      - Sensors: 01_Sensors.md
-      - Actuators: 02_Actuators.md
-      - Power: 03_Power.md
-      - Communication: 04_Communication.md
-      - Assembly: 05_Assembly.md
-      - Drive: 06_Drive.md
-      - Robo Drone: 07_Robo_Drone.md
-      - Outlook: 08_Outlook.md
-  - About: about.md
-  - All Pages: all_pages.md
-  - GitHub: https://github.com/bwesse/robo_workshop.github.io
+  - Home: index.html
+  - Getting Started:
+      - Overview: 00_Getting_started/README.md
+      - Arduino: 00_Getting_started/Arduino/README.md
+      - LEDs: 00_Getting_started/LEDs/README.md
+  - Sensors:
+      - Overview: 01_Sensors/README.md
+      - Distance:
+          - Ultrasonic: 01_Sensors/Distance/ultraschall/README.md
+          - VL53L0X ToF: 01_Sensors/Distance/VL53L0X_ToF/README.md
+      - IMU: 
+        - MPU 6050: 01_Sensors/MPU_6050/README.md
+  - Actuators:
+      - Overview: 02_Actuators/README.md
+      - Motor Driver: 02_Actuators/motor_driver/README.md
+  - Power: 03_Power/README.md
+  - Communication:
+      - Overview: 04_Communication/README.md
+      - Protocols:
+          - I2C: 04_Communication/IC2/README.md
+      - nRF:
+          - Overview: 04_Communication/nRF/README.md
+          - Code 1 - Sending Text: 04_Communication/nRF/Code_1_Sending_Text/README.md
+          - nRF Receiver: 04_Communication/nRF/nrf_receiver/README.md
+          - nRF Transmitter: 04_Communication/nRF/nrf_transmitter/README.md
+      - Remote: 04_Communication/remote/README.md
+  - Assembly: 
+      - Instrctions: 05_Assembly/README.md
+  - Drive:
+      - Overview: 06_Drive/README.md
+      #- Custom Receiver: 06_Drive/custom_receiver/README.md
+      - Receiver: 06_Drive/custom_receiver_car/README.md
+      - Transmitter: 06_Drive/custom_transmitter/README.md
+      #- Receiver: 06_Drive/receiver/README.md
+      #- Transmitter: 06_Drive/transmitter/README.md
+  - Transition to Drone: 
+    - Overview: 07_Robo_Drone/README.md
+  - Outlook: 
+    - Overview: 08_Outlook/README.md
+ # - 3D Modelling: 09_3d_Modelling/README.md
+ # - Resources: 99_Resources/README.md
+
+theme:
+    name: readthedocs
+    palette:
+        primary: 'indigo'
+        accent: 'indigo'
+    font:
+        text: 'Roboto'
+        code: 'Roboto Mono'
+    features:
+        - navigation.tabs
+        - navigation.top
+        - search.suggest
+        - content.code.copy
+        - content.code.annotate
 
 markdown_extensions:
   - admonition
-  - codehilite
-  - footnotes
-  - meta
-  - toc:
-      permalink: true
-
-extra_css:
-  - css/custom.css
-extra_javascript:
-  - js/custom.js
-
-# Configure plugins
-plugins:
-  - search
- # - mkdocs-material-extensions
-
-# Configure repository
-repo_name: "Your Name/robo_workshop.github.io"
-repo_url: https://github.com/username/repository
-edit_uri: edit/main/docs/
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
