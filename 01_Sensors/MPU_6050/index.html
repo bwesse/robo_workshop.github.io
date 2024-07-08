@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>MPU 6050 - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MPU 6050";
+        var mkdocs_page_input_path = "01_Sensors\\MPU_6050\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >IMU</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MPU 6050</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connecting-the-mpu6050">Connecting the MPU6050</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arduino-code">Arduino Code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-code">Step-by-Step Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#navigation">Navigation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../03_Power/README.md">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/nRF/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_receiver/README.md">nRF Receiver</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_transmitter/README.md">nRF Transmitter</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../05_Assembly/README.md">Instrctions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/README.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_receiver_car/README.md">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_transmitter/README.md">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sensors</li>
+          <li class="breadcrumb-item">IMU</li>
+      <li class="breadcrumb-item active">MPU 6050</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mpu6050-tutorial">MPU6050 Tutorial</h1>
+<p><img alt="MPU6050" src="path/to/your/mpu6050_image.jpg" /></p>
+<p>Welcome to the MPU6050 tutorial! In this guide, you'll learn about the MPU6050 sensor, how it works, and how to use it with an Arduino. Let's get started!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#theory">Theory</a></li>
+<li><a href="#connecting-the-mpu6050">Connecting the MPU6050</a></li>
+<li><a href="#arduino-code">Arduino Code</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#tasks">Tasks</a></li>
+</ol>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>The MPU6050 is a sensor that combines a 3-axis gyroscope and a 3-axis accelerometer. It is commonly used in robotics and motion tracking applications.</p>
+<h2 id="theory">Theory</h2>
+<p>The MPU6050 measures acceleration and rotation along the X, Y, and Z axes. Here's a quick overview:</p>
+<ul>
+<li><strong>Accelerometer:</strong> Measures the rate of change of velocity (acceleration).</li>
+<li><strong>Gyroscope:</strong> Measures the rate of rotation around an axis.</li>
+</ul>
+<p>By combining data from both sensors, you can get a good understanding of the orientation and movement of the sensor.</p>
+<p><img alt="MPU6050 Diagram" src="images/mpu6050_connections.png" /></p>
+<h2 id="connecting-the-mpu6050">Connecting the MPU6050</h2>
+<p>Here’s how to connect the MPU6050 to an Arduino:</p>
+<ol>
+<li><strong>VCC</strong>: Connect to 3.3V or 5V on the Arduino.</li>
+<li><strong>GND</strong>: Connect to Ground (GND) on the Arduino.</li>
+<li><strong>SCL</strong>: Connect to A5 on the Arduino.</li>
+<li><strong>SDA</strong>: Connect to A4 on the Arduino.</li>
+</ol>
+<p><img alt="MPU6050 Connections" src="path/to/your/mpu6050_connections.jpg" /></p>
+<h2 id="arduino-code">Arduino Code</h2>
+<p>Here is a simple example of how to read data from the MPU6050 using Arduino. </p>
+<h3 id="step-by-step-code">Step-by-Step Code</h3>
+<ol>
+<li><strong>Include the Library</strong>: First, include the Wire library and the MPU6050 library.</li>
+<li><strong>Initialize the Sensor</strong>: In the setup, initialize communication and the sensor.</li>
+<li><strong>Read and Print Data</strong>: In the loop, read the sensor data and print it to the Serial Monitor.</li>
+</ol>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mpu</span><span class="p">.</span><span class="n">testConnection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 connection successful&quot;</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 connection failed&quot;</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="n">az</span><span class="p">,</span><span class="w"> </span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="n">gz</span><span class="p">;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getMotion6</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">az</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gz</span><span class="p">);</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;a/g:</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ay</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">az</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gx</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gy</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gz</span><span class="p">);</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Here are some common issues and solutions:</p>
+<ul>
+<li><strong>No Data on Serial Monitor</strong>: Check the connections and ensure the MPU6050 is properly powered.</li>
+<li><strong>MPU6050 Connection Failed</strong>: Make sure the SCL and SDA lines are correctly connected. Check for loose wires.</li>
+<li><strong>Random Values</strong>: Ensure your sensor is still and on a flat surface during testing.</li>
+</ul>
+<h2 id="tasks">Tasks</h2>
+<p>Here are some tasks to help you practice using the MPU6050:</p>
+<details>
+  <summary>Task 1: Basic Data Reading</summary>
+
+  - Read acceleration and gyroscope data from the MPU6050.
+  - Print the data to the Serial Monitor.
+  - **Hint**: Use the provided code as a reference.
+</details>
+
+<details>
+  <summary>Task 2: Calculate Pitch and Roll</summary>
+
+  - Use the accelerometer data to calculate the pitch and roll of the sensor.
+  - Print the calculated values to the Serial Monitor.
+  - **Hint**: You can use the `atan2` function to calculate angles.
+</details>
+
+<details>
+  <summary>Task 3: Simple Motion Detection</summary>
+
+  - Detect when the sensor is moved.
+  - Turn on an LED when motion is detected.
+  - **Hint**: Compare the current and previous acceleration values to detect motion.
+</details>
+
+<hr />
+<h3 id="navigation">Navigation</h3>
+<ul>
+<li><a href="../index.html">Home</a></li>
+</ul>
+<hr />
+<p><img alt="Footer Image" src="path/to/your/footer_image.jpg" />
+```</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Distance/VL53L0X_ToF/" class="btn btn-neutral float-left" title="VL53L0X ToF"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../02_Actuators/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Distance/VL53L0X_ToF/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../02_Actuators/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

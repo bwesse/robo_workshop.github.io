@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Arduino - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Arduino";
+        var mkdocs_page_input_path = "00_Getting_started\\Arduino\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Arduino</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-gather-necessary-components">1. Gather Necessary Components:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-install-arduino-ide">2. Install Arduino IDE:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-set-up-arduino-ide">3. Set Up Arduino IDE:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-write-your-first-sketch">4. Write Your First Sketch:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-understand-arduino-code-structure">5. Understand Arduino Code Structure:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-basic-arduino-code-example-blink">6. Basic Arduino Code Example (Blink):</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-key-concepts-in-arduino-programming">7. Key Concepts in Arduino Programming:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-using-libraries">8. Using Libraries:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-expand-your-knowledge">9. Expand Your Knowledge:</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../03_Power/README.md">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/nRF/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/Code_1_Sending_Text/README.md">Code 1 - Sending Text</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_receiver/README.md">nRF Receiver</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/nRF/nrf_transmitter/README.md">nRF Transmitter</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../05_Assembly/README.md">Instrctions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/README.md">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_receiver_car/README.md">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../06_Drive/custom_transmitter/README.md">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Arduino</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="quick-start-guide-for-arduino-robotic-tutoring-course">Quick Start Guide for Arduino - Robotic Tutoring Course</h3>
+<h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong></h4>
+<ul>
+<li><strong>Arduino Board:</strong> Choose an appropriate board (e.g., Arduino Uno, Nano).</li>
+<li><strong>USB Cable:</strong> For connecting the Arduino to your computer.</li>
+<li><strong>Computer:</strong> To install software and write code.</li>
+<li><strong>Breadboard and Jumper Wires:</strong> For prototyping circuits.</li>
+<li><strong>Basic Components:</strong> LEDs, resistors, sensors, etc., for initial projects.</li>
+</ul>
+<h4 id="2-install-arduino-ide">2. <strong>Install Arduino IDE:</strong></h4>
+<ul>
+<li><strong>Download:</strong> Go to the <a href="https://www.arduino.cc/en/software">Arduino Software page</a>.</li>
+<li><strong>Install:</strong> Follow installation instructions for your operating system (Windows, Mac, Linux).</li>
+</ul>
+<h4 id="3-set-up-arduino-ide">3. <strong>Set Up Arduino IDE:</strong></h4>
+<ul>
+<li><strong>Launch Arduino IDE:</strong> Open the installed Arduino IDE.</li>
+<li><strong>Select Board:</strong> Navigate to <code>Tools</code> &gt; <code>Board</code> &gt; Select your Arduino model.</li>
+<li><strong>Select Port:</strong> Navigate to <code>Tools</code> &gt; <code>Port</code> &gt; Select the appropriate COM port (often named "Arduino").</li>
+</ul>
+<h4 id="4-write-your-first-sketch">4. <strong>Write Your First Sketch:</strong></h4>
+<ul>
+<li><strong>Open Example:</strong> Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>01.Basics</code> &gt; <code>Blink</code>.</li>
+<li><strong>Upload Sketch:</strong> Click the <code>Upload</code> button (right arrow icon) to upload the sketch to the board.</li>
+<li><strong>Observe:</strong> The LED on the Arduino should start blinking.</li>
+</ul>
+<h4 id="5-understand-arduino-code-structure">5. <strong>Understand Arduino Code Structure:</strong></h4>
+<ul>
+<li><strong>File Extension:</strong> Arduino code files have a <code>.ino</code> extension.</li>
+<li><strong>Setup and Loop Functions:</strong><ul>
+<li><strong><code>setup()</code>:</strong> Runs once when the Arduino is powered on or reset. Used for initializations.</li>
+<li><strong><code>loop()</code>:</strong> Contains code that runs repeatedly, allowing the Arduino to perform tasks continuously.</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-basic-arduino-code-example-blink">6. <strong>Basic Arduino Code Example (Blink):</strong></h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// The setup function runs once when you press reset or power the board</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// The loop function runs over and over again forever</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w">   </span><span class="c1">// turn the LED on (HIGH is the voltage level)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w">    </span><span class="c1">// turn the LED off by making the voltage LOW</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="7-key-concepts-in-arduino-programming">7. <strong>Key Concepts in Arduino Programming:</strong></h4>
+<ul>
+<li><strong>Functions:</strong><ul>
+<li><strong><code>pinMode(pin, mode)</code>:</strong> Sets the mode of a specified pin to input or output.</li>
+<li><strong><code>digitalWrite(pin, value)</code>:</strong> Sets a digital pin to HIGH or LOW.</li>
+<li><strong><code>delay(ms)</code>:</strong> Pauses the program for the specified number of milliseconds.</li>
+</ul>
+</li>
+<li><strong>Variables:</strong><ul>
+<li>Use to store data values.</li>
+</ul>
+</li>
+<li><strong>Control Structures:</strong><ul>
+<li><strong><code>if</code> statements:</strong> Conditional statements to execute code based on conditions.</li>
+<li><strong><code>for</code> loops:</strong> To repeat a block of code a specified number of times.</li>
+<li><strong><code>while</code> loops:</strong> To repeat a block of code while a condition is true.</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-using-libraries">8. <strong>Using Libraries:</strong></h4>
+<ul>
+<li><strong>Include Libraries:</strong><ul>
+<li>Libraries extend the functionality of Arduino.</li>
+<li>To include a library, use the <code>#include</code> directive at the beginning of your sketch.</li>
+<li>Example: <code>#include &lt;Servo.h&gt;</code> for controlling servo motors.</li>
+</ul>
+</li>
+<li><strong>Installing Libraries:</strong><ul>
+<li>Navigate to <code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries</code>.</li>
+<li>Search for the required library and install it.</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-expand-your-knowledge">9. <strong>Expand Your Knowledge:</strong></h4>
+<ul>
+<li><strong>Explore Examples:</strong> The Arduino IDE comes with many built-in examples to help you learn.</li>
+<li><strong>Online Resources:</strong> Utilize tutorials, documentation, and community forums.</li>
+<li><strong>Experiment:</strong> Modify existing sketches and create your own projects to deepen understanding.</li>
+</ul>
+<p>By following these steps and understanding the basic concepts of Arduino programming, you'll be well-prepared to embark on more advanced robotic projects in your tutoring course.</p>
+<p><a href="../LEDs/">Controlling LEDs</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../LEDs/" class="btn btn-neutral float-right" title="LEDs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../LEDs/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
