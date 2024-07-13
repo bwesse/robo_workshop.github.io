@@ -1,5 +1,7 @@
 ## Actuators in Robotics
 
+![actuators](../99_Resources/images/actuators.webp)
+
 Actuators are critical components in robotics, responsible for converting electrical energy into mechanical motion. They enable robots to interact with their environment, move, and perform tasks. Understanding actuators is essential for designing and building efficient robotic systems. Here's an overview of key concepts and types of actuators used in robotics.
 
 ### Key Concepts

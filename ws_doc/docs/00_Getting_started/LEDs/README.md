@@ -1,5 +1,7 @@
 ### Controlling a WS2812B LED Strip with Arduino
 
+![WS2812B LED Strip](../../99_Resources/images/RGBstrip.jpg)
+
 #### 1. **Gather Necessary Components:**
    - **Arduino Board:** (e.g., Arduino Nano).
    - **Cable:** mini-usb to usb
@@ -54,6 +56,10 @@
    - Ideal for learning, prototyping, and debugging electronic circuits.
 
 ------------------------------------------
+
+
+![led pinout](../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp)	
+
 
 #### 2. **Circuit Connections:**
    - **Power Connections:**

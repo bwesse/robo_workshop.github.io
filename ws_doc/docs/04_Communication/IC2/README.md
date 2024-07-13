@@ -1,5 +1,4 @@
-### Quick Tutorial on I2C Bus for 18-Year-Olds
-
+### Quick Tutorial on I2C Bus
 **What is I2C?**
 I2C stands for Inter-Integrated Circuit. It’s a communication protocol used to connect low-speed devices like sensors, microcontrollers, and other peripherals to a microcontroller (like Arduino) or single-board computer (like Raspberry Pi).
 

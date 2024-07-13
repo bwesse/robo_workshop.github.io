@@ -1,6 +1,9 @@
 
 # Arduino Wireless Communication with nRF24L01 Tutorial
 
+![nRF24L01](../../99_Resources/images/nRF24L01_basic_scheme.png)
+
+
 ## Introduction
 This tutorial demonstrates how to establish wireless communication between two Arduino boards using nRF24L01 transceiver modules. The nRF24L01 operates on the 2.4 GHz frequency and is capable of transmitting data up to 100 meters.
 
@@ -42,6 +45,8 @@ This tutorial will guide you through setting up two Arduino Nanos to communicate
 ### Wiring the nRF24L01 Module to Arduino Nano
 
 #### nRF24L01 Module
+
+![nRF24L01](../../99_Resources/images/nRF24L01-Pinout.png)
 
 1. **VCC** (Power) -> Connect to Arduino Nano 3.3V (Note: Do not connect to 5V as it might damage the module)
 2. **GND** (Ground) -> Connect to Arduino Nano GND

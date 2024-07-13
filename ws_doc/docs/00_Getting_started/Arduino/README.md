@@ -1,6 +1,8 @@
 ### Quick Start Guide for Arduino - Robotic Tutoring Course
 
 
+![Arduino](../../99_Resources/images/arduino.jpg)
+
 #### 1. **Gather Necessary Components:**
    - **Arduino Board:** Choose an appropriate board (e.g., Arduino Uno, Nano).
    - **USB Cable:** For connecting the Arduino to your computer.

@@ -1,6 +1,8 @@
 ### Communicating Between Sender and Receiver in Robotics
 
-Hey there! So far, we've done some amazing work together. We've built sensors, hooked up actuators, and learned how to use prebuilt commands to make everything work. Now, let's take it to the next level by learning how to send instructions wirelessly—kind of like giving our robot its own remote control!
+![communication_titile](../99_Resources/images/communication.webp)
+
+So far, we've done some amazing work together. We've built sensors, hooked up actuators, and learned how to use prebuilt commands to make everything work. Now, let's take it to the next level by learning how to send instructions wirelessly—kind of like giving our robot its own remote control!
 
 ### Why Communication is Important
 

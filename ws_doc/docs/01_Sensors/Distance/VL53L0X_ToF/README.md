@@ -4,11 +4,12 @@
 
 
 The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.
+The sensor includes a voltage regulator and level shifter, making it compatible with both 3.3V and 5V systems. We will use the 3.3 Volt mode for this tutorial.
 
 ## Requirements
 
 - VL53L0X Sensor
-- Arduino (Uno, Mega, etc.)
+- Arduino Nano
 - Breadboard and jumper wires
 - Arduino IDE installed on your computer
 - VL53L0X Arduino library
@@ -18,9 +19,9 @@ The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring dista
 ### Wiring the Sensor to Arduino
 
 - **GND** (Ground) -> Connect to Arduino GND
-- **VCC** (Power) -> Connect to Arduino 3.3V or 5V (Check sensor specifications for exact voltage)
-- **SCL** (Clock) -> Connect to Arduino A5 (Uno) or the corresponding SCL pin on other models
-- **SDA** (Data) -> Connect to Arduino A4 (Uno) or the corresponding SDA pin on other models
+- **VCC** (Power) -> Connect to Arduino 3.3V 
+- **SCL** (Clock) -> Connect to Arduino A5 (SCL pin)
+- **SDA** (Data) -> Connect to Arduino A4 (SDA pin)
 
 
 ### Installing the VL53L0X Library

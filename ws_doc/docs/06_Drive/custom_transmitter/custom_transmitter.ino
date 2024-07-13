@@ -4,6 +4,7 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_MPU6050.h>
+#include <SSD1306AsciiWire.h>
 
 
 #define CE_PIN 7
@@ -22,6 +23,17 @@ RF24 radio(CE_PIN, CSN_PIN);
 Adafruit_MPU6050 mpu;
 
 bool radioNumber = 0;  // 0 uses address[0] to transmit, 1 uses address[1] to receive
+
+SSD1306AsciiWire oled;
+
+uint8_t col0 = 0;  // First value column
+uint8_t col1 = 0;  // Last value column.
+uint8_t rows;      // Rows per line.
+
+
+const char* labelMPU[] = { " x:", " y:", " z:", " Temp.:" };
+const char* unitsMPU[] = { "m/s2", "m/s2", "m/s2", " degC" };
+
 
 void setup() {
   Wire.begin();
@@ -67,6 +79,32 @@ void setup() {
       delay(10);
     }
   }
+
+
+
+  //start OLED
+  oled.begin(&Adafruit128x64, 0x3C);
+  oled.setFont(Callibri15);
+  oled.setLetterSpacing(3);
+  oled.clear();
+
+  // Setup form and find longest label.
+  for (uint8_t i = 0; i < 4; i++) {
+    oled.println(labelMPU[i]);
+    uint8_t w = oled.strWidth(labelMPU[i]);
+    col0 = col0 < w ? w : col0;
+  }
+  // Six pixels after label.
+  col0 += 6;
+  // Allow two or more pixels after value.
+  col1 = col0 + oled.strWidth("99.99") + 2;
+  // Line height in rows.
+  rows = oled.fontRows();
+  // Print units.
+  for (uint8_t i = 0; i < 4; i++) {
+    oled.setCursor(col1 + 1, i * rows);
+    oled.print(unitsMPU[i]);
+  }
 }
 
 void loop() {
@@ -89,6 +127,18 @@ void loop() {
   bool report = radio.write(&data, sizeof(data));  // transmit & save the report
   unsigned long end_timer = micros();              // end the timer
 
+  
+  clearValue(0);
+  oled.print(a.acceleration.x);
+  clearValue(rows);
+  oled.print(a.acceleration.y);
+  clearValue(2 * rows);
+  oled.print(a.acceleration.z);
+  clearValue(3 * rows);
+  oled.print(temp.temperature);
+  
+
+
   if (report) {
     /*Serial.print(F("Transmission successful! "));  // payload was delivered
     Serial.print(F("Time to transmit = "));
@@ -104,4 +154,9 @@ void loop() {
 
   // to make this example readable in the serial monitor
   delay(10);  // slow transmissions down by 1 second
+}
+
+// Function to clear a value on the OLED display
+void clearValue(uint8_t row) {
+  oled.clear(col0, col1, row, row + rows - 1);
 }

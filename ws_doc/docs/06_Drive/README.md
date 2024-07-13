@@ -1,0 +1,16 @@
+**Check Connections on the Drone**
+  - Ensure all wires are securely connected.
+  - Verify that the propellers are correctly attached.
+  - Confirm the battery connector is in place.
+- **Connect the 9V Battery**
+  - Attach the battery to the designated connector.
+  - Secure the battery in its compartment.
+  - Double-check the battery polarity.
+- **Connect Transmitter**
+  - Turn on the transmitter.
+  - Pair the transmitter with the drone.
+  - Test the controls to ensure proper connection.
+- **Importantly, Have Fun!**
+  - Enjoy flying the drone.
+  - Explore different maneuvers.
+  - Stay safe and follow local regulations.

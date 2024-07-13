@@ -1,5 +1,10 @@
 Transitioning from Robot to Drone
 
+
+![drone](../99_Resources/images/robo_drone.webp)
+
+
+
 ### Introduction
 
 Congratulations on your progress! The components we've used in our robot project are similar to those used in many other robotic projects, including drones. Understanding this will help you see the versatility of these components and the skills you’ve acquired.
@@ -30,7 +35,7 @@ A drone, specifically a quadcopter, operates using several key components:
 - **Motors**: Our robot uses geared motors for torque; drones use high-speed motors for lift.
 - **Battery**: Provides power to all components.
     
-    ![full_flight_controller.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b333f334-e0e6-48d1-aedc-47ceea98427f/43de876a-68bf-49f9-82c7-b0e77ed22783/full_flight_controller.png)
+
     
 
 ### Practical Example: Flying a Drone with Arduino and MPU6050

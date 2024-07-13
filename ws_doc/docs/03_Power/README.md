@@ -1,5 +1,10 @@
 
 ### Power in Robotics
+
+
+![power](../99_Resources/images/power.webp)
+
+
 - **Power**: The rate at which energy is used or produced. Measured in watts (W).
 - **Energy**: The capacity to do work. Measured in joules (J) or watt-hours (Wh).
 

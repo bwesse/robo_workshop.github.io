@@ -41,4 +41,4 @@ These sensors are the key to making your robots smart and aware of their environ
 
 
 ## Practical tasks
-[VL53L0X Time of Flight Sensor](VL53L0X_ToF/)
+[VL53L0X Time of Flight Sensor](VL53L0X_ToF/README.md)

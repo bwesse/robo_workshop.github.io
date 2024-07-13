@@ -5,6 +5,7 @@ nav:
   - Getting Started:
       - Overview: 00_Getting_started/README.md
       - Arduino: 00_Getting_started/Arduino/README.md
+      - Serial Print: 00_Getting_started/Arduino/Serial_print.md
       - Components: 00_Getting_started/Components.md
       - LEDs: 00_Getting_started/LEDs/README.md
   - Sensors:

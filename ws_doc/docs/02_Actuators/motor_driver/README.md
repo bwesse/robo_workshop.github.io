@@ -1,5 +1,7 @@
 # L298 Motor Driver and N20 Gear Motor Tutorial with Arduino Nano and 9V Battery
 
+![L298_motor_driver](../../99_Resources/images/l298n_pinout.png)
+
 The L298 motor driver is a versatile component that can drive two DC motors or one stepper motor. This tutorial will guide you through the basics of setting up and using the L298 motor driver with an N20 gear motor and an Arduino Nano powered by a 9V battery.
 
 ## Requirements
