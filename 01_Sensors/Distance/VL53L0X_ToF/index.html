@@ -70,10 +70,10 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" >Distance</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="" href="../ultraschall/README.md">Ultrasonic</a>
-                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">VL53L0X ToF</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#theory-of-operation">Theory of Operation</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
@@ -126,7 +126,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="../../../04_Communication/I2C/README.md">I2C</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/I2C/">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -165,6 +165,11 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../../08_Outlook/">Overview</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../09_Help/">Troubleshooting</a>
+                  </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -192,8 +197,10 @@
               
                 <h1 id="vl53l0x-distance-sensor-tutorial">VL53L0X Distance Sensor Tutorial<a class="headerlink" href="#vl53l0x-distance-sensor-tutorial" title="Permanent link">&para;</a></h1>
 <p><img alt="ToF" src="../../../99_Resources/images/vl53l0x.jpeg" /></p>
-<p>The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.
-The sensor includes a voltage regulator and level shifter, making it compatible with both 3.3V and 5V systems. We will use the 3.3 Volt mode for this tutorial.</p>
+<p>The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.</p>
+<h2 id="theory-of-operation">Theory of Operation<a class="headerlink" href="#theory-of-operation" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="image.png" /></p>
+<p>The sensor includes a voltage regulator and level shifter, making it compatible with both 3.3V and 5V systems. We will use the 3.3 Volt mode for this tutorial.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>VL53L0X Sensor</li>

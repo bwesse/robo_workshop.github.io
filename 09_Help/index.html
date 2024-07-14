@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Troubleshooting - Robotics Workshop</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "09_Help\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../03_Power/">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../04_Communication/I2C/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_Drive/receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_Drive/transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#general-note">General Note</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#power-issues">Power Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#symptoms">Symptoms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-causes-and-solutions">Possible Causes and Solutions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#connection-issues">Connection Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#symptoms_1">Symptoms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-causes-and-solutions_1">Possible Causes and Solutions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upload-issues">Upload Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#symptoms_2">Symptoms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-causes-and-solutions_2">Possible Causes and Solutions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-error-examples-and-fixes">Code Error Examples and Fixes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-port-not-accessible">1. Port Not Accessible</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#error-message">Error Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#possible-cause">Possible Cause</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solution">Solution</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-board-not-recognized">2. Board Not Recognized</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#error-message_1">Error Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#possible-cause_1">Possible Cause</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solution_1">Solution</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-uploading-stuck-or-timeout">3. Uploading Stuck or Timeout</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#error-message_2">Error Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#possible-cause_2">Possible Cause</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solution_2">Solution</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-code-compilation-errors">4. Code Compilation Errors</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#error-message_3">Error Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#possible-cause_3">Possible Cause</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solution_3">Solution</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-library-not-found">5. Library Not Found</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#error-message_4">Error Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#possible-cause_4">Possible Cause</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solution_4">Solution</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-issues">Code Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#symptoms_3">Symptoms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-causes-and-solutions_3">Possible Causes and Solutions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#peripheral-issues">Peripheral Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#symptoms_4">Symptoms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-causes-and-solutions_4">Possible Causes and Solutions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#general-tips">General Tips</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Help</li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="arduino-nano-troubleshooting-guide">Arduino Nano Troubleshooting Guide<a class="headerlink" href="#arduino-nano-troubleshooting-guide" title="Permanent link">&para;</a></h1>
+<p>Arduino Nano is a popular microcontroller board used for a variety of projects. However, like any electronic component, it can sometimes present issues. This guide will help you troubleshoot common problems with your Arduino Nano.</p>
+<h2 id="general-note">General Note<a class="headerlink" href="#general-note" title="Permanent link">&para;</a></h2>
+<p>Restarting your Nano and/or computer and reconnecting the Arduino Nano is a good practice for resolving various connection issues. This simple step can often clear up unexplained problems by resetting the communication between your computer and the Arduino Nano.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#power-issues">Power Issues</a></li>
+<li><a href="#connection-issues">Connection Issues</a></li>
+<li><a href="#upload-issues">Upload Issues</a></li>
+<li><a href="#code-issues">Code Issues</a></li>
+<li><a href="#peripheral-issues">Peripheral Issues</a></li>
+<li><a href="#general-tips">General Tips</a></li>
+</ol>
+<hr />
+<h2 id="power-issues">Power Issues<a class="headerlink" href="#power-issues" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms">Symptoms<a class="headerlink" href="#symptoms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Arduino Nano does not power on.</li>
+<li>The power LED does not light up.</li>
+</ul>
+<h3 id="possible-causes-and-solutions">Possible Causes and Solutions<a class="headerlink" href="#possible-causes-and-solutions" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Faulty USB Cable</strong>: <ul>
+<li>Try using a different USB cable to power the Arduino Nano.</li>
+</ul>
+</li>
+<li><strong>Faulty USB Port</strong>:<ul>
+<li>Connect the Arduino Nano to a different USB port on your computer.</li>
+</ul>
+</li>
+<li><strong>Insufficient Power Supply</strong>:<ul>
+<li>Ensure your power supply (e.g., USB or external adapter) provides enough voltage and current.</li>
+</ul>
+</li>
+<li><strong>Board Damage</strong>:<ul>
+<li>Inspect the board for any visible damage. If the board is damaged, consider replacing it.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="connection-issues">Connection Issues<a class="headerlink" href="#connection-issues" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms_1">Symptoms<a class="headerlink" href="#symptoms_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Arduino Nano is not recognized by the computer.</li>
+<li>The port does not appear in the Arduino IDE.</li>
+</ul>
+<h3 id="possible-causes-and-solutions_1">Possible Causes and Solutions<a class="headerlink" href="#possible-causes-and-solutions_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Missing Drivers</strong>:<ul>
+<li>Install the necessary drivers for the Arduino Nano. You can find them on the <a href="https://www.arduino.cc/en/Guide/ArduinoNano">official Arduino website</a>.</li>
+</ul>
+</li>
+<li><strong>Faulty USB Cable</strong>:<ul>
+<li>Try a different USB cable that is known to work.</li>
+</ul>
+</li>
+<li><strong>Incorrect Port Selection</strong>:<ul>
+<li>In the Arduino IDE, go to <code>Tools</code> &gt; <code>Port</code> and select the correct port.</li>
+</ul>
+</li>
+<li><strong>Driver Conflicts</strong>:<ul>
+<li>Check for driver conflicts in Device Manager (Windows) or System Information (macOS). Reinstall drivers if necessary.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="upload-issues">Upload Issues<a class="headerlink" href="#upload-issues" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms_2">Symptoms<a class="headerlink" href="#symptoms_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Error messages when uploading code.</li>
+<li>Code does not upload to the Arduino Nano.</li>
+</ul>
+<h3 id="possible-causes-and-solutions_2">Possible Causes and Solutions<a class="headerlink" href="#possible-causes-and-solutions_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Incorrect Board Selection</strong>:<ul>
+<li>Ensure that the correct board is selected in the Arduino IDE: <code>Tools</code> &gt; <code>Board</code> &gt; <code>Arduino Nano</code>.</li>
+</ul>
+</li>
+<li><strong>Incorrect Processor Selection</strong>:<ul>
+<li>Choose the correct processor under <code>Tools</code> &gt; <code>Processor</code>. Select between ATmega328P (Old Bootloader) and ATmega328P.</li>
+</ul>
+</li>
+<li><strong>COM Port Issues</strong>:<ul>
+<li>Make sure the correct COM port is selected under <code>Tools</code> &gt; <code>Port</code>.</li>
+</ul>
+</li>
+<li><strong>Bootloader Issues</strong>:<ul>
+<li>The bootloader may be corrupted. Reburn the bootloader using an ISP programmer.</li>
+</ul>
+</li>
+<li><strong>Sketch Issues</strong>:<ul>
+<li>Ensure your code is error-free. Sometimes, issues in the code can prevent uploading.</li>
+</ul>
+</li>
+</ol>
+<h2 id="code-error-examples-and-fixes">Code Error Examples and Fixes<a class="headerlink" href="#code-error-examples-and-fixes" title="Permanent link">&para;</a></h2>
+<p>When working with the Arduino Nano, you may encounter specific error messages while connecting or uploading code. This section will provide examples of common error messages and their respective solutions.</p>
+<h3 id="1-port-not-accessible">1. Port Not Accessible<a class="headerlink" href="#1-port-not-accessible" title="Permanent link">&para;</a></h3>
+<h4 id="error-message">Error Message<a class="headerlink" href="#error-message" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>avrdude: ser_open(): can&#39;t open device &quot;/dev/ttyUSB0&quot;: Device or resource busy
+</code></pre></div>
+
+<h4 id="possible-cause">Possible Cause<a class="headerlink" href="#possible-cause" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Another application is using the serial port.</li>
+<li>The Serial Monitor is open in another instance of the Arduino IDE.</li>
+</ul>
+<h4 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Close All Monitors</strong>: Ensure the Serial Monitor and any other applications using the port are closed.</li>
+<li><strong>Reboot System</strong>: Sometimes, a system reboot can help release the port.</li>
+<li><strong>Check Device Manager (Windows)</strong>: Ensure the port is not being used by another device or application.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Close Serial Monitor before uploading the code</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="2-board-not-recognized">2. Board Not Recognized<a class="headerlink" href="#2-board-not-recognized" title="Permanent link">&para;</a></h3>
+<h4 id="error-message_1">Error Message<a class="headerlink" href="#error-message_1" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>avrdude: stk500_getsync() attempt 10 of 10: not in sync: resp=0x00
+</code></pre></div>
+
+<h4 id="possible-cause_1">Possible Cause<a class="headerlink" href="#possible-cause_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Incorrect board or processor selected in the Arduino IDE.</li>
+<li>Faulty USB connection.</li>
+</ul>
+<h4 id="solution_1">Solution<a class="headerlink" href="#solution_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Select Correct Board and Processor</strong>: Ensure the correct board (Arduino Nano) and processor (ATmega328P (Old Bootloader)) are selected in <code>Tools</code> &gt; <code>Board</code> and <code>Tools</code> &gt; <code>Processor</code>.</li>
+<li><strong>Reconnect USB Cable</strong>: Try disconnecting and reconnecting the USB cable or using a different cable.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Verify board and processor settings</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Board is recognized!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="3-uploading-stuck-or-timeout">3. Uploading Stuck or Timeout<a class="headerlink" href="#3-uploading-stuck-or-timeout" title="Permanent link">&para;</a></h3>
+<h4 id="error-message_2">Error Message<a class="headerlink" href="#error-message_2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
+</code></pre></div>
+
+<h4 id="possible-cause_2">Possible Cause<a class="headerlink" href="#possible-cause_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Bootloader issues.</li>
+<li>Faulty USB cable or port.</li>
+</ul>
+<h4 id="solution_2">Solution<a class="headerlink" href="#solution_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Reburn Bootloader</strong>: Use an ISP programmer to reburn the bootloader.</li>
+<li><strong>Try Different USB Cable/Port</strong>: Use a different USB cable or port to ensure a proper connection.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Reburn the bootloader if needed</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Uploading code...&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="4-code-compilation-errors">4. Code Compilation Errors<a class="headerlink" href="#4-code-compilation-errors" title="Permanent link">&para;</a></h3>
+<h4 id="error-message_3">Error Message<a class="headerlink" href="#error-message_3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>&#39;Serial&#39; was not declared in this scope
+</code></pre></div>
+
+<h4 id="possible-cause_3">Possible Cause<a class="headerlink" href="#possible-cause_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Missing or incorrect initialization of the Serial library.</li>
+</ul>
+<h4 id="solution_3">Solution<a class="headerlink" href="#solution_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Initialize Serial Communication</strong>: Ensure <code>Serial.begin()</code> is called in the <code>setup()</code> function.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Proper initialization of Serial communication</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w">  </span><span class="c1">// Initialize Serial communication at 9600 baud rate</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Serial communication initialized!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="5-library-not-found">5. Library Not Found<a class="headerlink" href="#5-library-not-found" title="Permanent link">&para;</a></h3>
+<h4 id="error-message_4">Error Message<a class="headerlink" href="#error-message_4" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>No such file or directory
+</code></pre></div>
+
+<h4 id="possible-cause_4">Possible Cause<a class="headerlink" href="#possible-cause_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Missing library or incorrect library installation.</li>
+</ul>
+<h4 id="solution_4">Solution<a class="headerlink" href="#solution_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Install Required Library</strong>: Install the missing library via the Arduino Library Manager (<code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries...</code>).</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Ensure the necessary library is installed</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SomeLibrary.h&gt;</span><span class="c1">  // Replace with the actual library name</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Library is included!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<p>By following these examples and solutions, you can address common code errors encountered while connecting and uploading code to your Arduino Nano.</p>
+<hr />
+<h2 id="code-issues">Code Issues<a class="headerlink" href="#code-issues" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms_3">Symptoms<a class="headerlink" href="#symptoms_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Code compiles but does not run as expected.</li>
+<li>Unexpected behavior or no response from the Arduino Nano.</li>
+</ul>
+<h3 id="possible-causes-and-solutions_3">Possible Causes and Solutions<a class="headerlink" href="#possible-causes-and-solutions_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Syntax Errors</strong>:<ul>
+<li>Double-check your code for syntax errors.</li>
+</ul>
+</li>
+<li><strong>Logical Errors</strong>:<ul>
+<li>Verify the logic in your code. Use serial debugging to track the flow of execution.</li>
+</ul>
+</li>
+<li><strong>Memory Issues</strong>:<ul>
+<li>Ensure your program does not exceed the available memory on the Arduino Nano.</li>
+</ul>
+</li>
+<li><strong>Incorrect Pin Usage</strong>:<ul>
+<li>Check that you are using the correct pins for your peripherals and sensors.</li>
+</ul>
+</li>
+<li><strong>Library Conflicts</strong>:<ul>
+<li>Ensure there are no conflicts between the libraries you are using. Update or reinstall libraries if necessary.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="peripheral-issues">Peripheral Issues<a class="headerlink" href="#peripheral-issues" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms_4">Symptoms<a class="headerlink" href="#symptoms_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Connected peripherals (sensors, LEDs, motors, etc.) do not work.</li>
+</ul>
+<h3 id="possible-causes-and-solutions_4">Possible Causes and Solutions<a class="headerlink" href="#possible-causes-and-solutions_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Incorrect Wiring</strong>:<ul>
+<li>Double-check your wiring. Ensure all connections are secure and correct.</li>
+</ul>
+</li>
+<li><strong>Faulty Peripherals</strong>:<ul>
+<li>Test peripherals independently to ensure they are working.</li>
+</ul>
+</li>
+<li><strong>Power Supply Issues</strong>:<ul>
+<li>Ensure peripherals are getting enough power. Some peripherals might require external power.</li>
+</ul>
+</li>
+<li><strong>Code Issues</strong>:<ul>
+<li>Verify that your code correctly initializes and interacts with the peripherals.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="general-tips">General Tips<a class="headerlink" href="#general-tips" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Keep Your IDE Updated</strong>:<ul>
+<li>Regularly update the Arduino IDE to the latest version for bug fixes and improvements.</li>
+</ul>
+</li>
+<li><strong>Check Documentation</strong>:<ul>
+<li>Refer to the official Arduino Nano documentation for detailed information.</li>
+</ul>
+</li>
+<li><strong>Use Serial Monitor</strong>:<ul>
+<li>Utilize the Serial Monitor for debugging purposes. It can help you understand what the Arduino is doing.</li>
+</ul>
+</li>
+<li><strong>Ask for Help</strong>:<ul>
+<li>If you are stuck, seek help from the Arduino community forums or other online resources.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>By following this guide, you should be able to troubleshoot and resolve most common issues with your Arduino Nano. Happy tinkering!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../08_Outlook/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../08_Outlook/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

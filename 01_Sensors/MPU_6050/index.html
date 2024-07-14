@@ -70,8 +70,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Distance</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="../Distance/ultraschall/README.md">Ultrasonic</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Distance/VL53L0X_ToF/">VL53L0X ToF</a>
                 </li>
     </ul>
@@ -80,7 +78,7 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">MPU 6050</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a>
+    <li class="toctree-l3"><a class="reference internal" href="#components">Components</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
         <ul>
@@ -88,9 +86,11 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#installing-the-mpu6050-library">Installing the MPU6050 Library</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#getting-example-code-from-the-library">Getting Example Code from the Library</a>
+    </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#basic-code-example">Basic Code Example</a>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-code-example-plotter">Basic Code Example -&gt; plotter</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#code-explanation">Code Explanation</a>
     </li>
@@ -126,7 +126,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="../../04_Communication/I2C/README.md">I2C</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/I2C/">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -165,6 +165,11 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../08_Outlook/">Overview</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09_Help/">Troubleshooting</a>
+                  </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -192,13 +197,8 @@
               
                 <h1 id="mpu6050-sensor-tutorial-for-arduino-nano">MPU6050 Sensor Tutorial for Arduino Nano<a class="headerlink" href="#mpu6050-sensor-tutorial-for-arduino-nano" title="Permanent link">&para;</a></h1>
 <p><img alt="MPU6050" src="../../99_Resources/images/MPU6050-Module-Gyroscope-Axis.webp" /></p>
-<p>The MPU6050 is a 6-axis motion tracking device that combines a 3-axis gyroscope and a 3-axis accelerometer. This tutorial will guide you through the basics of setting up and using the MPU6050 sensor with an Arduino Nano.</p>
-<p class="annotate">Lorem ipsum dolor sit amet, (1) consectetur adipiscing elit.</p>
-<ol>
-<li>:man_raising_hand: I'm an annotation! I can contain <code>code</code>, <strong>formatted
-    text</strong>, images, ... basically anything that can be expressed in Markdown.</li>
-</ol>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>The MPU6050 is a 6-axis motion tracking device that combines a 3-axis gyroscope and a 3-axis accelerometer, in addition to measuring temperature. This tutorial will guide you through the basics of setting up and using the MPU6050 sensor with an Arduino Nano.</p>
+<h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
 <ul>
 <li>MPU6050 Sensor</li>
 <li>Arduino Nano</li>
@@ -209,60 +209,87 @@
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <h3 id="wiring-the-sensor-to-arduino-nano">Wiring the Sensor to Arduino Nano<a class="headerlink" href="#wiring-the-sensor-to-arduino-nano" title="Permanent link">&para;</a></h3>
 <p><img alt="mpu6050pinout" src="../../99_Resources/images/MPU6050-Pinout.png" /></p>
-<ul>
-<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino Nano 3.3V or 5V (Check sensor specifications for exact voltage)</li>
-<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino Nano GND</li>
-<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino Nano A5 (SCL pin)</li>
-<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino Nano A4 (SDA pin)</li>
-</ul>
+<ol>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino Nano 3.3V or 5V (Check sensor specifications for exact voltage).</li>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino Nano GND.</li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino Nano A5 (SCL pin).</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino Nano A4 (SDA pin).</li>
+</ol>
 <h3 id="installing-the-mpu6050-library">Installing the MPU6050 Library<a class="headerlink" href="#installing-the-mpu6050-library" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open the Arduino IDE.</li>
+<li>Connect your Arduino Nano to your computer via USB.</li>
 <li>Go to <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Manage Libraries</strong>.</li>
 <li>In the Library Manager, search for "MPU6050".</li>
-<li>Find the "MPU6050 by Electronic Cats" library and click <strong>Install</strong>.</li>
+<li>Find the "Adafruit MPU6050" library and click <strong>Install</strong>.</li>
 </ol>
-<h2 id="basic-code-example">Basic Code Example<a class="headerlink" href="#basic-code-example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
+<h3 id="getting-example-code-from-the-library">Getting Example Code from the Library<a class="headerlink" href="#getting-example-code-from-the-library" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In the Arduino IDE, go to <strong>File</strong> &gt; <strong>Examples</strong> &gt; <strong>Adafruit MPU6050</strong> &gt; <strong>plotter</strong>. This will load an example sketch that demonstrates the use of the MPU6050 sensor or use code from below.</li>
+</ol>
+<p><img alt="alt text" src="image.png" /></p>
+<ol>
+<li>Review the example code to understand the various functionalities and operations available.</li>
+</ol>
+<h2 id="basic-code-example-plotter">Basic Code Example -&gt; plotter<a class="headerlink" href="#basic-code-example-plotter" title="Permanent link">&para;</a></h2>
+<p>If you prefer to start with a simpler example, use the following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Basic demo for accelerometer readings from Adafruit MPU6050</span>
 
-<span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MPU6050.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_Sensor.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+<span class="n">Adafruit_MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">testConnection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to connect to MPU6050!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Serial</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// will pause Zero, Leonardo, etc until serial console opens</span>
 <span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Try to initialize!</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">setAccelerometerRange</span><span class="p">(</span><span class="n">MPU6050_RANGE_16_G</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">setGyroRange</span><span class="p">(</span><span class="n">MPU6050_RANGE_250_DEG</span><span class="p">);</span>
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">setFilterBandwidth</span><span class="p">(</span><span class="n">MPU6050_BAND_21_HZ</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="n">az</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="n">gz</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getAcceleration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">az</span><span class="p">);</span>
-<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getRotation</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gy</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gz</span><span class="p">);</span>
+<span class="w">  </span><span class="cm">/* Get new sensor events with the readings */</span>
+<span class="w">  </span><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;aX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ax</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | aY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ay</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | aZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">az</span><span class="p">);</span>
+<span class="w">  </span><span class="cm">/* Print out the values */</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;AccelX:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;AccelY:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;AccelZ:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroX:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroY:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroZ:&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;gX = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gx</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | gY = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gy</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | gZ = &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gz</span><span class="p">);</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">bubble_sort</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
-<span class="hll">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
-</span><span class="hll">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">):</span>
-</span>            <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
-                <span class="n">items</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
 </code></pre></div>
 
 <h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
@@ -274,7 +301,7 @@
 <h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Connect your Arduino Nano to your computer via USB.</li>
-<li>Open the Arduino IDE and paste the code above.</li>
+<li>Open the Arduino IDE and paste the basic code example above.</li>
 <li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
 <li>Upload the code to your Arduino Nano.</li>
 <li>Open the Serial Monitor (<strong>Tools</strong> &gt; <strong>Serial Monitor</strong>) and set the baud rate to 9600.</li>
