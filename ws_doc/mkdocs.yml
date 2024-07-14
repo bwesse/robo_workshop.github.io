@@ -1,20 +1,24 @@
 site_name: Robotics Workshop
 
 nav:
-  - Home: index.html
+  - Home: index.md
   - Getting Started:
       - Overview: 00_Getting_started/README.md
-      - Arduino: 00_Getting_started/Arduino/README.md
-      - Serial Print: 00_Getting_started/Arduino/Serial_print.md
-      - Components: 00_Getting_started/Components.md
+      - Arduino:
+          - Overview: 00_Getting_started/Arduino/README.md
+          - Serial Print: 00_Getting_started/Arduino/serial_print/README.md
+          - Serial Plotter: 00_Getting_started/Arduino/serial_plotter/README.md
+          - Serial Input: 00_Getting_started/Arduino/serial_input/README.md
+          - Putting everything together: 00_Getting_started/Arduino/putting_everything_together/README.md
+      #- Components: 00_Getting_started/Components.md
       - LEDs: 00_Getting_started/LEDs/README.md
   - Sensors:
       - Overview: 01_Sensors/README.md
       - Distance:
-          - Ultrasonic: 01_Sensors/Distance/ultraschall/README.md
+          #- Ultrasonic: 01_Sensors/Distance/ultraschall/README.md
           - VL53L0X ToF: 01_Sensors/Distance/VL53L0X_ToF/README.md
       - IMU: 
-        - MPU 6050: 01_Sensors/MPU_6050/README.md
+          - MPU 6050: 01_Sensors/MPU_6050/README.md
   - Actuators:
       - Overview: 02_Actuators/README.md
       - Motor Driver: 02_Actuators/motor_driver/README.md
@@ -22,54 +26,67 @@ nav:
   - Communication:
       - Overview: 04_Communication/README.md
       - Protocols:
-          - I2C: 04_Communication/IC2/README.md
+          - I2C: 04_Communication/I2C/README.md
       - nRF:
           - Overview: 04_Communication/nRF/README.md
-         #- Code 1 - Sending Text: 04_Communication/nRF/Code_1_Sending_Text/README.md
-         # - nRF Receiver: 04_Communication/nRF/nrf_receiver/README.md
-        #  - nRF Transmitter: 04_Communication/nRF/nrf_transmitter/README.md
+          # - Code 1 - Sending Text: 04_Communication/nRF/Code_1_Sending_Text/README.md
+          # - nRF Receiver: 04_Communication/nRF/nrf_receiver/README.md
+          # - nRF Transmitter: 04_Communication/nRF/nrf_transmitter/README.md
       - Remote: 04_Communication/remote/README.md
   - Assembly: 
       - Receiver: 05_Assembly/receiver.md
       - Transmitter: 05_Assembly/transmitter.md
   - Drive:
       - Overview: 06_Drive/README.md
-      #- Custom Receiver: 06_Drive/custom_receiver/README.md
-      - Receiver: 06_Drive/receiver_code.md #custom_receiver_car/README.md
-      - Transmitter: 06_Drive/transmitter_code.md #custom_transmitter/README.md
-      #- Receiver: 06_Drive/receiver/README.md
-      #- Transmitter: 06_Drive/transmitter/README.md
+      # - Custom Receiver: 06_Drive/custom_receiver/README.md
+      - Receiver: 06_Drive/receiver_code.md # custom_receiver_car/README.md
+      - Transmitter: 06_Drive/transmitter_code.md # custom_transmitter/README.md
+      # - Receiver: 06_Drive/receiver/README.md
+      # - Transmitter: 06_Drive/transmitter/README.md
   - Transition to Drone: 
-    - Overview: 07_Robo_Drone/README.md
+      - Overview: 07_Robo_Drone/README.md
   - Outlook: 
-    - Overview: 08_Outlook/README.md
- # - 3D Modelling: 09_3d_Modelling/README.md
- # - Resources: 99_Resources/README.md
+      - Overview: 08_Outlook/README.md
+  - Help: 
+      - Troubleshooting: 09_Help/README.md
+  # - 3D Modelling: 09_3d_Modelling/README.md
+  # - Resources: 99_Resources/README.md
 
 theme:
-    name: readthedocs
-    palette:
-        primary: 'indigo'
-        accent: 'indigo'
-    font:
-        text: 'Roboto'
-        code: 'Roboto Mono'
-    features:
-        - navigation.tabs
-        - navigation.top
-        - search.suggest
-        - content.code.copy
-        - content.code.annotate
+  name: readthedocs
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+  language: en
 
 markdown_extensions:
-  - extra
-  - toc:
-      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - attr_list
   - codehilite:
       guess_lang: false
-  - admonition
-  - pymdownx.superfences
-  - pymdownx.tabbed
+  - md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -77,6 +94,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - attr_list
-  - md_in_html
-  - pymdownx.superfences
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+  - extra

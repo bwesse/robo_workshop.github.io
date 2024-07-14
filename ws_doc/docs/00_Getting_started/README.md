@@ -28,7 +28,7 @@
     - Understanding voltage, current, and resistance.
     - Working with breadboards, resistors, LEDs, and switches.
 - **Sensors and Actuators**
-    - Using sensors like MPU6050 and HC-SR04 to gather data.
+    - Using sensors like IMU and ToF to gather data.
     - Controlling motors, servos, and LEDs as actuators.
 - **Power Management**
     - Efficiently powering your robot.

@@ -2,9 +2,14 @@
 
 ![WS2812B LED Strip](../../99_Resources/images/RGBstrip.jpg)
 
+#### Introduction:
+Up until now, we have been working with the Arduino and its built-in LED. While this has been great for understanding the basics, it is time to transition to something more visually appealing: using an external WS2812B LED strip. This guide will help you move beyond the Arduino's onboard LED to control a vibrant and colorful LED strip. We will also introduce the use of breadboards to facilitate our circuit connections. 
+
+First, we'll use an example sketch from the FastLED library to get the LEDs up and running quickly. After that, we'll perform some simple adaptations and finally, create a sine wave animation for the LED strip.
+
 #### 1. **Gather Necessary Components:**
    - **Arduino Board:** (e.g., Arduino Nano).
-   - **Cable:** mini-usb to usb
+   - **Cable:** mini-USB to USB.
    - **WS2812B LED Strip:** Ensure it has 8 LEDs.
    - **Connecting Wires:** Jumper wires for connections.
    - **Breadboard,** for prototyping.
@@ -57,9 +62,7 @@
 
 ------------------------------------------
 
-
-![led pinout](../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp)	
-
+![led pinout](../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp)
 
 #### 2. **Circuit Connections:**
    - **Power Connections:**
@@ -70,81 +73,128 @@
      - Connect the Arduino to your computer via USB
 
    **Basic Wiring Diagram:**
-   ```
-   Arduino          WS2812B LED Strip
-   5V  ------------  5V
-   GND ------------  GND
-   Pin 6 ----------  DIN
-   ```
+```
+Arduino          WS2812B LED Strip
+5V  ------------  5V
+GND ------------  GND
+Pin 6 ----------  DIN
+```
 
 #### 3. **Install Necessary Library:**
-   - **Fastled Library:**
+   - **FastLED Library:**
      - Open Arduino IDE.
      - Navigate to `Sketch` > `Include Library` > `Manage Libraries`.
-     - Search for "Fastled" and install the library.
+     - Search for "FastLED" and install the library.
 
+#### 4. **Use Example Sketch:**
+   - **Open Example:**
+     - Go to `File` > `Examples` > `FastLED` > `DemoReel100`.
+   - **Modify the Example:**
+     - Change the number of LEDs and the type of LED strip in the example code.
+```cpp
+#define LED_PIN     6
+#define NUM_LEDS    8
+#define LED_TYPE    WS2812B
+#define COLOR_ORDER GRB
+CRGB leds[NUM_LEDS];
 
-#### 4. **Write the Arduino Code:**
+void setup() {
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+}
 
-   ```cpp
-   #include <FastLED.h>
+void loop() {
+  // Existing code for animations
+}
+```
+   - **Upload to Arduino:**
+     - Click the `Upload` button to upload the modified example code to the Arduino.
+   - **Observe the LED Strip:**
+     - The LED strip will display various pre-programmed patterns, demonstrating the capabilities of the FastLED library.
 
-   // Define the pin that is connected to the DIN of the LED strip
-   #define LED_PIN 6
+#### 5. **Experiment with Other Animations:**
+   - Try modifying the example sketch or creating new sketches to see how different animations affect the LED strip. Some simple ideas include changing colors, speed, or creating new patterns.
 
-   // Define the number of LEDs in the strip
-   #define NUM_LEDS 8
+#### 6. **Adapt an Example Code:**
+   - **Simple Adaptation:**
+     - Open the `ColorPalette` example from the FastLED library.
+     - Modify the colors in the color palette to create a custom sequence.
+     - Upload the modified code to the Arduino to see the changes in the LED strip.
+   - **Code Example:**
+```cpp
+#include <FastLED.h>
 
-   // Create an array of LED objects
-   CRGB leds[NUM_LEDS];
+#define LED_PIN 6
+#define NUM_LEDS 8
 
-   void setup() {
-     // Initialize the LED strip
-     FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
-     FastLED.clear();
-     FastLED.show(); // Initialize all pixels to 'off'
-   }
+CRGB leds[NUM_LEDS];
 
-   void loop() {
-     // Call a function to perform an animation
-     rainbowCycle(20);
-   }
+void setup() {
+  FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
+}
 
-   // Function to fill the strip with a rainbow pattern
-   void rainbowCycle(uint8_t wait) {
-     for (int j = 0; j < 256 * 5; j++) { // 5 cycles of all colors on the wheel
-       for (int i = 0; i < NUM_LEDS; i++) {
-         leds[i] = Wheel(((i * 256 / NUM_LEDS) + j) & 255);
-       }
-       FastLED.show();
-       delay(wait);
-     }
-   }
+void loop() {
+  fill_solid(leds, NUM_LEDS, CRGB::Red);
+  FastLED.show();
+  delay(500);
+  fill_solid(leds, NUM_LEDS, CRGB::Green);
+  FastLED.show();
+  delay(500);
+  fill_solid(leds, NUM_LEDS, CRGB::Blue);
+  FastLED.show();
+  delay(500);
+}
+```
 
-   // Function to generate rainbow colors across 0-255 positions
-   CRGB Wheel(byte WheelPos) {
-     WheelPos = 255 - WheelPos;
-     if (WheelPos < 85) {
-       return CRGB(255 - WheelPos * 3, 0, WheelPos * 3);
-     }
-     if (WheelPos < 170) {
-       WheelPos -= 85;
-       return CRGB(0, WheelPos * 3, 255 - WheelPos * 3);
-     }
-     WheelPos -= 170;
-     return CRGB(WheelPos * 3, 255 - WheelPos * 3, 0);
-   }
-   ```
+#### 7. **Create a Sine Wave Animation:**
+   - **Use a Sine Wave:**
+     - Create a function to generate a sine wave pattern across the 8 LEDs.
+   - **Code Example:**
+```cpp
+// Include the FastLED library
+#include <FastLED.h>
+// Include the math library to use the sin() function
+#include <math.h>
 
-#### 5. **Upload the Code:**
-   - Connect your Arduino to your computer via USB.
-   - Open the Arduino IDE and select the appropriate board and port.
-   - Copy the above code into the Arduino IDE.
-   - Click the `Upload` button to upload the code to the Arduino.
+// Define the pin that is connected to the DIN of the LED strip
+#define LED_PIN 6
 
-#### 6. **Observe the LED Strip:**
-   - Once the code is uploaded, the LED strip should start displaying a rainbow cycle pattern.
-   - You can modify the animation function or create new ones to experiment with different effects.
+// Define the number of LEDs in the strip
+#define NUM_LEDS 8
 
-#### 7. **Experiment with Other Animations:**
-   - Try creating other animations such as solid colors, color wipes, theater chase, etc., by writing new functions and calling them in the `loop()`.
+// Create an array of LED objects
+CRGB leds[NUM_LEDS];
+
+// Declare a variable to keep track of the angle
+float angle = 0.0;
+
+void setup() {
+  // Initialize the LED strip
+  FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
+  FastLED.clear();
+  FastLED.show(); // Initialize all pixels to 'off'
+}
+
+void loop() {
+  // Calculate the sine of the angle for each LED and set its brightness
+  for (int i = 0; i < NUM_LEDS; i++) {
+    int brightness = (sin(angle + (i * PI / 4)) + 1) * 127.5; // Scale sine wave result to 0-255
+    leds[i] = CHSV(0, 0, brightness);
+  }
+
+  // Increment the angle
+  angle += 0.1;
+
+  // Reset the angle if it exceeds 2*PI
+  if (angle > TWO_PI) {
+    angle = 0;
+  }
+
+  // Show the updated LED colors
+  FastLED.show();
+
+  // Wait for 100 milliseconds before the next loop
+  delay(100);
+}
+```
+
+With these steps, you should be able to control the WS2812B LED strip using an Arduino, experiment with various animations, and even create a sine wave pattern. Happy coding!

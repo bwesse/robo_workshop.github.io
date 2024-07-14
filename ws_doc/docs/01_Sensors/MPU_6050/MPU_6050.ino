@@ -1,31 +1,57 @@
+// Basic demo for accelerometer readings from Adafruit MPU6050
+
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
 #include <Wire.h>
-#include <MPU6050.h>
 
-MPU6050 mpu;
+Adafruit_MPU6050 mpu;
 
-void setup() {
-  Serial.begin(9600);
-  Wire.begin();
-  mpu.initialize();
-
-  if (mpu.testConnection()) {
-    Serial.println("MPU6050 connection successful");
-  } else {
-    Serial.println("MPU6050 connection failed");
+void setup(void) {
+  Serial.begin(115200);
+  while (!Serial) {
+    delay(10); // will pause Zero, Leonardo, etc until serial console opens
   }
+
+  // Try to initialize!
+  if (!mpu.begin()) {
+    Serial.println("Failed to find MPU6050 chip");
+    while (1) {
+      delay(10);
+    }
+  }
+
+  mpu.setAccelerometerRange(MPU6050_RANGE_16_G);
+  mpu.setGyroRange(MPU6050_RANGE_250_DEG);
+  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+  Serial.println("");
+  delay(100);
 }
 
 void loop() {
-  int16_t ax, ay, az, gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-  Serial.print("a/g:\t");
-  Serial.print(ax); Serial.print("\t");
-  Serial.print(ay); Serial.print("\t");
-  Serial.print(az); Serial.print("\t");
-  Serial.print(gx); Serial.print("\t");
-  Serial.print(gy); Serial.print("\t");
-  Serial.println(gz);
+  /* Get new sensor events with the readings */
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  delay(500);
+  /* Print out the values */
+  Serial.print("AccelX:");
+  Serial.print(a.acceleration.x);
+  Serial.print(",");
+  Serial.print("AccelY:");
+  Serial.print(a.acceleration.y);
+  Serial.print(",");
+  Serial.print("AccelZ:");
+  Serial.print(a.acceleration.z);
+  Serial.print(", ");
+  Serial.print("GyroX:");
+  Serial.print(g.gyro.x);
+  Serial.print(",");
+  Serial.print("GyroY:");
+  Serial.print(g.gyro.y);
+  Serial.print(",");
+  Serial.print("GyroZ:");
+  Serial.print(g.gyro.z);
+  Serial.println("");
+
+  delay(10);
 }
