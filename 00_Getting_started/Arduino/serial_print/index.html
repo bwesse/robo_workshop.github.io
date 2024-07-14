@@ -199,6 +199,7 @@
 <h2 id="example-basic-serial-print">Example: Basic Serial Print<a class="headerlink" href="#example-basic-serial-print" title="Permanent link">&para;</a></h2>
 <h4 id="objective">Objective:<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h4>
 <p>To introduce the basics of Arduino coding by printing a message to the Serial Monitor.</p>
+<p><img alt="alt text" src="2022008100-9.jpg" /></p>
 <h4 id="components-needed">Components Needed:<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Arduino board (e.g., Arduino Uno)</li>
@@ -317,11 +318,13 @@
 <h3 id="3-implement-a-simple-counter-that-increments-every-second-and-prints-the-value-to-the-serial-monitor">3. Implement a Simple Counter that Increments Every Second and Prints the Value to the Serial Monitor<a class="headerlink" href="#3-implement-a-simple-counter-that-increments-every-second-and-prints-the-value-to-the-serial-monitor" title="Permanent link">&para;</a></h3>
 <p>Write a program that implements a counter which increments every second and prints the value to the Serial Monitor.</p>
 <details>
-<summary>Hints</summary>
-
-<details>
 <summary>Hint 1</summary>
 Use a variable to store the counter value.
+
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+
+
 </details>
 
 <details>
@@ -332,8 +335,6 @@ Utilize the recurring `loop()` function to increment the counter.
 <details>
 <summary>Hint 3</summary>
 Use `delay(1000);` to create a 1-second delay.
-</details>
-
 </details>
 
 <details>
@@ -358,30 +359,32 @@ Use `delay(1000);` to create a 1-second delay.
 </details>
 
 <h3 id="4-implement-a-counter-with-a-reset">4. Implement a Counter with a Reset<a class="headerlink" href="#4-implement-a-counter-with-a-reset" title="Permanent link">&para;</a></h3>
-<p>Write a program that introduces an <code>i</code> and resets the counter when it reaches a certain value.</p>
-<details>
-<summary>Hints</summary>
-
+<p>Write a program that introduces an <code>counter</code> and resets when it reaches a certain value.</p>
 <details>
 <summary>Hint 1</summary>
-Use a variable `i` to store the current count.
+Use a variable `counter` to store the current count.
 </details>
 
 <details>
 <summary>Hint 2</summary>
-Add a conditional statement to check if `i` has reached the reset value.
+Add a conditional statement to check if `counter` has reached the reset value.
+
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">resetValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// Reset the counter</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
 </details>
 
 <details>
 <summary>Hint 3</summary>
-Reset `i` to zero inside the conditional statement.
+Reset `counter` to zero inside the conditional statement.
 </details>
 
 <details>
 <summary>Hint 4</summary>
 Use `delay(1000);` to create a 1-second delay.
-</details>
-
 </details>
 
 <details>
