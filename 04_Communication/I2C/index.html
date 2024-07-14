@@ -203,7 +203,7 @@ Communication is done in frames:
 <li>Arduino Nano</li>
 <li>Breadboard and jumper wires</li>
 <li>Arduino IDE installed on your computer</li>
-<li>Necessary libraries: <code>SSD1306AsciiWire</code>, <code>Wire</code>, <code>Adafruit_VL53L0X</code>, <code>MPU6050</code></li>
+<li>Necessary libraries: <code>SSD1306AsciiWire</code>, <code>Wire</code>, <code>Adafruit_VL53L0X</code>, <code>Adafruit_MPU6050</code></li>
 </ul>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <h3 id="wiring-the-sensors-and-display-to-arduino-nano">Wiring the Sensors and Display to Arduino Nano<a class="headerlink" href="#wiring-the-sensors-and-display-to-arduino-nano" title="Permanent link">&para;</a></h3>
@@ -248,39 +248,35 @@ Communication is done in frames:
 <li>Open the Arduino IDE.</li>
 <li>Go to <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Manage Libraries</strong>.</li>
 <li>Install the following libraries:</li>
-<li><code>SSD1306AsciiWire</code></li>
-<li><code>Adafruit_VL53L0X</code></li>
-<li><code>Adafrui MPU6050</code></li>
+<li><a href="https://github.com/greiman/SSD1306Ascii">SSD1306AsciiWire</a></li>
+<li><a href="https://github.com/adafruit/Adafruit_VL53L0X">Adafruit_VL53L0X</a></li>
+<li><a href="https://github.com/adafruit/Adafruit_MPU6050">Adafruit_MPU6050</a></li>
 </ol>
 <h2 id="basic-code-example-mpu6050-oled">Basic Code Example MPU6050 + OLED<a class="headerlink" href="#basic-code-example-mpu6050-oled" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;printf.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_Sensor.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MPU6050.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SSD1306AsciiWire.h&gt;</span>
 
-<span class="c1">// Create a BME280 object</span>
+<span class="c1">// Create MPU6050 object</span>
 <span class="n">Adafruit_MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
 
+<span class="c1">// Create OLED display object</span>
 <span class="n">SSD1306AsciiWire</span><span class="w"> </span><span class="n">oled</span><span class="p">;</span>
 
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">col0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// First value column</span>
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Last value column.</span>
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">rows</span><span class="p">;</span><span class="w">      </span><span class="c1">// Rows per line.</span>
 
-
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">labelMPU</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot; x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; z:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; Temp.:&quot;</span><span class="w"> </span><span class="p">};</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">unitsMPU</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;m/s2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;m/s2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;m/s2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; degC&quot;</span><span class="w"> </span><span class="p">};</span>
-
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
 
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">//start mpu</span>
-<span class="w">  </span><span class="c1">// Try to initialize!</span>
+<span class="w">  </span><span class="c1">// Initialize MPU6050</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -288,25 +284,25 @@ Communication is done in frames:
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">//start OLED</span>
+<span class="w">  </span><span class="c1">// Initialize OLED display</span>
 <span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Adafruit128x64</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3C</span><span class="p">);</span>
 <span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">Callibri15</span><span class="p">);</span>
 <span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">setLetterSpacing</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// Setup form and find longest label.</span>
+<span class="w">  </span><span class="c1">// Setup form and find longest label</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">labelMPU</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oled</span><span class="p">.</span><span class="n">strWidth</span><span class="p">(</span><span class="n">labelMPU</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="n">col0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">col0</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="c1">// Six pixels after label.</span>
+<span class="w">  </span><span class="c1">// Six pixels after label</span>
 <span class="w">  </span><span class="n">col0</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">  </span><span class="c1">// Allow two or more pixels after value.</span>
+<span class="w">  </span><span class="c1">// Allow two or more pixels after value</span>
 <span class="w">  </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">oled</span><span class="p">.</span><span class="n">strWidth</span><span class="p">(</span><span class="s">&quot;99.99&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="c1">// Line height in rows.</span>
+<span class="w">  </span><span class="c1">// Line height in rows</span>
 <span class="w">  </span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oled</span><span class="p">.</span><span class="n">fontRows</span><span class="p">();</span>
-<span class="w">  </span><span class="c1">// Print units.</span>
+<span class="w">  </span><span class="c1">// Print units</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="n">col1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rows</span><span class="p">);</span>
 <span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">unitsMPU</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
@@ -314,8 +310,7 @@ Communication is done in frames:
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="cm">/* Get new sensor events with the readings */</span>
+<span class="w">  </span><span class="c1">// Get new sensor events with the readings</span>
 <span class="w">  </span><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
 <span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
 
@@ -334,8 +329,8 @@ Communication is done in frames:
 <span class="w">  </span><span class="n">clearValue</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rows</span><span class="p">);</span>
 <span class="w">  </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">temperature</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// to make this example readable in the serial monitor</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w">  </span><span class="c1">// slow transmissions down by 1 second</span>
+<span class="w">  </span><span class="c1">// Slow transmissions down by 1 second for readability</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// Function to clear a value on the OLED display</span>
@@ -346,9 +341,9 @@ Communication is done in frames:
 
 <h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Libraries</strong>: Includes the necessary libraries for OLED display, MPU6050, and VL53L0X sensors.</li>
+<li><strong>Libraries</strong>: Includes the necessary libraries for OLED display and MPU6050.</li>
 <li><strong>Initialization</strong>: Initializes the sensors and the OLED display in the <code>setup</code> function.</li>
-<li><strong>Sensor Reading</strong>: Reads data from MPU6050 and VL53L0X sensors in the <code>loop</code> function.</li>
+<li><strong>Sensor Reading</strong>: Reads data from MPU6050 in the <code>loop</code> function.</li>
 <li><strong>Display Data</strong>: Clears the OLED display and then updates it with the latest sensor data.</li>
 </ul>
 <h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
@@ -357,13 +352,13 @@ Communication is done in frames:
 <li>Open the Arduino IDE and paste the code above.</li>
 <li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
 <li>Upload the code to your Arduino Nano.</li>
-<li>The OLED display should show the data from the MPU6050 and VL53L0X sensors.</li>
+<li>The OLED display should show the data from the MPU6050 sensor.</li>
 </ol>
 <h2 id="advanced-tasks">Advanced Tasks<a class="headerlink" href="#advanced-tasks" title="Permanent link">&para;</a></h2>
 <h3 id="task-1-change-the-display-update-speed">Task 1: Change the Display Update Speed<a class="headerlink" href="#task-1-change-the-display-update-speed" title="Permanent link">&para;</a></h3>
 <p><strong>Objective</strong>: Adjust the <code>delay</code> value in the <code>loop</code> function to change how often the display updates.</p>
 <p><strong>Instructions</strong>:
-- Change the <code>delay(500);</code> line to a different value (e.g., <code>delay(100);</code> for faster updates or <code>delay(1000);</code> for slower updates).</p>
+- Change the <code>delay(1000);</code> line to a different value (e.g., <code>delay(500);</code> for faster updates or <code>delay(2000);</code> for slower updates).</p>
 <h3 id="task-2-add-more-sensor-data-to-display">Task 2: Add More Sensor Data to Display<a class="headerlink" href="#task-2-add-more-sensor-data-to-display" title="Permanent link">&para;</a></h3>
 <p><strong>Objective</strong>: Display the Z-axis acceleration from the MPU6050.</p>
 <p><strong>Instructions</strong>:
