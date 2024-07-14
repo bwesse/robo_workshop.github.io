@@ -97,6 +97,16 @@
     <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#task-blink-the-led-if-object-is-closer-than-10-cm">Task: Blink the LED if Object is Closer Than 10 cm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#task-indicate-distance-with-led-strip">Task: Indicate Distance with LED Strip</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#running-the-code_1">Running the Code</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -218,6 +228,7 @@
 <li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino A5 (SCL pin)</li>
 <li><strong>SDA</strong> (Data) -&gt; Connect to Arduino A4 (SDA pin)</li>
 </ul>
+<p><img alt="alt text" src="image-1.png" /></p>
 <h3 id="installing-the-vl53l0x-library">Installing the VL53L0X Library<a class="headerlink" href="#installing-the-vl53l0x-library" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open the Arduino IDE.</li>
@@ -226,34 +237,42 @@
 <li>Find the "VL53L0X by Pololu" library and click <strong>Install</strong>.</li>
 </ol>
 <h2 id="basic-code-example">Basic Code Example<a class="headerlink" href="#basic-code-example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="cm">/* This example shows how to use continuous mode to take</span>
+<span class="cm">range measurements with the VL53L0X. It is based on</span>
+<span class="cm">vl53l0x_ContinuousRanging_Example.c from the VL53L0X API.</span>
+
+<span class="cm">The range readings are in units of mm. */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
 
 <span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span>
+<span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to detect and initialize sensor!&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="p">}</span>
 
+<span class="w">  </span><span class="c1">// Start continuous back-to-back mode (take readings as</span>
+<span class="w">  </span><span class="c1">// fast as possible).  To use continuous timed mode</span>
+<span class="w">  </span><span class="c1">// instead, provide a desired inter-measurement period in</span>
+<span class="w">  </span><span class="c1">// ms (e.g. sensor.startContinuous(100)).</span>
 <span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: &quot;</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">());</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; mm&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -290,6 +309,178 @@
 <li><a href="https://www.pololu.com/docs/0J77">Arduino VL53L0X Library Documentation</a></li>
 </ul>
 <p>This simple tutorial should get you started with using the VL53L0X sensor. Experiment with different setups and distances to fully explore its capabilities. Happy measuring!</p>
+<h3 id="task-blink-the-led-if-object-is-closer-than-10-cm">Task: Blink the LED if Object is Closer Than 10 cm<a class="headerlink" href="#task-blink-the-led-if-object-is-closer-than-10-cm" title="Permanent link">&para;</a></h3>
+<p>Modify the basic example code to blink the built-in LED if the sensor detects an object closer than 10 cm.</p>
+<details>
+<summary>Hint 1</summary>
+Add the necessary pin setup for the LED in the `setup` function.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Check the distance measurement and compare it to the 10 cm threshold.
+</details>
+
+<details>
+<summary>Hint 3</summary>
+Use a simple condition to control the LED state based on the distance measurement.
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
+
+<span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set the built-in LED pin as output</span>
+
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to detect and initialize sensor!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Check if the distance is less than 100 mm (10 cm)</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn on the LED</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn off the LED</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="explanation">Explanation:<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>LED Setup</strong>: <code>pinMode(LED_BUILTIN, OUTPUT);</code> sets the built-in LED pin as an output.</li>
+<li><strong>Distance Measurement</strong>: The <code>loop</code> function reads the distance from the sensor and prints it to the Serial Monitor.</li>
+<li><strong>LED Control</strong>: The <code>if</code> statement checks if the distance is less than 100 mm (10 cm). If true, it turns on the LED; otherwise, it turns it off.</li>
+</ol>
+<p>This task demonstrates how to combine sensor input with LED control, creating a simple yet practical application of the VL53L0X sensor with an Arduino.</p>
+<h3 id="task-indicate-distance-with-led-strip">Task: Indicate Distance with LED Strip<a class="headerlink" href="#task-indicate-distance-with-led-strip" title="Permanent link">&para;</a></h3>
+<p>Modify the code to use an LED strip to indicate the distance of an object from the VL53L0X sensor. The number of LEDs lit will increase as the object gets closer to the sensor.</p>
+<h4 id="setup_1">Setup<a class="headerlink" href="#setup_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Hardware Requirements</strong>:</li>
+<li>VL53L0X Distance Sensor</li>
+<li>Arduino Nano</li>
+<li>Neopixel (WS2812) LED Strip</li>
+<li>
+<p>Breadboard and jumper wires</p>
+</li>
+<li>
+<p><strong>Wiring</strong>:</p>
+</li>
+<li><strong>VL53L0X Sensor</strong>:<ul>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino GND</li>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino 3.3V </li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino A5 (SCL pin)</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino A4 (SDA pin)</li>
+</ul>
+</li>
+<li>
+<p><strong>Neopixel LED Strip</strong>:</p>
+<ul>
+<li><strong>GND</strong> (Ground) -&gt; Connect to Arduino GND</li>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino 5V (or a suitable power supply)</li>
+<li><strong>DIN</strong> (Data In) -&gt; Connect to Arduino digital pin 6 (or any other digital pin)</li>
+</ul>
+</li>
+<li>
+<p><strong>Library Installation</strong>:</p>
+</li>
+<li>Install the VL53L0X library by Pololu.</li>
+<li>Install the Adafruit NeoPixel library.</li>
+</ol>
+<h4 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_NeoPixel.h&gt;</span>
+
+<span class="cp">#define LED_PIN     6</span>
+<span class="cp">#define NUM_LEDS    10 </span><span class="c1">// Adjust the number of LEDs in your strip</span>
+
+<span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+<span class="n">Adafruit_NeoPixel</span><span class="w"> </span><span class="n">strip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_NeoPixel</span><span class="p">(</span><span class="n">NUM_LEDS</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">NEO_GRB</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NEO_KHZ800</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">strip</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">  </span><span class="n">strip</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Initialize all pixels to &#39;off&#39;</span>
+
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to detect and initialize sensor!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">updateLEDS</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">updateLEDS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numLEDsToLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span><span class="w"> </span><span class="c1">// Map distance to number of LEDs</span>
+<span class="w">  </span><span class="n">numLEDsToLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constrain</span><span class="p">(</span><span class="n">numLEDsToLight</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numLEDsToLight</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">strip</span><span class="p">.</span><span class="n">setPixelColor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">strip</span><span class="p">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"> </span><span class="c1">// Red color for LEDs</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">strip</span><span class="p">.</span><span class="n">setPixelColor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">strip</span><span class="p">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"> </span><span class="c1">// Turn off remaining LEDs</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">strip</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="explanation_1">Explanation<a class="headerlink" href="#explanation_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Library Inclusions</strong>: Includes the VL53L0X library for the distance sensor and the Adafruit NeoPixel library for controlling the LED strip.</li>
+<li><strong>LED Strip Setup</strong>: Defines the pin and number of LEDs in the strip, initializes the strip, and sets all pixels to off.</li>
+<li><strong>Distance Measurement</strong>: Reads the distance from the sensor and prints it to the Serial Monitor.</li>
+<li><strong>LED Control</strong>: The <code>updateLEDS</code> function maps the distance to the number of LEDs to light up. The closer the object, the more LEDs will light up.</li>
+</ol>
+<h3 id="running-the-code_1">Running the Code<a class="headerlink" href="#running-the-code_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect your Arduino to your computer via USB.</li>
+<li>Open the Arduino IDE and paste the code above.</li>
+<li>Select the correct board and port under <strong>Tools</strong>.</li>
+<li>Upload the code to your Arduino.</li>
+<li>Place the sensor and observe the LED strip lighting up based on the distance measured.</li>
+</ol>
+<p>This task allows you to visually indicate the distance measured by the VL53L0X sensor using an LED strip, providing a clear and interactive way to understand the sensor's readings.</p>
               
             </div>
           </div><footer>

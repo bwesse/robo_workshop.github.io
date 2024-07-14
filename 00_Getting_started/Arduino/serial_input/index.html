@@ -57,26 +57,6 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Serial Input</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#taking-input-from-the-serial-monitor">Taking Input from the Serial Monitor</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#example-controlling-led-with-serial-input">Example: Controlling LED with Serial Input</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation:</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#using-the-serial-monitor-for-input">Using the Serial Monitor for Input:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-a-command-to-blink-the-led">1. Add a Command to Blink the LED</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-a-command-to-adjust-the-blink-speed">2. Add a Command to Adjust the Blink Speed</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-add-a-command-to-report-the-current-led-state-and-blink-speed">3. Add a Command to Report the Current LED State and Blink Speed</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../putting_everything_together/">Putting everything together</a>
@@ -190,77 +170,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="input-and-output-with-the-serial-monitor">Input and Output with the Serial Monitor<a class="headerlink" href="#input-and-output-with-the-serial-monitor" title="Permanent link">&para;</a></h1>
-<h2 id="taking-input-from-the-serial-monitor">Taking Input from the Serial Monitor<a class="headerlink" href="#taking-input-from-the-serial-monitor" title="Permanent link">&para;</a></h2>
-<p>This example demonstrates how to take input from the Serial Monitor and use it to control the built-in LED and print a response back to the Serial Monitor.</p>
-<h3 id="example-controlling-led-with-serial-input">Example: Controlling LED with Serial Input<a class="headerlink" href="#example-controlling-led-with-serial-input" title="Permanent link">&para;</a></h3>
-<p>This example shows how to control the built-in LED on an Arduino board using commands entered via the Serial Monitor.</p>
+                <h3 id="basic-communication-with-serial-monitor">Basic Communication with Serial Monitor<a class="headerlink" href="#basic-communication-with-serial-monitor" title="Permanent link">&para;</a></h3>
+<p>This example demonstrates the basic communication with the Serial Monitor by printing any input received.</p>
 <div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Initialize the serial communication at a baud rate of 9600</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// Set the built-in LED pin as an output</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// Print instructions to the Serial Monitor</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;OFF&#39; to turn off the LED.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w">  </span><span class="c1">// Initialize the serial communication at a baud rate of 9600</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Send any text and it will be printed here.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Check if data is available to read</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Read the incoming data as a string</span>
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">readString</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;You sent: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<span class="w">    </span><span class="c1">// Remove any whitespace characters</span>
+<h3 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h3>
+<h3 id="1-control-the-led-with-serial-input">1. Control the LED with Serial Input<a class="headerlink" href="#1-control-the-led-with-serial-input" title="Permanent link">&para;</a></h3>
+<p>Expand the program to allow control of the built-in LED using commands entered via the Serial Monitor.</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED or &#39;OFF&#39; to turn it off.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">readString</span><span class="p">();</span>
 <span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// Check the input value</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;ON&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// Turn on the LED</span>
 <span class="w">      </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">      </span><span class="c1">// Print confirmation message to the Serial Monitor</span>
 <span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is ON&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;OFF&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// Turn off the LED</span>
 <span class="w">      </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">      </span><span class="c1">// Print confirmation message to the Serial Monitor</span>
 <span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is OFF&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// Print error message to the Serial Monitor</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Invalid command. Please enter &#39;ON&#39; or &#39;OFF&#39;.&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;You sent: &quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="explanation">Explanation:<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Setup Function</strong>:</li>
-<li><code>Serial.begin(9600);</code> initializes serial communication at a baud rate of 9600 bits per second.</li>
-<li><code>pinMode(LED_BUILTIN, OUTPUT);</code> sets the built-in LED pin as an output.</li>
-<li>
-<p><code>Serial.println("Enter 'ON' to turn on the LED.");</code> and <code>Serial.println("Enter 'OFF' to turn off the LED.");</code> print instructions to the Serial Monitor.</p>
-</li>
-<li>
-<p><strong>Loop Function</strong>:</p>
-</li>
-<li><code>if (Serial.available() &gt; 0)</code> checks if data is available to read.</li>
-<li><code>String input = Serial.readString();</code> reads the incoming data as a string.</li>
-<li><code>input.trim();</code> removes any whitespace characters from the input.</li>
-<li><code>if (input.equalsIgnoreCase("ON"))</code> checks if the input is "ON" and turns on the LED if true.</li>
-<li><code>else if (input.equalsIgnoreCase("OFF"))</code> checks if the input is "OFF" and turns off the LED if true.</li>
-<li><code>else</code> prints an error message if the input is invalid.</li>
-</ol>
-<h3 id="using-the-serial-monitor-for-input">Using the Serial Monitor for Input:<a class="headerlink" href="#using-the-serial-monitor-for-input" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Upload the sketch to your Arduino board.</li>
-<li>Open the Serial Monitor by navigating to <code>Tools &gt; Serial Monitor</code> in the Arduino IDE.</li>
-<li>Ensure the baud rate is set to 9600 in the Serial Monitor.</li>
-<li>Enter "ON" or "OFF" in the Serial Monitor and press "Send" to control the LED.</li>
-</ol>
-<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
-<h3 id="1-add-a-command-to-blink-the-led">1. Add a Command to Blink the LED<a class="headerlink" href="#1-add-a-command-to-blink-the-led" title="Permanent link">&para;</a></h3>
-<p>Write a program that adds a command to blink the LED for a specified number of times when entered via the Serial Monitor.</p>
+<h3 id="2-add-a-command-to-blink-the-led">2. Add a Command to Blink the LED<a class="headerlink" href="#2-add-a-command-to-blink-the-led" title="Permanent link">&para;</a></h3>
+<p>Write a program that adds a command to blink the LED a specified number of times when entered via the Serial Monitor.</p>
 <details>
 <summary>Hint 1</summary>
 Read the input string and check if it contains the command to blink the LED.
@@ -283,9 +238,7 @@ Use a loop to blink the LED the specified number of times.
 <div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
 <span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;OFF&#39; to turn off the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;BLINK x&#39; to blink the LED x times.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED, &#39;OFF&#39; to turn it off, or &#39;BLINK x&#39; to blink the LED x times.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -311,7 +264,8 @@ Use a loop to blink the LED the specified number of times.
 <span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Invalid command. Please enter &#39;ON&#39;, &#39;OFF&#39;, or &#39;BLINK x&#39;.&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;You sent: &quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -321,7 +275,7 @@ Use a loop to blink the LED the specified number of times.
 
 </details>
 
-<h3 id="2-add-a-command-to-adjust-the-blink-speed">2. Add a Command to Adjust the Blink Speed<a class="headerlink" href="#2-add-a-command-to-adjust-the-blink-speed" title="Permanent link">&para;</a></h3>
+<h3 id="3-add-a-command-to-adjust-the-blink-speed">3. Add a Command to Adjust the Blink Speed<a class="headerlink" href="#3-add-a-command-to-adjust-the-blink-speed" title="Permanent link">&para;</a></h3>
 <p>Write a program that allows the user to adjust the blink speed of the LED using a command entered via the Serial Monitor.</p>
 <details>
 <summary>Hint 1</summary>
@@ -347,10 +301,7 @@ Use the extracted speed value to set the delay time for the blink.
 <span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
 <span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;OFF&#39; to turn off the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;BLINK x&#39; to blink the LED x times.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;SPEED y&#39; to set the blink speed to y milliseconds.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED, &#39;OFF&#39; to turn it off, &#39;BLINK x&#39; to blink the LED x times, or &#39;SPEED y&#39; to set the blink speed to y milliseconds.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -381,91 +332,8 @@ Use the extracted speed value to set the delay time for the blink.
 <span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">blinkSpeed</span><span class="p">);</span>
 <span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; milliseconds&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Invalid command. Please enter &#39;ON&#39;, &#39;OFF&#39;, &#39;BLINK x&#39;, or &#39;SPEED y&#39;.&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-
-
-</details>
-
-<h3 id="3-add-a-command-to-report-the-current-led-state-and-blink-speed">3. Add a Command to Report the Current LED State and Blink Speed<a class="headerlink" href="#3-add-a-command-to-report-the-current-led-state-and-blink-speed" title="Permanent link">&para;</a></h3>
-<p>Write a program that reports the current state of the LED and the blink speed when a specific command is entered via the Serial Monitor.</p>
-<details>
-<summary>Hint 1</summary>
-Read the input string and check if it contains the command to report the status.
-</details>
-
-<details>
-<summary>Hint 2</summary>
-Use variables to keep track of the LED state and blink speed.
-</details>
-
-<details>
-<summary>Hint 3</summary>
-Print the current LED state and blink speed to the Serial Monitor.
-</details>
-
-<details>
-<summary>Solution</summary>
-
-
-<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">blinkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w"> </span><span class="c1">// Default blink speed in milliseconds</span>
-<span class="kt">bool</span><span class="w"> </span><span class="n">ledState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"> </span><span class="c1">// Current state of the LED</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;ON&#39; to turn on the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;OFF&#39; to turn off the LED.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;BLINK x&#39; to blink the LED x times.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;SPEED y&#39; to set the blink speed to y milliseconds.&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter &#39;STATUS&#39; to report the current LED state and blink speed.&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">readString</span><span class="p">();</span>
-<span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;ON&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">ledState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span>
-<span class="w">      </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">ledState</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is ON&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;OFF&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">ledState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span>
-<span class="w">      </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">ledState</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is OFF&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">startsWith</span><span class="p">(</span><span class="s">&quot;BLINK&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">6</span><span class="p">).</span><span class="n">toInt</span><span class="p">();</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Blinking LED &quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span>
-
-<span class="p">(</span><span class="n">times</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; times&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">times</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">ledState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HIGH</span><span class="p">;</span>
-<span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">ledState</span><span class="p">);</span>
-<span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="n">blinkSpeed</span><span class="p">);</span>
-<span class="w">        </span><span class="n">ledState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span>
-<span class="w">        </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">ledState</span><span class="p">);</span>
-<span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="n">blinkSpeed</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">startsWith</span><span class="p">(</span><span class="s">&quot;SPEED&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">blinkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">6</span><span class="p">).</span><span class="n">toInt</span><span class="p">();</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Blink speed set to &quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">blinkSpeed</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; milliseconds&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;STATUS&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;LED is &quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ledState</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;ON&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;OFF&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Blink speed is &quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">blinkSpeed</span><span class="p">);</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; milliseconds&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Invalid command. Please enter &#39;ON&#39;, &#39;OFF&#39;, &#39;BLINK x&#39;, &#39;SPEED y&#39;, or &#39;STATUS&#39;.&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;You sent: &quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
