@@ -63,45 +63,71 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">LEDs</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction:</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#gather-necessary-components">Gather Necessary Components:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#gather-necessary-components">Gather Necessary Components</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#breadboards">Breadboards</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-purpose">1. Purpose:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-structure">2. Structure:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#structure">Structure</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-power-rails">3. Power Rails:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#power-rails">Power Rails</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-terminal-strips">4. Terminal Strips:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#terminal-strips">Terminal Strips</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-component-placement">5. Component Placement:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#component-placement">Component Placement</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#6-integration">6. Integration:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#integration">Integration</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#7-advantages">7. Advantages:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#advantages">Advantages</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#8-common-uses">8. Common Uses:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#circuit-connections">Circuit Connections:</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#install-necessary-library">Install Necessary Library:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#common-uses">Common Uses</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-sketch">Example Sketch:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#circuit-connections">Circuit Connections</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#experiment-with-other-animations">Experiment with Other Animations:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#power-connections">Power Connections</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#adapt-an-example-code">Adapt an Example Code:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#data-connection">Data Connection</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#create-a-sine-wave-animation">Create a Sine Wave Animation:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-wiring-diagram">Basic Wiring Diagram</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-necessary-library">Install Necessary Library</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rgb-leds-how-they-work">RGB LEDs: How They Work</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-sketch">Example Sketch</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-explanation">Code Explanation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transition-to-more-complicated-example-codes">Transition to More Complicated Example Codes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-sketch_1">Example Sketch</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modify-the-example">Modify the Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#observe-the-led-strip">Observe the LED Strip</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#experiment-with-other-animations">Experiment with Other Animations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adapt-an-example-code">Adapt an Example Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-example">Code Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-a-sine-wave-animation">Create a Sine Wave Animation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-example_1">Code Example</a>
     </li>
         </ul>
     </li>
@@ -212,109 +238,151 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="controlling-a-ws2812b-led-strip-with-arduino">Controlling a WS2812B LED Strip with Arduino<a class="headerlink" href="#controlling-a-ws2812b-led-strip-with-arduino" title="Permanent link">&para;</a></h1>
-<p><img alt="alt text" src="8a96bde4f7ae95d9a1003934c4b35aab.gif" /></p>
-<h3 id="introduction">Introduction:<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
-<p>Up until now, we have been working with the Arduino and its built-in LED. While this has been great for understanding the basics, it is time to transition to something more visually appealing: using an external WS2812B LED strip. This guide will help you move beyond the Arduino's onboard LED to control a vibrant and colorful LED strip. We will also introduce the use of breadboards to facilitate our circuit connections. </p>
-<p>First, we'll use an example sketch from the FastLED library to get the LEDs up and running quickly. After that, we'll perform some simple adaptations and finally, create a sine wave animation for the LED strip.</p>
-<h4 id="gather-necessary-components"><strong>Gather Necessary Components:</strong><a class="headerlink" href="#gather-necessary-components" title="Permanent link">&para;</a></h4>
+<p><img alt="WS2812B LED Strip" src="8a96bde4f7ae95d9a1003934c4b35aab.gif" /></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Transition from using the Arduino's built-in LED to controlling a WS2812B LED strip. This guide will help you set up the LED strip and introduce breadboards for circuit connections. We’ll start with an example sketch from the FastLED library, then move on to creating a sine wave animation.</p>
+<h2 id="gather-necessary-components">Gather Necessary Components<a class="headerlink" href="#gather-necessary-components" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Arduino Board:</strong> (e.g., Arduino Nano).</li>
-<li><strong>Cable:</strong> mini-USB to USB.</li>
-<li><strong>WS2812B LED Strip:</strong> Ensure it has a GROUND, a DATA, and VOLTAGE cable.</li>
-<li><strong>Connecting Wires:</strong> Jumper wires for connections.</li>
-<li><strong>Breadboard,</strong> for prototyping.</li>
+<li>Arduino Board (e.g., Arduino Nano)</li>
+<li>USB Cable</li>
+<li>WS2812B LED Strip (with GND, DATA, and VOLTAGE cables)</li>
+<li>Connecting Wires</li>
+<li>Breadboard</li>
 </ul>
-<h3 id="breadboards">Breadboards<a class="headerlink" href="#breadboards" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="518c0b34ce395fea62000002.jpg" /></p>
-<h4 id="1-purpose"><strong>1. Purpose:</strong><a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h4>
+<h2 id="breadboards">Breadboards<a class="headerlink" href="#breadboards" title="Permanent link">&para;</a></h2>
+<p><img alt="Breadboard" src="518c0b34ce395fea62000002.jpg" /></p>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>Breadboards are used for prototyping electronic circuits without soldering.</p>
+<h3 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Used for prototyping electronic circuits without soldering.</li>
+<li>Rows and Columns: Grid of holes arranged in rows and columns.</li>
+<li>Metal Strips: Underneath the board, connect the holes electrically.</li>
 </ul>
-<h4 id="2-structure"><strong>2. Structure:</strong><a class="headerlink" href="#2-structure" title="Permanent link">&para;</a></h4>
+<h3 id="power-rails">Power Rails<a class="headerlink" href="#power-rails" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Rows and Columns:</strong> Grid of holes arranged in rows and columns.</li>
-<li><strong>Metal Strips:</strong> Underneath the board connect the holes electrically.</li>
+<li>Lines: Two long rows along the top and bottom for power distribution.</li>
+<li>Purpose: Used to connect power supply (positive and negative).</li>
 </ul>
-<h4 id="3-power-rails"><strong>3. Power Rails:</strong><a class="headerlink" href="#3-power-rails" title="Permanent link">&para;</a></h4>
+<h3 id="terminal-strips">Terminal Strips<a class="headerlink" href="#terminal-strips" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Lines:</strong> Two long rows along the top and bottom for power distribution.</li>
-<li><strong>Purpose:</strong> Used to connect power supply (positive and negative).</li>
+<li>Rows: Short horizontal rows in the middle.</li>
+<li>Connections: Each row of five holes is electrically connected, allowing components to be inserted and interconnected.</li>
 </ul>
-<h4 id="4-terminal-strips"><strong>4. Terminal Strips:</strong><a class="headerlink" href="#4-terminal-strips" title="Permanent link">&para;</a></h4>
+<h3 id="component-placement">Component Placement<a class="headerlink" href="#component-placement" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Rows:</strong> Short horizontal rows in the middle.</li>
-<li><strong>Connections:</strong> Each row of five holes is electrically connected, allowing components to be inserted and interconnected.</li>
+<li>Insertion: Components like resistors, capacitors, and ICs are inserted into the holes.</li>
+<li>Connections: Wires or jumper cables connect different components.</li>
 </ul>
-<h4 id="5-component-placement"><strong>5. Component Placement:</strong><a class="headerlink" href="#5-component-placement" title="Permanent link">&para;</a></h4>
+<h3 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Insertion:</strong> Components like resistors, capacitors, and ICs are inserted into the holes.</li>
-<li><strong>Connections:</strong> Wires or jumper cables connect different components.</li>
+<li>Circuits: Allows easy creation and modification of circuits.</li>
+<li>Testing: Facilitates testing and troubleshooting before finalizing designs.</li>
 </ul>
-<h4 id="6-integration"><strong>6. Integration:</strong><a class="headerlink" href="#6-integration" title="Permanent link">&para;</a></h4>
+<h3 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Circuits:</strong> Allows easy creation and modification of circuits.</li>
-<li><strong>Testing:</strong> Facilitates testing and troubleshooting before finalizing designs.</li>
+<li>Non-permanent: Components can be easily removed or replaced.</li>
+<li>Reusable: Breadboards can be reused for multiple projects.</li>
 </ul>
-<h4 id="7-advantages"><strong>7. Advantages:</strong><a class="headerlink" href="#7-advantages" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Non-permanent:</strong> Components can be easily removed or replaced.</li>
-<li><strong>Reusable:</strong> Breadboards can be reused for multiple projects.</li>
-</ul>
-<h4 id="8-common-uses"><strong>8. Common Uses:</strong><a class="headerlink" href="#8-common-uses" title="Permanent link">&para;</a></h4>
+<h3 id="common-uses">Common Uses<a class="headerlink" href="#common-uses" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Ideal for learning, prototyping, and debugging electronic circuits.</li>
 </ul>
-<h3 id="circuit-connections"><strong>Circuit Connections:</strong><a class="headerlink" href="#circuit-connections" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Power Connections:</strong></li>
-<li>
-<p>Connect the 5V and GND of the power supply to the LED strip using a breadboard.</p>
+<h2 id="circuit-connections">Circuit Connections<a class="headerlink" href="#circuit-connections" title="Permanent link">&para;</a></h2>
+<h3 id="power-connections">Power Connections<a class="headerlink" href="#power-connections" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Black Wire (GND):</strong> Connect the GND pin of the LED strip to the GND rail on the breadboard.</li>
-<li><strong>Red Wire (5V):</strong> Connect the 5V pin of the LED strip to the 5V rail on the breadboard.</li>
+<li>Connect the 5V and GND of the power supply to the LED strip using a breadboard.</li>
+<li>Black Wire (GND): Connect the GND pin of the LED strip to the GND rail on the breadboard.</li>
+<li>Red Wire (5V): Connect the 5V pin of the LED strip to the 5V rail on the breadboard.</li>
 <li>Plug the Arduino into your computer via USB. The LEDs should light up.</li>
 </ul>
-</li>
-<li>
-<p><strong>Data Connection:</strong></p>
-</li>
-<li><strong>Unplug the Arduino.</strong></li>
-<li>Connect the Data Input (DIN) of the LED strip to digital pin 6 on the Arduino.<ul>
-<li><strong>Data Wire:</strong> Connect the DIN pin of the LED strip to digital pin 6 on the Arduino.</li>
+<h3 id="data-connection">Data Connection<a class="headerlink" href="#data-connection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Unplug the Arduino.</li>
+<li>Connect the Data Input (DIN) of the LED strip to analog pin A3 on the Arduino.</li>
+<li>Data Wire: Connect the DIN pin of the LED strip to analog pin A3 on the Arduino.</li>
 </ul>
-</li>
-</ol>
-<p><strong>Basic Wiring Diagram:</strong></p>
+<h3 id="basic-wiring-diagram">Basic Wiring Diagram<a class="headerlink" href="#basic-wiring-diagram" title="Permanent link">&para;</a></h3>
+<p><img alt="LED Strip Wiring" src="../../99_Resources/diagrams/ws2812_bb.png" /></p>
 <div class="codehilite"><pre><span></span><code>Arduino          WS2812B LED Strip
 5V  ------------  5V
 GND ------------  GND
-Pin 6 ----------  DIN
+A3  ------------  DIN
 </code></pre></div>
 
-<h4 id="install-necessary-library"><strong>Install Necessary Library:</strong><a class="headerlink" href="#install-necessary-library" title="Permanent link">&para;</a></h4>
+<h3 id="install-necessary-library">Install Necessary Library<a class="headerlink" href="#install-necessary-library" title="Permanent link">&para;</a></h3>
+<p>FastLED Library:
+- Open Arduino IDE.
+- Navigate to <code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries</code>.
+- Search for "FastLED" and install the library.</p>
+<h2 id="rgb-leds-how-they-work">RGB LEDs: How They Work<a class="headerlink" href="#rgb-leds-how-they-work" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>FastLED Library:</strong><ul>
-<li>Open Arduino IDE.</li>
-<li>Navigate to <code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries</code>.</li>
-<li>Search for "FastLED" and install the library.</li>
+<li>Red, Green, Blue (RGB):</li>
+<li>RGB LEDs use three separate LEDs in one package: red, green, and blue.</li>
+<li>By varying the intensity of each color, you can create a wide spectrum of colors.</li>
+<li>Combining red and green creates yellow, green and blue create cyan, and red and blue create magenta.</li>
+<li>Full intensity of all three colors creates white light.</li>
 </ul>
+<h2 id="example-sketch">Example Sketch<a class="headerlink" href="#example-sketch" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
+
+<span class="cp">#define LED_PIN A3</span>
+<span class="cp">#define NUM_LEDS 8</span>
+<span class="cp">#define BRIGHTNESS 50  </span><span class="c1">// Set brightness level (0-255)</span>
+
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">NEOPIXEL</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">setBrightness</span><span class="p">(</span><span class="n">BRIGHTNESS</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set the brightness for the entire strip</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Set the first LED to barely glow with very dim light</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Extremely dim white light to show RGB components</span>
+
+<span class="w">  </span><span class="c1">// Set the remaining LEDs to showcase color mixing with dimmed colors</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// Dim Red</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// Dim Green</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w">   </span><span class="c1">// Dim Blue</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Dim Yellow (Red + Green)</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w">  </span><span class="c1">// Dim Cyan (Green + Blue)</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w">  </span><span class="c1">// Dim Magenta (Red + Blue)</span>
+<span class="w">  </span><span class="n">leds</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span><span class="w"> </span><span class="c1">// Dim White (Red + Green + Blue)</span>
+
+<span class="w">  </span><span class="c1">// Show the updated LED colors</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Wait before repeating the loop</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Setup Function:</strong></li>
+<li><code>FastLED.addLeds&lt;NEOPIXEL, LED_PIN&gt;(leds, NUM_LEDS);</code>: Initializes the LED strip.</li>
+<li>
+<p><code>FastLED.setBrightness(BRIGHTNESS);</code>: Sets the overall brightness of the LED strip.</p>
 </li>
-</ul>
-<h3 id="example-sketch">Example Sketch:<a class="headerlink" href="#example-sketch" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Open Example:</strong><ul>
-<li>Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>FastLED</code> &gt; <code>DemoReel100</code>.</li>
-</ul>
+<li>
+<p><strong>Loop Function:</strong></p>
 </li>
+<li><code>leds[0] = CRGB(10, 10, 10);</code>: Sets the first LED to a very dim white.</li>
+<li>Sets the remaining LEDs to different colors (dimmed) to showcase RGB mixing.</li>
+<li><code>FastLED.show();</code>: Updates the LED strip to show the new colors.</li>
+<li><code>delay(1000);</code>: Waits for 1 second before repeating the loop.</li>
 </ul>
-<p><img alt="alt text" src="image.png" /></p>
+<h2 id="transition-to-more-complicated-example-codes">Transition to More Complicated Example Codes<a class="headerlink" href="#transition-to-more-complicated-example-codes" title="Permanent link">&para;</a></h2>
+<p>Now that you understand the basics of controlling an LED strip and color mixing, you can experiment with more complex animations and patterns. Try modifying the example sketches provided by the FastLED library, or create your own patterns and effects. Explore advanced features such as color palettes, sine wave animations, and more.</p>
+<h2 id="example-sketch_1">Example Sketch<a class="headerlink" href="#example-sketch_1" title="Permanent link">&para;</a></h2>
+<p>Open Example:
+- Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>FastLED</code> &gt; <code>DemoReel100</code>.</p>
+<p><img alt="DemoReel100" src="image.png" /></p>
+<h3 id="modify-the-example">Modify the Example<a class="headerlink" href="#modify-the-example" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Modify the Example:</strong><ul>
 <li>Change the number of LEDs and the type of LED strip in the example code.</li>
 </ul>
-</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="cp">#define LED_PIN     6</span>
+<div class="codehilite"><pre><span></span><code><span class="cp">#define LED_PIN     A3</span>
 <span class="cp">#define NUM_LEDS    8</span>
 <span class="cp">#define LED_TYPE    WS2812</span>
 <span class="cp">#define COLOR_ORDER GRB</span>
@@ -329,34 +397,25 @@ Pin 6 ----------  DIN
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Upload to Arduino:
+- Click the <code>Upload</code> button to upload the modified example code to the Arduino.</p>
+<h3 id="observe-the-led-strip">Observe the LED Strip<a class="headerlink" href="#observe-the-led-strip" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Upload to Arduino:</strong><ul>
-<li>Click the <code>Upload</code> button to upload the modified example code to the Arduino.</li>
-</ul>
-</li>
-<li><strong>Observe the LED Strip:</strong><ul>
 <li>The LED strip will display various pre-programmed patterns, demonstrating the capabilities of the FastLED library.</li>
 </ul>
-</li>
-</ul>
-<h4 id="experiment-with-other-animations"><strong>Experiment with Other Animations:</strong><a class="headerlink" href="#experiment-with-other-animations" title="Permanent link">&para;</a></h4>
+<h3 id="experiment-with-other-animations">Experiment with Other Animations<a class="headerlink" href="#experiment-with-other-animations" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Try modifying the example sketch or creating new sketches to see how different animations affect the LED strip. Some simple ideas include changing colors, speed, or creating new patterns.</li>
 </ul>
-<hr />
-<h4 id="adapt-an-example-code"><strong>Adapt an Example Code:</strong><a class="headerlink" href="#adapt-an-example-code" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Simple Adaptation:</strong><ul>
-<li>Open the <code>ColorPalette</code> example from the FastLED library.</li>
-<li>Modify the colors in the color palette to create a custom sequence.</li>
-<li>Upload the modified code to the Arduino to see the changes in the LED strip.</li>
-</ul>
-</li>
-<li><strong>Code Example:</strong></li>
-</ul>
+<h2 id="adapt-an-example-code">Adapt an Example Code<a class="headerlink" href="#adapt-an-example-code" title="Permanent link">&para;</a></h2>
+<p>Simple Adaptation:
+- Open the <code>ColorPalette</code> example from the FastLED library.
+- Modify the colors in the color palette to create a custom sequence.
+- Upload the modified code to the Arduino to see the changes in the LED strip.</p>
+<h3 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
 
-<span class="cp">#define LED_PIN 6</span>
+<span class="cp">#define LED_PIN A3</span>
 <span class="cp">#define NUM_LEDS 8</span>
 
 <span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
@@ -378,57 +437,39 @@ Pin 6 ----------  DIN
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="create-a-sine-wave-animation"><strong>Create a Sine Wave Animation:</strong><a class="headerlink" href="#create-a-sine-wave-animation" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Use a Sine Wave:</strong><ul>
-<li>Create a function to generate a sine wave pattern across the 8 LEDs.</li>
-</ul>
-</li>
-<li><strong>Code Example:</strong></li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Include the FastLED library</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
-<span class="c1">// Include the math library to use the sin() function</span>
+<h2 id="create-a-sine-wave-animation">Create a Sine Wave Animation<a class="headerlink" href="#create-a-sine-wave-animation" title="Permanent link">&para;</a></h2>
+<p>Use a Sine Wave:
+- Create a function to generate a sine wave pattern across the 8 LEDs.</p>
+<h3 id="code-example_1">Code Example<a class="headerlink" href="#code-example_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
 
-<span class="c1">// Define the pin that is connected to the DIN of the LED strip</span>
-<span class="cp">#define LED_PIN 6</span>
-
-<span class="c1">// Define the number of LEDs in the strip</span>
+<span class="cp">#define LED_PIN A3</span>
 <span class="cp">#define NUM_LEDS 8</span>
 
-<span class="c1">// Create an array of LED objects</span>
 <span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
-
-<span class="c1">// Declare a variable to keep track of the angle</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Initialize the LED strip</span>
 <span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">NEOPIXEL</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
 <span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Initialize all pixels to &#39;off&#39;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Calculate the sine of the angle for each LED and set its brightness</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">127.5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Scale sine wave result to 0-255</span>
 <span class="w">    </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">brightness</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Increment the angle</span>
 <span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// Reset the angle if it exceeds 2*PI</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Show the updated LED colors</span>
 <span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// Wait for 100 milliseconds before the next loop</span>
 <span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
