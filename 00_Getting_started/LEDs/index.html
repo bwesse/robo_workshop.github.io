@@ -64,38 +64,46 @@
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">LEDs</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction:</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gather-necessary-components">Gather Necessary Components:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-gather-necessary-components">1. Gather Necessary Components:</a>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#breadboards">Breadboards</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-purpose">1. Purpose:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-purpose">1. Purpose:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-structure">2. Structure:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-structure">2. Structure:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-power-rails">3. Power Rails:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-power-rails">3. Power Rails:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-terminal-strips">4. Terminal Strips:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-terminal-strips">4. Terminal Strips:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#5-component-placement">5. Component Placement:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-component-placement">5. Component Placement:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#6-integration">6. Integration:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-integration">6. Integration:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#7-advantages">7. Advantages:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-advantages">7. Advantages:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#8-common-uses">8. Common Uses:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#8-common-uses">8. Common Uses:</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-circuit-connections">2. Circuit Connections:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#circuit-connections">Circuit Connections:</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#install-necessary-library">Install Necessary Library:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-install-necessary-library">3. Install Necessary Library:</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-use-example-sketch">4. Use Example Sketch:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#example-sketch">Example Sketch:</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#experiment-with-other-animations">Experiment with Other Animations:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-experiment-with-other-animations">5. Experiment with Other Animations:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#adapt-an-example-code">Adapt an Example Code:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-adapt-an-example-code">6. Adapt an Example Code:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-sine-wave-animation">Create a Sine Wave Animation:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-create-a-sine-wave-animation">7. Create a Sine Wave Animation:</a>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -203,12 +211,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="controlling-a-ws2812b-led-strip-with-arduino">Controlling a WS2812B LED Strip with Arduino<a class="headerlink" href="#controlling-a-ws2812b-led-strip-with-arduino" title="Permanent link">&para;</a></h3>
+                <h1 id="controlling-a-ws2812b-led-strip-with-arduino">Controlling a WS2812B LED Strip with Arduino<a class="headerlink" href="#controlling-a-ws2812b-led-strip-with-arduino" title="Permanent link">&para;</a></h1>
 <p><img alt="alt text" src="8a96bde4f7ae95d9a1003934c4b35aab.gif" /></p>
-<h4 id="introduction">Introduction:<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h4>
+<h3 id="introduction">Introduction:<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
 <p>Up until now, we have been working with the Arduino and its built-in LED. While this has been great for understanding the basics, it is time to transition to something more visually appealing: using an external WS2812B LED strip. This guide will help you move beyond the Arduino's onboard LED to control a vibrant and colorful LED strip. We will also introduce the use of breadboards to facilitate our circuit connections. </p>
 <p>First, we'll use an example sketch from the FastLED library to get the LEDs up and running quickly. After that, we'll perform some simple adaptations and finally, create a sine wave animation for the LED strip.</p>
-<h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong><a class="headerlink" href="#1-gather-necessary-components" title="Permanent link">&para;</a></h4>
+<h4 id="gather-necessary-components"><strong>Gather Necessary Components:</strong><a class="headerlink" href="#gather-necessary-components" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Arduino Board:</strong> (e.g., Arduino Nano).</li>
 <li><strong>Cable:</strong> mini-USB to USB.</li>
@@ -216,7 +224,7 @@
 <li><strong>Connecting Wires:</strong> Jumper wires for connections.</li>
 <li><strong>Breadboard,</strong> for prototyping.</li>
 </ul>
-<h4 id="breadboards">Breadboards<a class="headerlink" href="#breadboards" title="Permanent link">&para;</a></h4>
+<h3 id="breadboards">Breadboards<a class="headerlink" href="#breadboards" title="Permanent link">&para;</a></h3>
 <p><img alt="alt text" src="518c0b34ce395fea62000002.jpg" /></p>
 <h4 id="1-purpose"><strong>1. Purpose:</strong><a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h4>
 <ul>
@@ -256,7 +264,7 @@
 <ul>
 <li>Ideal for learning, prototyping, and debugging electronic circuits.</li>
 </ul>
-<h4 id="2-circuit-connections">2. <strong>Circuit Connections:</strong><a class="headerlink" href="#2-circuit-connections" title="Permanent link">&para;</a></h4>
+<h3 id="circuit-connections"><strong>Circuit Connections:</strong><a class="headerlink" href="#circuit-connections" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Power Connections:</strong></li>
 <li>
@@ -283,7 +291,7 @@ GND ------------  GND
 Pin 6 ----------  DIN
 </code></pre></div>
 
-<h4 id="3-install-necessary-library">3. <strong>Install Necessary Library:</strong><a class="headerlink" href="#3-install-necessary-library" title="Permanent link">&para;</a></h4>
+<h4 id="install-necessary-library"><strong>Install Necessary Library:</strong><a class="headerlink" href="#install-necessary-library" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>FastLED Library:</strong><ul>
 <li>Open Arduino IDE.</li>
@@ -292,7 +300,7 @@ Pin 6 ----------  DIN
 </ul>
 </li>
 </ul>
-<h4 id="4-use-example-sketch">4. <strong>Use Example Sketch:</strong><a class="headerlink" href="#4-use-example-sketch" title="Permanent link">&para;</a></h4>
+<h3 id="example-sketch">Example Sketch:<a class="headerlink" href="#example-sketch" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Open Example:</strong><ul>
 <li>Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>FastLED</code> &gt; <code>DemoReel100</code>.</li>
@@ -331,11 +339,12 @@ Pin 6 ----------  DIN
 </ul>
 </li>
 </ul>
-<h4 id="5-experiment-with-other-animations">5. <strong>Experiment with Other Animations:</strong><a class="headerlink" href="#5-experiment-with-other-animations" title="Permanent link">&para;</a></h4>
+<h4 id="experiment-with-other-animations"><strong>Experiment with Other Animations:</strong><a class="headerlink" href="#experiment-with-other-animations" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Try modifying the example sketch or creating new sketches to see how different animations affect the LED strip. Some simple ideas include changing colors, speed, or creating new patterns.</li>
 </ul>
-<h4 id="6-adapt-an-example-code">6. <strong>Adapt an Example Code:</strong><a class="headerlink" href="#6-adapt-an-example-code" title="Permanent link">&para;</a></h4>
+<hr />
+<h4 id="adapt-an-example-code"><strong>Adapt an Example Code:</strong><a class="headerlink" href="#adapt-an-example-code" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Simple Adaptation:</strong><ul>
 <li>Open the <code>ColorPalette</code> example from the FastLED library.</li>
@@ -369,7 +378,7 @@ Pin 6 ----------  DIN
 <span class="p">}</span>
 </code></pre></div>
 
-<h4 id="7-create-a-sine-wave-animation">7. <strong>Create a Sine Wave Animation:</strong><a class="headerlink" href="#7-create-a-sine-wave-animation" title="Permanent link">&para;</a></h4>
+<h4 id="create-a-sine-wave-animation"><strong>Create a Sine Wave Animation:</strong><a class="headerlink" href="#create-a-sine-wave-animation" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Use a Sine Wave:</strong><ul>
 <li>Create a function to generate a sine wave pattern across the 8 LEDs.</li>
