@@ -218,97 +218,65 @@
 </ul>
 <h4 id="breadboards">Breadboards<a class="headerlink" href="#breadboards" title="Permanent link">&para;</a></h4>
 <p><img alt="Breadboard" src="../../99_Resources/images/BB-01.jpg" /></p>
+<p><img alt="alt text" src="518c0b34ce395fea62000002.jpg" /></p>
 <h4 id="1-purpose"><strong>1. Purpose:</strong><a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Used for prototyping electronic circuits without soldering.</li>
 </ul>
 <h4 id="2-structure"><strong>2. Structure:</strong><a class="headerlink" href="#2-structure" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Rows and Columns:</strong><ul>
-<li>Consist of a grid of holes arranged in rows and columns.</li>
-</ul>
-</li>
-<li><strong>Metal Strips:</strong><ul>
-<li>Metal strips underneath the board connect the holes electrically.</li>
-</ul>
-</li>
+<li><strong>Rows and Columns:</strong> Grid of holes arranged in rows and columns.</li>
+<li><strong>Metal Strips:</strong> Underneath the board connect the holes electrically.</li>
 </ul>
 <h4 id="3-power-rails"><strong>3. Power Rails:</strong><a class="headerlink" href="#3-power-rails" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Lines:</strong><ul>
-<li>Two long rows typically run along the top and bottom for power distribution.</li>
-</ul>
-</li>
-<li><strong>Purpose:</strong><ul>
-<li>Used to connect power supply (positive and negative).</li>
-</ul>
-</li>
+<li><strong>Lines:</strong> Two long rows along the top and bottom for power distribution.</li>
+<li><strong>Purpose:</strong> Used to connect power supply (positive and negative).</li>
 </ul>
 <h4 id="4-terminal-strips"><strong>4. Terminal Strips:</strong><a class="headerlink" href="#4-terminal-strips" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Rows:</strong><ul>
-<li>Consist of short horizontal rows in the middle.</li>
-</ul>
-</li>
-<li><strong>Connections:</strong><ul>
-<li>Each row of five holes is electrically connected, allowing components to be inserted and interconnected.</li>
-</ul>
-</li>
+<li><strong>Rows:</strong> Short horizontal rows in the middle.</li>
+<li><strong>Connections:</strong> Each row of five holes is electrically connected, allowing components to be inserted and interconnected.</li>
 </ul>
 <h4 id="5-component-placement"><strong>5. Component Placement:</strong><a class="headerlink" href="#5-component-placement" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Insertion:</strong><ul>
-<li>Components like resistors, capacitors, and ICs are inserted into the holes.</li>
-</ul>
-</li>
-<li><strong>Connections:</strong><ul>
-<li>Wires or jumper cables are used to connect different components.</li>
-</ul>
-</li>
+<li><strong>Insertion:</strong> Components like resistors, capacitors, and ICs are inserted into the holes.</li>
+<li><strong>Connections:</strong> Wires or jumper cables connect different components.</li>
 </ul>
 <h4 id="6-integration"><strong>6. Integration:</strong><a class="headerlink" href="#6-integration" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Circuits:</strong><ul>
-<li>Allows easy creation and modification of circuits.</li>
-</ul>
-</li>
-<li><strong>Testing:</strong><ul>
-<li>Facilitates testing and troubleshooting before finalizing designs.</li>
-</ul>
-</li>
+<li><strong>Circuits:</strong> Allows easy creation and modification of circuits.</li>
+<li><strong>Testing:</strong> Facilitates testing and troubleshooting before finalizing designs.</li>
 </ul>
 <h4 id="7-advantages"><strong>7. Advantages:</strong><a class="headerlink" href="#7-advantages" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Non-permanent:</strong><ul>
-<li>Components can be easily removed or replaced.</li>
-</ul>
-</li>
-<li><strong>Reusable:</strong><ul>
-<li>Breadboards can be reused for multiple projects.</li>
-</ul>
-</li>
+<li><strong>Non-permanent:</strong> Components can be easily removed or replaced.</li>
+<li><strong>Reusable:</strong> Breadboards can be reused for multiple projects.</li>
 </ul>
 <h4 id="8-common-uses"><strong>8. Common Uses:</strong><a class="headerlink" href="#8-common-uses" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Ideal for learning, prototyping, and debugging electronic circuits.</li>
 </ul>
-<hr />
-<p><img alt="led pinout" src="../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp" /></p>
 <h4 id="2-circuit-connections">2. <strong>Circuit Connections:</strong><a class="headerlink" href="#2-circuit-connections" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Power Connections:</strong></li>
+<li>
+<p>Connect the 5V and GND of the power supply to the LED strip using a breadboard.</p>
 <ul>
-<li><strong>Power Connections:</strong><ul>
-<li>Connect the 5V and GND of the power supply to the LED strip.</li>
+<li><strong>Black Wire (GND):</strong> Connect the GND pin of the LED strip to the GND rail on the breadboard.</li>
+<li><strong>Red Wire (5V):</strong> Connect the 5V pin of the LED strip to the 5V rail on the breadboard.</li>
+<li>Plug the Arduino into your computer via USB. The LEDs should light up.</li>
 </ul>
 </li>
-<li><strong>Data Connection:</strong><ul>
-<li>Connect the Data Input (DIN) of the LED strip to a digital pin on the Arduino (e.g., pin 6).</li>
+<li>
+<p><strong>Data Connection:</strong></p>
+</li>
+<li><strong>Unplug the Arduino.</strong></li>
+<li>Connect the Data Input (DIN) of the LED strip to digital pin 6 on the Arduino.<ul>
+<li><strong>Data Wire:</strong> Connect the DIN pin of the LED strip to digital pin 6 on the Arduino.</li>
 </ul>
 </li>
-<li><strong>Arduino Power:</strong><ul>
-<li>Connect the Arduino to your computer via USB</li>
-</ul>
-</li>
-</ul>
+</ol>
 <p><strong>Basic Wiring Diagram:</strong></p>
 <div class="codehilite"><pre><span></span><code>Arduino          WS2812B LED Strip
 5V  ------------  5V
@@ -331,6 +299,9 @@ Pin 6 ----------  DIN
 <li>Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>FastLED</code> &gt; <code>DemoReel100</code>.</li>
 </ul>
 </li>
+</ul>
+<p><img alt="alt text" src="image.png" /></p>
+<ul>
 <li><strong>Modify the Example:</strong><ul>
 <li>Change the number of LEDs and the type of LED strip in the example code.</li>
 </ul>
@@ -338,7 +309,7 @@ Pin 6 ----------  DIN
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="cp">#define LED_PIN     6</span>
 <span class="cp">#define NUM_LEDS    8</span>
-<span class="cp">#define LED_TYPE    WS2812B</span>
+<span class="cp">#define LED_TYPE    WS2812</span>
 <span class="cp">#define COLOR_ORDER GRB</span>
 <span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
 
