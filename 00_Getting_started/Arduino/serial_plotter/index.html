@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Serial Plotter - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Serial Plotter";
+        var mkdocs_page_input_path = "00_Getting_started\\Arduino\\serial_plotter\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Arduino</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Serial Plotter</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#example-plotting-a-sine-wave-with-the-arduino-serial-plotter">Example: Plotting a Sine Wave with the Arduino Serial Plotter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#using-the-serial-plotter">Using the Serial Plotter:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#additional-tasks">Additional Tasks</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-modify-the-angle-increment">1. Modify the Angle Increment</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-use-a-different-mathematical-function">2. Use a Different Mathematical Function</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-plot-multiple-waves-simultaneously">3. Plot Multiple Waves Simultaneously</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03_Power/">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../04_Communication/I2C/README.md">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+          <li class="breadcrumb-item">Arduino</li>
+      <li class="breadcrumb-item active">Serial Plotter</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="serial-plotter">Serial Plotter<a class="headerlink" href="#serial-plotter" title="Permanent link">&para;</a></h1>
+<p>The Arduino Serial Plotter is a tool that allows you to visualize data from your Arduino board in real-time. It can be used to plot sensor data, waveforms, or any other data that changes over time. </p>
+<h2 id="example-plotting-a-sine-wave-with-the-arduino-serial-plotter">Example: Plotting a Sine Wave with the Arduino Serial Plotter<a class="headerlink" href="#example-plotting-a-sine-wave-with-the-arduino-serial-plotter" title="Permanent link">&para;</a></h2>
+<p>A very simple way to try out the Arduino Serial Plotter is to create a sketch that sends some varying data to the serial port. The Serial Plotter can graph this data in real-time. One of the simplest examples is to plot a sine wave. Here’s a basic sketch to do this:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Include the math library to use the sin() function</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="c1">// Declare a variable to keep track of the angle</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Initialize the serial communication at a baud rate of 9600</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Calculate the sine of the angle</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Print the value to the serial monitor</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Increment the angle</span>
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Reset the angle if it exceeds 2*PI</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Wait for 100 milliseconds before the next loop</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="explanation">Explanation:<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Include Math Library</strong>:</li>
+<li>
+<p><code>#include &lt;math.h&gt;</code> includes the math library to use the <code>sin()</code> function.</p>
+</li>
+<li>
+<p><strong>Variable Declaration</strong>:</p>
+</li>
+<li>
+<p><code>float angle = 0.0;</code> declares a floating-point variable named <code>angle</code> and initializes it to 0.0.</p>
+</li>
+<li>
+<p><strong>Setup Function</strong>:</p>
+</li>
+<li>
+<p><code>Serial.begin(9600);</code> initializes serial communication at a baud rate of 9600 bits per second.</p>
+</li>
+<li>
+<p><strong>Loop Function</strong>:</p>
+</li>
+<li><code>float value = sin(angle);</code> calculates the sine of the current angle.</li>
+<li><code>Serial.println(value);</code> prints the sine value to the serial monitor.</li>
+<li><code>angle += 0.1;</code> increments the angle by 0.1 radians.</li>
+<li><code>if (angle &gt; TWO_PI) { angle = 0; }</code> resets the angle if it exceeds 2π (a full cycle).</li>
+<li><code>delay(100);</code> waits for 100 milliseconds before the next iteration of the loop.</li>
+</ol>
+<h3 id="using-the-serial-plotter">Using the Serial Plotter:<a class="headerlink" href="#using-the-serial-plotter" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Upload the sketch to your Arduino board.</li>
+<li>Open the Serial Plotter by navigating to <code>Tools &gt; Serial Plotter</code> in the Arduino IDE.</li>
+<li>Ensure the baud rate is set to 9600 in the Serial Plotter.</li>
+<li>You should see a sine wave being plotted in real-time.</li>
+</ol>
+<p>This sketch provides a simple way to visualize data using the Serial Plotter. You can modify the angle increment and delay to see how it affects the plotted sine wave.</p>
+<h2 id="additional-tasks">Additional Tasks<a class="headerlink" href="#additional-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="1-modify-the-angle-increment">1. Modify the Angle Increment<a class="headerlink" href="#1-modify-the-angle-increment" title="Permanent link">&para;</a></h3>
+<p>Write a program that modifies the angle increment to change the frequency of the sine wave plotted on the Serial Plotter.</p>
+<details>
+<summary>Hint 1</summary>
+Identify the line where the angle is incremented.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Change the increment value to a different number.
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Change the increment value to modify the frequency</span>
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span><span class="w"> </span><span class="c1">// Smaller increment for a higher frequency wave</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="2-use-a-different-mathematical-function">2. Use a Different Mathematical Function<a class="headerlink" href="#2-use-a-different-mathematical-function" title="Permanent link">&para;</a></h3>
+<p>Write a program that plots a different mathematical function, such as a cosine wave, on the Serial Plotter.</p>
+<details>
+<summary>Hint 1</summary>
+Identify the line where the sine function is used.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Replace the sine function with the cosine function.
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Use the cosine function instead of the sine function</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="3-plot-multiple-waves-simultaneously">3. Plot Multiple Waves Simultaneously<a class="headerlink" href="#3-plot-multiple-waves-simultaneously" title="Permanent link">&para;</a></h3>
+<p>Write a program that plots both sine and cosine waves simultaneously on the Serial Plotter.</p>
+<details>
+<summary>Hint 1</summary>
+Calculate both sine and cosine values in the loop function.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Print both values to the Serial Monitor, separated by a space or comma.
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">sineValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">cosineValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Print both values separated by a comma</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sineValue</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">cosineValue</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<p>These tasks will help you explore more features of the Arduino Serial Plotter and understand how to manipulate and visualize data in real-time.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../serial_print/" class="btn btn-neutral float-left" title="Serial Print"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../serial_input/" class="btn btn-neutral float-right" title="Serial Input">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../serial_print/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../serial_input/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

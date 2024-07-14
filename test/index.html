@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Overview - Robotics Workshop</title>
+    <title>Example Markdown Page - Robotics Workshop</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Overview";
-        var mkdocs_page_input_path = "02_Actuators\\README.md";
+        var mkdocs_page_name = "Example Markdown Page";
+        var mkdocs_page_input_path = "test.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -84,22 +84,10 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Actuators</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#types-of-actuators">Types of Actuators</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#selection-criteria">Selection Criteria</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#integration-and-control">Integration and Control</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#common-applications">Common Applications</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_Actuators/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="motor_driver/">Motor Driver</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_Actuators/motor_driver/">Motor Driver</a>
                   </li>
               </ul>
               <ul>
@@ -165,8 +153,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Actuators</li>
-      <li class="breadcrumb-item active">Overview</li>
+      <li class="breadcrumb-item active">Example Markdown Page</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -175,64 +162,85 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="actuators-in-robotics">Actuators in Robotics<a class="headerlink" href="#actuators-in-robotics" title="Permanent link">&para;</a></h2>
-<p><img alt="actuators" src="../99_Resources/images/actuators.webp" /></p>
-<p>Actuators are critical components in robotics, responsible for converting electrical energy into mechanical motion. They enable robots to interact with their environment, move, and perform tasks. Understanding actuators is essential for designing and building efficient robotic systems. Here's an overview of key concepts and types of actuators used in robotics.</p>
-<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Functionality</strong>: Actuators are devices that produce motion. They are driven by electrical, hydraulic, or pneumatic energy sources.</li>
-<li><strong>Control</strong>: Actuators are controlled by microcontrollers or processors that send signals to initiate and regulate their movement.</li>
-<li><strong>Power Source</strong>: The choice of power source (electricity, compressed air, hydraulic fluid) impacts the actuator's performance and suitability for different applications.</li>
-</ul>
-<h3 id="types-of-actuators">Types of Actuators<a class="headerlink" href="#types-of-actuators" title="Permanent link">&para;</a></h3>
+                <h1 id="example-markdown-page">Example Markdown Page<a class="headerlink" href="#example-markdown-page" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C</label><label for="__tabbed_1_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>``` c</p>
+<h1 id="include">include <stdio.h><a class="headerlink" href="#include" title="Permanent link">&para;</a></h1>
+<p>int main(void) {
+  printf("Hello world!\n");
+  return 0;
+}
+```</p>
+</div>
+<div class="tabbed-block">
+<p>``` c++</p>
+<h1 id="include_1">include <iostream><a class="headerlink" href="#include_1" title="Permanent link">&para;</a></h1>
+<p>int main(void) {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+  return 0;
+}
+```</p>
+</div>
+</div>
+</div>
+<h1 id="example-markdown-page_1">Example Markdown Page<a class="headerlink" href="#example-markdown-page_1" title="Permanent link">&para;</a></h1>
+<p>??? question "How to set a page template for an entire folder?"</p>
+<div class="codehilite"><pre><span></span><code>With the help of the [built-in meta plugin], you can set a custom template
+for an entire section and all nested pages, by creating a `.meta.yml` file
+in the corresponding folder with the following content:
+
+``` yaml
+template: custom.html
+```
+</code></pre></div>
+
+<p>This is an example page demonstrating how to use code annotations and copyable code blocks with Material for MkDocs.</p>
+<h2 id="annotated-code-block-example">Annotated Code Block Example<a class="headerlink" href="#annotated-code-block-example" title="Permanent link">&para;</a></h2>
+<p>In this section, we'll show how to annotate code to provide explanations for specific lines.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Import necessary libraries</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">time</span>  <span class="c1"># (1)</span>
+</span>
+<span class="c1"># Function to greet the user</span>
+<span class="hll"><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>  <span class="c1"># (2)</span>
+</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>  <span class="c1"># (3)</span>
+
+<span class="c1"># Call the function with a name</span>
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Robotics Enthusiast&quot;</span><span class="p">)</span>  <span class="c1"># (4)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># (5) Pause for 2 seconds before ending the script</span>
+</code></pre></div>
+
 <ol>
-<li><strong>Electric Actuators</strong>:<ul>
-<li><strong>DC Motors</strong>: Common in robotics for their simplicity and ease of control. They convert direct current electrical energy into rotational motion.</li>
-<li><strong>Servo Motors</strong>: Provide precise control of angular position. Ideal for applications requiring accurate movements, such as robotic arms.</li>
-<li><strong>Stepper Motors</strong>: Move in discrete steps, offering precise control over position and speed. Used in applications where exact positioning is crucial.</li>
-</ul>
-</li>
-<li><strong>Pneumatic Actuators</strong>:<ul>
-<li><strong>Air Cylinders</strong>: Use compressed air to produce linear or rotary motion. Suitable for applications needing rapid and powerful movements.</li>
-<li><strong>Air Muscles</strong>: Mimic natural muscle movement using compressed air. Often used in soft robotics for their flexibility and compliance.</li>
-</ul>
-</li>
-<li><strong>Hydraulic Actuators</strong>:<ul>
-<li><strong>Hydraulic Cylinders</strong>: Utilize hydraulic fluid to generate high-force linear motion. Ideal for heavy-duty applications requiring significant force.</li>
-<li><strong>Hydraulic Motors</strong>: Convert hydraulic pressure into rotational motion, used in applications requiring high torque.</li>
-</ul>
-</li>
+<li><code>import time</code>: The <code>time</code> module is imported to use the <code>sleep</code> function.</li>
+<li><code>def greet(name):</code>: A function named <code>greet</code> is defined, which takes one parameter, <code>name</code>.</li>
+<li><code>print(f"Hello, {name}!")</code>: This line prints a greeting message, using an f-string for formatting.</li>
+<li><code>greet("Robotics Enthusiast")</code>: The <code>greet</code> function is called with the argument <code>"Robotics Enthusiast"</code>.</li>
+<li><code>time.sleep(2)</code>: The script pauses for 2 seconds before ending.</li>
 </ol>
-<h3 id="selection-criteria">Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permanent link">&para;</a></h3>
-<p>When choosing an actuator for your robot, consider the following factors:</p>
-<ul>
-<li><strong>Application Requirements</strong>: Define the motion type, range, and precision needed for the task.</li>
-<li><strong>Load Capacity</strong>: Ensure the actuator can handle the required load without compromising performance.</li>
-<li><strong>Speed and Torque</strong>: Match the actuator's speed and torque capabilities to the application's demands.</li>
-<li><strong>Power Efficiency</strong>: Opt for actuators that provide efficient power usage to extend battery life or reduce energy costs.</li>
-<li><strong>Environmental Conditions</strong>: Choose actuators that can withstand the operating environment, including temperature, humidity, and exposure to elements.</li>
-</ul>
-<h3 id="integration-and-control">Integration and Control<a class="headerlink" href="#integration-and-control" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Microcontrollers</strong>: Use microcontrollers like Arduino to send control signals to actuators. Program the microcontroller to handle different motion profiles and respond to sensor inputs.</li>
-<li><strong>Feedback Systems</strong>: Incorporate sensors to provide feedback on the actuator's position and performance. This enables closed-loop control systems for precise and adaptive movement.</li>
-<li><strong>Driver Circuits</strong>: Utilize appropriate driver circuits to interface between the microcontroller and the actuator, ensuring safe and efficient operation.</li>
-</ul>
-<h3 id="common-applications">Common Applications<a class="headerlink" href="#common-applications" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Robotic Arms</strong>: Servo motors for precise joint control.</li>
-<li><strong>Mobile Robots</strong>: DC motors for driving wheels or tracks.</li>
-<li><strong>Humanoid Robots</strong>: Combination of pneumatic actuators and servo motors to mimic human motion.</li>
-<li><strong>Industrial Automation</strong>: Hydraulic actuators for high-force applications like lifting and pressing.</li>
-</ul>
-<p><a href="https://www.notion.so/efaf4c21015c4670ad73561f9a8ade6e?pvs=21">Untitled Database</a></p>
+<h2 id="copyable-code-block-example">Copyable Code Block Example<a class="headerlink" href="#copyable-code-block-example" title="Permanent link">&para;</a></h2>
+<p>The following code block allows you to copy the code easily by clicking the copy button.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Example function to add two numbers</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Call the function with example numbers</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># This should print 12</span>
+</code></pre></div>
+
+<p>You can click the copy button on the top right corner of the code block to copy the code to your clipboard.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>By utilizing the features provided by Material for MkDocs, you can enhance your documentation with annotated code blocks and make code snippets easily copyable. This improves the readability and usability of your documentation.</p>
+<h3 id="explanation">Explanation:<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Annotated Code Block</strong>: The first code block demonstrates how to use annotations to explain each line of the code. The <code>hl_lines</code> attribute is used to highlight specific lines, and the comments with numbers (e.g., <code># (1)</code>) correspond to the explanations below the code block.</li>
+<li><strong>Copyable Code Block</strong>: The second code block shows how to create a simple code block that allows users to copy the code easily. The copy button is automatically provided by the Material theme for MkDocs.</li>
+</ol>
+<p>Make sure you have the required features enabled in your <code>mkdocs.yml</code> file, specifically <code>content.code.annotate</code> and <code>content.code.copy</code>, to support annotations and copyable code blocks.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../01_Sensors/MPU_6050/" class="btn btn-neutral float-left" title="MPU 6050"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="motor_driver/" class="btn btn-neutral float-right" title="Motor Driver">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -254,10 +262,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../01_Sensors/MPU_6050/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="motor_driver/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

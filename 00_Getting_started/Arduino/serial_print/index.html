@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Serial Print - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Serial Print";
+        var mkdocs_page_input_path = "00_Getting_started\\Arduino\\serial_print\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Arduino</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Serial Print</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#example-basic-serial-print">Example: Basic Serial Print</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#objective">Objective:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#components-needed">Components Needed:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#steps">Steps:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#code-explanation">Code Explanation:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-change-to-print-your-custom-message">1. Change to Print Your Custom Message</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-print-multiple-messages-to-the-serial-monitor">2. Print Multiple Messages to the Serial Monitor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-implement-a-simple-counter-that-increments-every-second-and-prints-the-value-to-the-serial-monitor">3. Implement a Simple Counter that Increments Every Second and Prints the Value to the Serial Monitor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-implement-a-counter-with-a-reset">4. Implement a Counter with a Reset</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03_Power/">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../04_Communication/I2C/README.md">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+          <li class="breadcrumb-item">Arduino</li>
+      <li class="breadcrumb-item active">Serial Print</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="task-2-basic-serial-print-with-arduino">Task 2: Basic Serial Print with Arduino<a class="headerlink" href="#task-2-basic-serial-print-with-arduino" title="Permanent link">&para;</a></h1>
+<p>In the previous task we have seen how to blink an LED using Arduino. In this task, we will see how to print a message to the Serial Monitor using Arduino. The Serial Monitor is a tool available in the Arduino IDE that allows you to communicate with your Arduino board over a serial connection. It can be used for debugging, monitoring sensor data, and sending/receiving information between the Arduino and your computer.</p>
+<p>Here's a basic Arduino example using <code>Serial.print()</code> to demonstrate how coding with an Arduino works. This example will show how to set up the Arduino, initialize the serial communication, and print a message to the Serial Monitor.</p>
+<h2 id="example-basic-serial-print">Example: Basic Serial Print<a class="headerlink" href="#example-basic-serial-print" title="Permanent link">&para;</a></h2>
+<h4 id="objective">Objective:<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h4>
+<p>To introduce the basics of Arduino coding by printing a message to the Serial Monitor.</p>
+<h4 id="components-needed">Components Needed:<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Arduino board (e.g., Arduino Uno)</li>
+<li>USB cable to connect the Arduino to your computer</li>
+</ul>
+<h4 id="steps">Steps:<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Connect the Arduino Board:</strong></li>
+<li>
+<p>Connect your Arduino board to your computer using the USB cable.</p>
+</li>
+<li>
+<p><strong>Open the Arduino IDE:</strong></p>
+</li>
+<li>
+<p>Launch the Arduino IDE on your computer.</p>
+</li>
+<li>
+<p><strong>Write the Code:</strong></p>
+</li>
+<li>In the Arduino IDE, write the following code:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Basic Serial Print Example</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Initialize serial communication at 9600 bits per second:</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Print a message to the Serial Monitor:</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, Arduino!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Nothing to do here</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="code-explanation">Code Explanation:<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>void setup()</code> function:</strong></li>
+<li>This function runs once when the Arduino is powered on or reset.</li>
+<li><code>Serial.begin(9600);</code> initializes the serial communication at a baud rate of 9600 bits per second. This sets up the communication speed between the Arduino and your computer.</li>
+<li>
+<p><code>Serial.println("Hello, Arduino!");</code> sends the message "Hello, Arduino!" to the Serial Monitor. <code>println</code> means "print line," which prints the text and moves the cursor to the next line.</p>
+</li>
+<li>
+<p><strong><code>void loop()</code> function:</strong></p>
+</li>
+<li>This function runs continuously after the <code>setup()</code> function has completed.</li>
+<li>
+<p>In this example, the <code>loop()</code> function is empty because we only want to print the message once during setup.</p>
+</li>
+<li>
+<p><strong>Upload the Code:</strong></p>
+</li>
+<li>Select the correct board and port from the Tools menu in the Arduino IDE.</li>
+<li>
+<p>Click the "Upload" button (right arrow icon) to upload the code to your Arduino board.</p>
+</li>
+<li>
+<p><strong>Open the Serial Monitor:</strong></p>
+</li>
+<li>After uploading the code, open the Serial Monitor by clicking the magnifying glass icon in the top right corner of the Arduino IDE or by selecting <code>Tools &gt; Serial Monitor</code>.</li>
+<li>
+<p>Ensure the baud rate at the bottom of the Serial Monitor is set to 9600.</p>
+</li>
+<li>
+<p><strong>Observe the Output:</strong></p>
+</li>
+<li>You should see the message "Hello, Arduino!" printed in the Serial Monitor.</li>
+</ul>
+<p>This example introduces the basic structure of an Arduino sketch (<code>setup</code> and <code>loop</code> functions) and shows how to initialize serial communication and print messages to the Serial Monitor. You can build upon this foundation to create more complex projects.</p>
+<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
+<h3 id="1-change-to-print-your-custom-message">1. Change to Print Your Custom Message<a class="headerlink" href="#1-change-to-print-your-custom-message" title="Permanent link">&para;</a></h3>
+<p>Write a program that prints a custom message to the Serial Monitor.</p>
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication at 9600 bits per second</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Replace &quot;Hello, world!&quot; with your custom message</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Nothing to do here</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="2-print-multiple-messages-to-the-serial-monitor">2. Print Multiple Messages to the Serial Monitor<a class="headerlink" href="#2-print-multiple-messages-to-the-serial-monitor" title="Permanent link">&para;</a></h3>
+<p>Write a program that prints multiple messages to the Serial Monitor.</p>
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication at 9600 bits per second</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Message 1&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print first message</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Message 2&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print second message</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Message 3&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print third message</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Nothing to do here</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="3-implement-a-simple-counter-that-increments-every-second-and-prints-the-value-to-the-serial-monitor">3. Implement a Simple Counter that Increments Every Second and Prints the Value to the Serial Monitor<a class="headerlink" href="#3-implement-a-simple-counter-that-increments-every-second-and-prints-the-value-to-the-serial-monitor" title="Permanent link">&para;</a></h3>
+<p>Write a program that implements a counter which increments every second and prints the value to the Serial Monitor.</p>
+<details>
+<summary>Hints</summary>
+
+<details>
+<summary>Hint 1</summary>
+Use a variable to store the counter value.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Utilize the recurring `loop()` function to increment the counter.
+</details>
+
+<details>
+<summary>Hint 3</summary>
+Use `delay(1000);` to create a 1-second delay.
+</details>
+
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Initialize counter variable</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication at 9600 bits per second</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">counter</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print the current value of counter</span>
+<span class="w">  </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Increment the counter</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Wait for 1 second (1000 milliseconds)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="4-implement-a-counter-with-a-reset">4. Implement a Counter with a Reset<a class="headerlink" href="#4-implement-a-counter-with-a-reset" title="Permanent link">&para;</a></h3>
+<p>Write a program that introduces an <code>i</code> and resets the counter when it reaches a certain value.</p>
+<details>
+<summary>Hints</summary>
+
+<details>
+<summary>Hint 1</summary>
+Use a variable `i` to store the current count.
+</details>
+
+<details>
+<summary>Hint 2</summary>
+Add a conditional statement to check if `i` has reached the reset value.
+</details>
+
+<details>
+<summary>Hint 3</summary>
+Reset `i` to zero inside the conditional statement.
+</details>
+
+<details>
+<summary>Hint 4</summary>
+Use `delay(1000);` to create a 1-second delay.
+</details>
+
+</details>
+
+<details>
+<summary>Solution</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Initialize counter variable</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resetValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set the value at which the counter resets</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication at 9600 bits per second</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">counter</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print the current value of counter</span>
+<span class="w">  </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Increment the counter</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">resetValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Check if counter has reached the reset value</span>
+<span class="w">    </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset the counter</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Counter reset!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print reset message</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Wait for 1 second (1000 milliseconds)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<p>These code snippets can be uploaded to an Arduino to perform the described tasks. Each snippet should be used separately, uploading one at a time to see the results.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../serial_plotter/" class="btn btn-neutral float-right" title="Serial Plotter">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../serial_plotter/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

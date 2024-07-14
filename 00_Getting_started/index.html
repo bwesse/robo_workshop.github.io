@@ -40,7 +40,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
@@ -49,9 +49,19 @@
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Arduino/">Arduino</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Components/">Components</a>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="LEDs/">LEDs</a>
                   </li>
@@ -92,7 +102,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -203,7 +213,7 @@
 </ul>
 </li>
 <li><strong>Sensors and Actuators</strong><ul>
-<li>Using sensors like MPU6050 and HC-SR04 to gather data.</li>
+<li>Using sensors like IMU and ToF to gather data.</li>
 <li>Controlling motors, servos, and LEDs as actuators.</li>
 </ul>
 </li>
@@ -269,7 +279,8 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="Arduino/" class="btn btn-neutral float-right" title="Arduino">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="Arduino/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -291,6 +302,8 @@
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="Arduino/" style="color: #fcfcfc">Next &raquo;</a></span>

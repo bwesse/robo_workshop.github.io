@@ -40,16 +40,26 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../../../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/Arduino/">Arduino</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/Components/">Components</a>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/LEDs/">LEDs</a>
                   </li>
@@ -116,7 +126,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../../../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -182,11 +192,12 @@
               
                 <h1 id="vl53l0x-distance-sensor-tutorial">VL53L0X Distance Sensor Tutorial<a class="headerlink" href="#vl53l0x-distance-sensor-tutorial" title="Permanent link">&para;</a></h1>
 <p><img alt="ToF" src="../../../99_Resources/images/vl53l0x.jpeg" /></p>
-<p>The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.</p>
+<p>The VL53L0X is a Time-of-Flight (ToF) distance sensor capable of measuring distances up to 2 meters with high accuracy. This tutorial will guide you through the basics of setting up and using the VL53L0X sensor with an Arduino.
+The sensor includes a voltage regulator and level shifter, making it compatible with both 3.3V and 5V systems. We will use the 3.3 Volt mode for this tutorial.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>VL53L0X Sensor</li>
-<li>Arduino (Uno, Mega, etc.)</li>
+<li>Arduino Nano</li>
 <li>Breadboard and jumper wires</li>
 <li>Arduino IDE installed on your computer</li>
 <li>VL53L0X Arduino library</li>
@@ -195,9 +206,9 @@
 <h3 id="wiring-the-sensor-to-arduino">Wiring the Sensor to Arduino<a class="headerlink" href="#wiring-the-sensor-to-arduino" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>GND</strong> (Ground) -&gt; Connect to Arduino GND</li>
-<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino 3.3V or 5V (Check sensor specifications for exact voltage)</li>
-<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino A5 (Uno) or the corresponding SCL pin on other models</li>
-<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino A4 (Uno) or the corresponding SDA pin on other models</li>
+<li><strong>VCC</strong> (Power) -&gt; Connect to Arduino 3.3V </li>
+<li><strong>SCL</strong> (Clock) -&gt; Connect to Arduino A5 (SCL pin)</li>
+<li><strong>SDA</strong> (Data) -&gt; Connect to Arduino A4 (SDA pin)</li>
 </ul>
 <h3 id="installing-the-vl53l0x-library">Installing the VL53L0X Library<a class="headerlink" href="#installing-the-vl53l0x-library" title="Permanent link">&para;</a></h3>
 <ol>
@@ -207,36 +218,37 @@
 <li>Find the "VL53L0X by Pololu" library and click <strong>Install</strong>.</li>
 </ol>
 <h2 id="basic-code-example">Basic Code Example<a class="headerlink" href="#basic-code-example" title="Permanent link">&para;</a></h2>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to detect and initialize sensor!&quot;</span><span class="p">);</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">}</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: &quot;</span><span class="p">);</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">());</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; mm&quot;</span><span class="p">);</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
+
+<span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to detect and initialize sensor!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: &quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">());</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; mm&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">timeoutOccurred</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; TIMEOUT&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Libraries</strong>: Includes the Wire library for I2C communication and the VL53L0X library for sensor functions.</li>

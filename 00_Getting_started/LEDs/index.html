@@ -40,19 +40,31 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Arduino/">Arduino</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Components/">Components</a>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">LEDs</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction:</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#1-gather-necessary-components">1. Gather Necessary Components:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#breadboards">Breadboards</a>
@@ -77,13 +89,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#3-install-necessary-library">3. Install Necessary Library:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-write-the-arduino-code">4. Write the Arduino Code:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#4-use-example-sketch">4. Use Example Sketch:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-upload-the-code">5. Upload the Code:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#5-experiment-with-other-animations">5. Experiment with Other Animations:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-observe-the-led-strip">6. Observe the LED Strip:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#6-adapt-an-example-code">6. Adapt an Example Code:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-experiment-with-other-animations">7. Experiment with Other Animations:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#7-create-a-sine-wave-animation">7. Create a Sine Wave Animation:</a>
     </li>
     </ul>
                   </li>
@@ -124,7 +136,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -189,10 +201,13 @@
               
                 <h3 id="controlling-a-ws2812b-led-strip-with-arduino">Controlling a WS2812B LED Strip with Arduino<a class="headerlink" href="#controlling-a-ws2812b-led-strip-with-arduino" title="Permanent link">&para;</a></h3>
 <p><img alt="WS2812B LED Strip" src="../../99_Resources/images/RGBstrip.jpg" /></p>
+<h4 id="introduction">Introduction:<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h4>
+<p>Up until now, we have been working with the Arduino and its built-in LED. While this has been great for understanding the basics, it is time to transition to something more visually appealing: using an external WS2812B LED strip. This guide will help you move beyond the Arduino's onboard LED to control a vibrant and colorful LED strip. We will also introduce the use of breadboards to facilitate our circuit connections. </p>
+<p>First, we'll use an example sketch from the FastLED library to get the LEDs up and running quickly. After that, we'll perform some simple adaptations and finally, create a sine wave animation for the LED strip.</p>
 <h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong><a class="headerlink" href="#1-gather-necessary-components" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Arduino Board:</strong> (e.g., Arduino Nano).</li>
-<li><strong>Cable:</strong> mini-usb to usb</li>
+<li><strong>Cable:</strong> mini-USB to USB.</li>
 <li><strong>WS2812B LED Strip:</strong> Ensure it has 8 LEDs.</li>
 <li><strong>Connecting Wires:</strong> Jumper wires for connections.</li>
 <li><strong>Breadboard,</strong> for prototyping.</li>
@@ -274,7 +289,7 @@
 <li>Ideal for learning, prototyping, and debugging electronic circuits.</li>
 </ul>
 <hr />
-<p><img alt="led pinout" src="../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp" />    </p>
+<p><img alt="led pinout" src="../../99_Resources/images/WS2812B-Addressable-RGB-LED-pinout-diagram.webp" /></p>
 <h4 id="2-circuit-connections">2. <strong>Circuit Connections:</strong><a class="headerlink" href="#2-circuit-connections" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Power Connections:</strong><ul>
@@ -290,91 +305,157 @@
 </ul>
 </li>
 </ul>
-<p><strong>Basic Wiring Diagram:</strong>
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Arduino          WS2812B LED Strip
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>5V  ------------  5V
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GND ------------  GND
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Pin 6 ----------  DIN
-</span></code></pre></div></p>
+<p><strong>Basic Wiring Diagram:</strong></p>
+<div class="codehilite"><pre><span></span><code>Arduino          WS2812B LED Strip
+5V  ------------  5V
+GND ------------  GND
+Pin 6 ----------  DIN
+</code></pre></div>
+
 <h4 id="3-install-necessary-library">3. <strong>Install Necessary Library:</strong><a class="headerlink" href="#3-install-necessary-library" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Fastled Library:</strong><ul>
+<li><strong>FastLED Library:</strong><ul>
 <li>Open Arduino IDE.</li>
 <li>Navigate to <code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries</code>.</li>
-<li>Search for "Fastled" and install the library.</li>
+<li>Search for "FastLED" and install the library.</li>
 </ul>
 </li>
 </ul>
-<h4 id="4-write-the-arduino-code">4. <strong>Write the Arduino Code:</strong><a class="headerlink" href="#4-write-the-arduino-code" title="Permanent link">&para;</a></h4>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// Define the pin that is connected to the DIN of the LED strip</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#define LED_PIN 6</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// Define the number of LEDs in the strip</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#define NUM_LEDS 8</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// Create an array of LED objects</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="c1">// Initialize the LED strip</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">NEOPIXEL</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Initialize all pixels to &#39;off&#39;</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="c1">// Call a function to perform an animation</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">rainbowCycle</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="c1">// Function to fill the strip with a rainbow pattern</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">rainbowCycle</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">wait</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 5 cycles of all colors on the wheel</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Wheel</span><span class="p">(((</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="n">wait</span><span class="p">);</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="p">}</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="c1">// Function to generate rainbow colors across 0-255 positions</span>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="n">CRGB</span><span class="w"> </span><span class="nf">Wheel</span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="n">WheelPos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WheelPos</span><span class="p">;</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WheelPos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">85</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">255</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WheelPos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">170</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">85</span><span class="p">;</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">170</span><span class="p">;</span>
-</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WheelPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="p">}</span>
-</span></code></pre></div>
-<h4 id="5-upload-the-code">5. <strong>Upload the Code:</strong><a class="headerlink" href="#5-upload-the-code" title="Permanent link">&para;</a></h4>
+<h4 id="4-use-example-sketch">4. <strong>Use Example Sketch:</strong><a class="headerlink" href="#4-use-example-sketch" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Connect your Arduino to your computer via USB.</li>
-<li>Open the Arduino IDE and select the appropriate board and port.</li>
-<li>Copy the above code into the Arduino IDE.</li>
-<li>Click the <code>Upload</code> button to upload the code to the Arduino.</li>
+<li><strong>Open Example:</strong><ul>
+<li>Go to <code>File</code> &gt; <code>Examples</code> &gt; <code>FastLED</code> &gt; <code>DemoReel100</code>.</li>
 </ul>
-<h4 id="6-observe-the-led-strip">6. <strong>Observe the LED Strip:</strong><a class="headerlink" href="#6-observe-the-led-strip" title="Permanent link">&para;</a></h4>
+</li>
+<li><strong>Modify the Example:</strong><ul>
+<li>Change the number of LEDs and the type of LED strip in the example code.</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="cp">#define LED_PIN     6</span>
+<span class="cp">#define NUM_LEDS    8</span>
+<span class="cp">#define LED_TYPE    WS2812B</span>
+<span class="cp">#define COLOR_ORDER GRB</span>
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">LED_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">COLOR_ORDER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">).</span><span class="n">setCorrection</span><span class="p">(</span><span class="n">TypicalLEDStrip</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Existing code for animations</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <ul>
-<li>Once the code is uploaded, the LED strip should start displaying a rainbow cycle pattern.</li>
-<li>You can modify the animation function or create new ones to experiment with different effects.</li>
+<li><strong>Upload to Arduino:</strong><ul>
+<li>Click the <code>Upload</code> button to upload the modified example code to the Arduino.</li>
 </ul>
-<h4 id="7-experiment-with-other-animations">7. <strong>Experiment with Other Animations:</strong><a class="headerlink" href="#7-experiment-with-other-animations" title="Permanent link">&para;</a></h4>
+</li>
+<li><strong>Observe the LED Strip:</strong><ul>
+<li>The LED strip will display various pre-programmed patterns, demonstrating the capabilities of the FastLED library.</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-experiment-with-other-animations">5. <strong>Experiment with Other Animations:</strong><a class="headerlink" href="#5-experiment-with-other-animations" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Try creating other animations such as solid colors, color wipes, theater chase, etc., by writing new functions and calling them in the <code>loop()</code>.</li>
+<li>Try modifying the example sketch or creating new sketches to see how different animations affect the LED strip. Some simple ideas include changing colors, speed, or creating new patterns.</li>
 </ul>
+<h4 id="6-adapt-an-example-code">6. <strong>Adapt an Example Code:</strong><a class="headerlink" href="#6-adapt-an-example-code" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Simple Adaptation:</strong><ul>
+<li>Open the <code>ColorPalette</code> example from the FastLED library.</li>
+<li>Modify the colors in the color palette to create a custom sequence.</li>
+<li>Upload the modified code to the Arduino to see the changes in the LED strip.</li>
+</ul>
+</li>
+<li><strong>Code Example:</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
+
+<span class="cp">#define LED_PIN 6</span>
+<span class="cp">#define NUM_LEDS 8</span>
+
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">NEOPIXEL</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">fill_solid</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">,</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fill_solid</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">,</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Green</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fill_solid</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">,</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Blue</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="7-create-a-sine-wave-animation">7. <strong>Create a Sine Wave Animation:</strong><a class="headerlink" href="#7-create-a-sine-wave-animation" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Use a Sine Wave:</strong><ul>
+<li>Create a function to generate a sine wave pattern across the 8 LEDs.</li>
+</ul>
+</li>
+<li><strong>Code Example:</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Include the FastLED library</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
+<span class="c1">// Include the math library to use the sin() function</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="c1">// Define the pin that is connected to the DIN of the LED strip</span>
+<span class="cp">#define LED_PIN 6</span>
+
+<span class="c1">// Define the number of LEDs in the strip</span>
+<span class="cp">#define NUM_LEDS 8</span>
+
+<span class="c1">// Create an array of LED objects</span>
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+
+<span class="c1">// Declare a variable to keep track of the angle</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Initialize the LED strip</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">NEOPIXEL</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Initialize all pixels to &#39;off&#39;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Calculate the sine of the angle for each LED and set its brightness</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">127.5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Scale sine wave result to 0-255</span>
+<span class="w">    </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">brightness</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Increment the angle</span>
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Reset the angle if it exceeds 2*PI</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Show the updated LED colors</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Wait for 100 milliseconds before the next loop</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>With these steps, you should be able to control the WS2812B LED strip using an Arduino, experiment with various animations, and even create a sine wave pattern. Happy coding!</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Components/" class="btn btn-neutral float-left" title="Components"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Arduino/putting_everything_together/" class="btn btn-neutral float-left" title="Putting everything together"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../../01_Sensors/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -398,7 +479,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Components/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Arduino/putting_everything_together/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../../01_Sensors/" style="color: #fcfcfc">Next &raquo;</a></span>

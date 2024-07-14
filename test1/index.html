@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Welcome to Robo Workshop - Robotics Workshop</title>
+    <title>Example Markdown Page - Robotics Workshop</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Welcome to Robo Workshop";
-        var mkdocs_page_input_path = "index1.md";
+        var mkdocs_page_name = "Example Markdown Page";
+        var mkdocs_page_input_path = "test1.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -40,16 +40,26 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Arduino/">Arduino</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/Components/">Components</a>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../00_Getting_started/LEDs/">LEDs</a>
                   </li>
@@ -90,7 +100,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -143,7 +153,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Welcome to Robo Workshop</li>
+      <li class="breadcrumb-item active">Example Markdown Page</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -152,26 +162,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="welcome-to-robo-workshop">Welcome to Robo Workshop<a class="headerlink" href="#welcome-to-robo-workshop" title="Permanent link">&para;</a></h1>
-<p>Explore our lessons below.</p>
-<h2 id="lessons">Lessons<a class="headerlink" href="#lessons" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="00_Getting_started/">Getting Started</a></li>
-<li><a href="01_Sensors/">Sensors</a></li>
-<li><a href="02_Actuators/">Actuators</a></li>
-<li><a href="03_Power/">Power</a></li>
-<li><a href="04_Communication/">Communication</a></li>
-<li><a href="05_Assembly/">Assembly</a></li>
-<li><a href="06_Drive/">Drive</a></li>
-<li><a href="07_Robo_Drone/">Robo Drone</a></li>
-<li><a href="08_Outlook/">Outlook</a></li>
-</ul>
-<h2 id="other-links">Other Links<a class="headerlink" href="#other-links" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../about/">About</a></li>
-<li><a href="../all_pages/">All Pages</a></li>
-<li><a href="https://github.com/bwesse/robo_workshop.github.io">GitHub</a></li>
-</ul>
+                <h1 id="example-markdown-page">Example Markdown Page<a class="headerlink" href="#example-markdown-page" title="Permanent link">&para;</a></h1>
+<p>This is an example page demonstrating how to use code annotations and copyable code blocks with Material for MkDocs.</p>
+<h2 id="annotated-code-block-example">Annotated Code Block Example<a class="headerlink" href="#annotated-code-block-example" title="Permanent link">&para;</a></h2>
+<p>In this section, we'll show how to annotate code to provide explanations for specific lines.</p>
+<p>``` python title="greet.py" linenums="1" hl_lines="2 5"</p>
+<h1 id="import-necessary-libraries">Import necessary libraries<a class="headerlink" href="#import-necessary-libraries" title="Permanent link">&para;</a></h1>
+<p>import time  # (1)</p>
+<h1 id="function-to-greet-the-user">Function to greet the user<a class="headerlink" href="#function-to-greet-the-user" title="Permanent link">&para;</a></h1>
+<p>def greet(name):  # (2)
+    print(f"Hello, {name}!")  # (3)</p>
+<h1 id="call-the-function-with-a-name">Call the function with a name<a class="headerlink" href="#call-the-function-with-a-name" title="Permanent link">&para;</a></h1>
+<p>greet("Robotics Enthusiast")  # (4)
+time.sleep(2)  # (5) Pause for 2 seconds before ending the script
+```</p>
               
             </div>
           </div><footer>

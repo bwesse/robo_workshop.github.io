@@ -40,16 +40,26 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Arduino/">Arduino</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/Components/">Components</a>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
                   </li>
@@ -90,7 +100,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -224,202 +234,210 @@
 </ul>
 <h2 id="setup-function">Setup Function<a class="headerlink" href="#setup-function" title="Permanent link">&para;</a></h2>
 <h3 id="wire-and-serial-initialization">Wire and Serial Initialization<a class="headerlink" href="#wire-and-serial-initialization" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Custom Transmitter running:&quot;</span><span class="p">));</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;By Tim Schumann&quot;</span><span class="p">);</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radioNumber = &quot;</span><span class="p">));</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">radioNumber</span><span class="p">);</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Custom Transmitter running:&quot;</span><span class="p">));</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;By Tim Schumann&quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radioNumber = &quot;</span><span class="p">));</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">radioNumber</span><span class="p">);</span>
+</code></pre></div>
+
 <ul>
 <li>Initializes the I2C bus for the MPU6050 sensor.</li>
 <li>Starts the serial communication for debugging purposes.</li>
 </ul>
 <h3 id="nrf24l01-initialization">nRF24L01 Initialization<a class="headerlink" href="#nrf24l01-initialization" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radio hardware is not responding!!&quot;</span><span class="p">));</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">radio</span><span class="p">.</span><span class="n">setPALevel</span><span class="p">(</span><span class="n">RF24_PA_LOW</span><span class="p">);</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">radio</span><span class="p">.</span><span class="n">setPayloadSize</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">radio</span><span class="p">.</span><span class="n">openWritingPipe</span><span class="p">(</span><span class="n">address</span><span class="p">[</span><span class="n">radioNumber</span><span class="p">]);</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">radio</span><span class="p">.</span><span class="n">stopListening</span><span class="p">();</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radio hardware is not responding!!&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="n">radio</span><span class="p">.</span><span class="n">setPALevel</span><span class="p">(</span><span class="n">RF24_PA_LOW</span><span class="p">);</span>
+<span class="n">radio</span><span class="p">.</span><span class="n">setPayloadSize</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="n">radio</span><span class="p">.</span><span class="n">openWritingPipe</span><span class="p">(</span><span class="n">address</span><span class="p">[</span><span class="n">radioNumber</span><span class="p">]);</span>
+<span class="n">radio</span><span class="p">.</span><span class="n">stopListening</span><span class="p">();</span>
+</code></pre></div>
+
 <ul>
 <li>Initializes the nRF24L01 transceiver, sets power level, payload size, and opens the writing pipe for transmitting data.</li>
 </ul>
 <h3 id="debugging-information">Debugging Information<a class="headerlink" href="#debugging-information" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">printf_begin</span><span class="p">();</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">printf_begin</span><span class="p">();</span>
+<span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span>
+</code></pre></div>
+
 <ul>
 <li>Initializes the printf debugging and prints detailed information about the nRF24L01 module.</li>
 </ul>
 <h3 id="mpu6050-initialization">MPU6050 Initialization<a class="headerlink" href="#mpu6050-initialization" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <ul>
 <li>Initializes the MPU6050 sensor. If the sensor is not found, the program enters an infinite loop.</li>
 </ul>
 <h2 id="loop-function">Loop Function<a class="headerlink" href="#loop-function" title="Permanent link">&para;</a></h2>
 <h3 id="reading-sensor-data">Reading Sensor Data<a class="headerlink" href="#reading-sensor-data" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
+
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</code></pre></div>
+
 <ul>
 <li>Reads the acceleration data from the MPU6050 sensor and scales it to fit within the range of -100 to 100.</li>
 </ul>
 <h3 id="transmitting-data">Transmitting Data<a class="headerlink" href="#transmitting-data" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">bool</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">end_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">end_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
+</code></pre></div>
+
 <ul>
 <li>Transmits the data using the nRF24L01 module and measures the time taken for transmission.</li>
 </ul>
 <h3 id="debugging-information_1">Debugging Information<a class="headerlink" href="#debugging-information_1" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">report</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Transmission successful! &quot;</span><span class="p">));</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Time to transmit = &quot;</span><span class="p">));</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">end_timer</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_timer</span><span class="p">);</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; us. Sent: &quot;</span><span class="p">));</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; : &quot;</span><span class="p">);</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Transmission failed or timed out&quot;</span><span class="p">));</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">}</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">report</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Transmission successful! &quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Time to transmit = &quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">end_timer</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_timer</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; us. Sent: &quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; : &quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Transmission failed or timed out&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <ul>
 <li>If the transmission is successful, it prints the time taken and the transmitted data. If the transmission fails, it prints an error message.</li>
 </ul>
 <h3 id="loop-delay">Loop Delay<a class="headerlink" href="#loop-delay" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div>
+
 <ul>
 <li>Adds a delay of 10 milliseconds to slow down the transmission rate.</li>
 </ul>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>This code reads acceleration data from an MPU6050 sensor and transmits it using an nRF24L01 module. The setup and loop functions handle the initialization and continuous data transmission, respectively. Debugging information is printed to the Serial Monitor to assist in monitoring the system's operation.</p>
 <h2 id="full-code">Full code:<a class="headerlink" href="#full-code" title="Permanent link">&para;</a></h2>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;printf.h&quot;</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;RF24.h&quot;</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_Sensor.h&gt;</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MPU6050.h&gt;</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="cp">#define CE_PIN 7</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="cp">#define CSN_PIN 8</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1">//Define packet for the direction (X axis and Y axis)</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1">// Let these addresses be used for the pair</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">[][</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;1Trans&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1Rec&quot;</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="c1">// instantiate an object for the nRF24L01 transceiver</span>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">RF24</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="n">CE_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">CSN_PIN</span><span class="p">);</span>
-</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
-</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="c1">// Create a BME280 object</span>
-</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="n">Adafruit_MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
-</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>
-</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="kt">bool</span><span class="w"> </span><span class="n">radioNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0 uses address[0] to transmit, 1 uses address[1] to receive</span>
-</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
-</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>
-</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
-</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">  </span><span class="c1">// print example&#39;s introductory prompt</span>
-</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Custom Transmitter running:&quot;</span><span class="p">));</span>
-</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;By Tim Schumann&quot;</span><span class="p">);</span>
-</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>
-</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>
-</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radioNumber = &quot;</span><span class="p">));</span>
-</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">radioNumber</span><span class="p">);</span>
-</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>
-</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="w">  </span><span class="c1">// initialize the transceiver on the SPI bus</span>
-</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radio hardware is not responding!!&quot;</span><span class="p">));</span>
-</span><span id="__span-8-42"><a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// hold in infinite loop</span>
-</span><span id="__span-8-43"><a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-8-44"><a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a>
-</span><span id="__span-8-45"><a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="w">  </span><span class="c1">// Set the PA Level low to try preventing power supply related problems</span>
-</span><span id="__span-8-46"><a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="w">  </span><span class="c1">// because these examples are likely run with nodes in close proximity to</span>
-</span><span id="__span-8-47"><a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a><span class="w">  </span><span class="c1">// each other.</span>
-</span><span id="__span-8-48"><a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">setPALevel</span><span class="p">(</span><span class="n">RF24_PA_LOW</span><span class="p">);</span><span class="w">  </span><span class="c1">// RF24_PA_MAX is default.</span>
-</span><span id="__span-8-49"><a id="__codelineno-8-49" name="__codelineno-8-49" href="#__codelineno-8-49"></a>
-</span><span id="__span-8-50"><a id="__codelineno-8-50" name="__codelineno-8-50" href="#__codelineno-8-50"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">setPayloadSize</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w">  </span><span class="c1">// float datatype occupies 4 bytes</span>
-</span><span id="__span-8-51"><a id="__codelineno-8-51" name="__codelineno-8-51" href="#__codelineno-8-51"></a>
-</span><span id="__span-8-52"><a id="__codelineno-8-52" name="__codelineno-8-52" href="#__codelineno-8-52"></a><span class="w">  </span><span class="c1">// set the TX address of the RX node into the TX pipe</span>
-</span><span id="__span-8-53"><a id="__codelineno-8-53" name="__codelineno-8-53" href="#__codelineno-8-53"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">openWritingPipe</span><span class="p">(</span><span class="n">address</span><span class="p">[</span><span class="n">radioNumber</span><span class="p">]);</span><span class="w">  </span><span class="c1">// always uses pipe 0</span>
-</span><span id="__span-8-54"><a id="__codelineno-8-54" name="__codelineno-8-54" href="#__codelineno-8-54"></a>
-</span><span id="__span-8-55"><a id="__codelineno-8-55" name="__codelineno-8-55" href="#__codelineno-8-55"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">stopListening</span><span class="p">();</span><span class="w">  </span><span class="c1">// put radio in TX mode</span>
-</span><span id="__span-8-56"><a id="__codelineno-8-56" name="__codelineno-8-56" href="#__codelineno-8-56"></a>
-</span><span id="__span-8-57"><a id="__codelineno-8-57" name="__codelineno-8-57" href="#__codelineno-8-57"></a><span class="w">  </span><span class="c1">// For debugging info</span>
-</span><span id="__span-8-58"><a id="__codelineno-8-58" name="__codelineno-8-58" href="#__codelineno-8-58"></a><span class="w">  </span><span class="n">printf_begin</span><span class="p">();</span><span class="w">              </span><span class="c1">// needed only once for printing details</span>
-</span><span id="__span-8-59"><a id="__codelineno-8-59" name="__codelineno-8-59" href="#__codelineno-8-59"></a><span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span><span class="w">  </span><span class="c1">// (larger) function that prints human readable data</span>
-</span><span id="__span-8-60"><a id="__codelineno-8-60" name="__codelineno-8-60" href="#__codelineno-8-60"></a>
-</span><span id="__span-8-61"><a id="__codelineno-8-61" name="__codelineno-8-61" href="#__codelineno-8-61"></a>
-</span><span id="__span-8-62"><a id="__codelineno-8-62" name="__codelineno-8-62" href="#__codelineno-8-62"></a><span class="w">  </span><span class="c1">//start mpu</span>
-</span><span id="__span-8-63"><a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a><span class="w">  </span><span class="c1">// Try to initialize!</span>
-</span><span id="__span-8-64"><a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-65"><a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
-</span><span id="__span-8-66"><a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-67"><a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a><span class="w">      </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-</span><span id="__span-8-68"><a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-8-69"><a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-8-70"><a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="p">}</span>
-</span><span id="__span-8-71"><a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a>
-</span><span id="__span-8-72"><a id="__codelineno-8-72" name="__codelineno-8-72" href="#__codelineno-8-72"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-73"><a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a>
-</span><span id="__span-8-74"><a id="__codelineno-8-74" name="__codelineno-8-74" href="#__codelineno-8-74"></a><span class="w">  </span><span class="cm">/* Get new sensor events with the readings */</span>
-</span><span id="__span-8-75"><a id="__codelineno-8-75" name="__codelineno-8-75" href="#__codelineno-8-75"></a><span class="w">  </span><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
-</span><span id="__span-8-76"><a id="__codelineno-8-76" name="__codelineno-8-76" href="#__codelineno-8-76"></a><span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
-</span><span id="__span-8-77"><a id="__codelineno-8-77" name="__codelineno-8-77" href="#__codelineno-8-77"></a>
-</span><span id="__span-8-78"><a id="__codelineno-8-78" name="__codelineno-8-78" href="#__codelineno-8-78"></a><span class="w">  </span><span class="cm">/*Serial.print(&quot;Acceleration X: &quot;);</span>
-</span><span id="__span-8-79"><a id="__codelineno-8-79" name="__codelineno-8-79" href="#__codelineno-8-79"></a><span class="cm">  Serial.print(a.acceleration.x);</span>
-</span><span id="__span-8-80"><a id="__codelineno-8-80" name="__codelineno-8-80" href="#__codelineno-8-80"></a><span class="cm">  Serial.print(&quot;, Y: &quot;);</span>
-</span><span id="__span-8-81"><a id="__codelineno-8-81" name="__codelineno-8-81" href="#__codelineno-8-81"></a><span class="cm">  Serial.print(a.acceleration.y);</span>
-</span><span id="__span-8-82"><a id="__codelineno-8-82" name="__codelineno-8-82" href="#__codelineno-8-82"></a><span class="cm">  Serial.println(&quot; m/s^2&quot;);</span>
-</span><span id="__span-8-83"><a id="__codelineno-8-83" name="__codelineno-8-83" href="#__codelineno-8-83"></a><span class="cm">*/</span>
-</span><span id="__span-8-84"><a id="__codelineno-8-84" name="__codelineno-8-84" href="#__codelineno-8-84"></a>
-</span><span id="__span-8-85"><a id="__codelineno-8-85" name="__codelineno-8-85" href="#__codelineno-8-85"></a><span class="w">  </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span><span id="__span-8-86"><a id="__codelineno-8-86" name="__codelineno-8-86" href="#__codelineno-8-86"></a><span class="w">  </span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span><span id="__span-8-87"><a id="__codelineno-8-87" name="__codelineno-8-87" href="#__codelineno-8-87"></a>
-</span><span id="__span-8-88"><a id="__codelineno-8-88" name="__codelineno-8-88" href="#__codelineno-8-88"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span><span class="w">            </span><span class="c1">// start the timer</span>
-</span><span id="__span-8-89"><a id="__codelineno-8-89" name="__codelineno-8-89" href="#__codelineno-8-89"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w">  </span><span class="c1">// transmit &amp; save the report</span>
-</span><span id="__span-8-90"><a id="__codelineno-8-90" name="__codelineno-8-90" href="#__codelineno-8-90"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">end_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span><span class="w">              </span><span class="c1">// end the timer</span>
-</span><span id="__span-8-91"><a id="__codelineno-8-91" name="__codelineno-8-91" href="#__codelineno-8-91"></a>
-</span><span id="__span-8-92"><a id="__codelineno-8-92" name="__codelineno-8-92" href="#__codelineno-8-92"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">report</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-93"><a id="__codelineno-8-93" name="__codelineno-8-93" href="#__codelineno-8-93"></a><span class="w">    </span><span class="cm">/*Serial.print(F(&quot;Transmission successful! &quot;));  // payload was delivered</span>
-</span><span id="__span-8-94"><a id="__codelineno-8-94" name="__codelineno-8-94" href="#__codelineno-8-94"></a><span class="cm">    Serial.print(F(&quot;Time to transmit = &quot;));</span>
-</span><span id="__span-8-95"><a id="__codelineno-8-95" name="__codelineno-8-95" href="#__codelineno-8-95"></a><span class="cm">    Serial.print(end_timer - start_timer);  // print the timer result</span>
-</span><span id="__span-8-96"><a id="__codelineno-8-96" name="__codelineno-8-96" href="#__codelineno-8-96"></a><span class="cm">    Serial.print(F(&quot; us. Sent: &quot;));</span>
-</span><span id="__span-8-97"><a id="__codelineno-8-97" name="__codelineno-8-97" href="#__codelineno-8-97"></a><span class="cm">    Serial.print(data[0]);  // print payload sent</span>
-</span><span id="__span-8-98"><a id="__codelineno-8-98" name="__codelineno-8-98" href="#__codelineno-8-98"></a><span class="cm">    Serial.print(&quot; : &quot;);</span>
-</span><span id="__span-8-99"><a id="__codelineno-8-99" name="__codelineno-8-99" href="#__codelineno-8-99"></a><span class="cm">    Serial.println(data[1]);*/</span>
-</span><span id="__span-8-100"><a id="__codelineno-8-100" name="__codelineno-8-100" href="#__codelineno-8-100"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-101"><a id="__codelineno-8-101" name="__codelineno-8-101" href="#__codelineno-8-101"></a><span class="w">    </span><span class="c1">//Serial.println(F(&quot;Transmission failed or timed out&quot;));  // payload was not delivered</span>
-</span><span id="__span-8-102"><a id="__codelineno-8-102" name="__codelineno-8-102" href="#__codelineno-8-102"></a><span class="w">    </span><span class="c1">//radio.printPrettyDetails();                             // (larger) function that prints human readable data</span>
-</span><span id="__span-8-103"><a id="__codelineno-8-103" name="__codelineno-8-103" href="#__codelineno-8-103"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-8-104"><a id="__codelineno-8-104" name="__codelineno-8-104" href="#__codelineno-8-104"></a>
-</span><span id="__span-8-105"><a id="__codelineno-8-105" name="__codelineno-8-105" href="#__codelineno-8-105"></a><span class="w">  </span><span class="c1">// to make this example readable in the serial monitor</span>
-</span><span id="__span-8-106"><a id="__codelineno-8-106" name="__codelineno-8-106" href="#__codelineno-8-106"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w">  </span><span class="c1">// slow transmissions down by 1 second</span>
-</span><span id="__span-8-107"><a id="__codelineno-8-107" name="__codelineno-8-107" href="#__codelineno-8-107"></a><span class="p">}</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;printf.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;RF24.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_Sensor.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MPU6050.h&gt;</span>
+
+
+<span class="cp">#define CE_PIN 7</span>
+<span class="cp">#define CSN_PIN 8</span>
+
+<span class="c1">//Define packet for the direction (X axis and Y axis)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="c1">// Let these addresses be used for the pair</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">[][</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;1Trans&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1Rec&quot;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// instantiate an object for the nRF24L01 transceiver</span>
+<span class="n">RF24</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="n">CE_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">CSN_PIN</span><span class="p">);</span>
+
+<span class="c1">// Create a BME280 object</span>
+<span class="n">Adafruit_MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">radioNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0 uses address[0] to transmit, 1 uses address[1] to receive</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// print example&#39;s introductory prompt</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Custom Transmitter running:&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;By Tim Schumann&quot;</span><span class="p">);</span>
+
+
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radioNumber = &quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">radioNumber</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// initialize the transceiver on the SPI bus</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;radio hardware is not responding!!&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// hold in infinite loop</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Set the PA Level low to try preventing power supply related problems</span>
+<span class="w">  </span><span class="c1">// because these examples are likely run with nodes in close proximity to</span>
+<span class="w">  </span><span class="c1">// each other.</span>
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">setPALevel</span><span class="p">(</span><span class="n">RF24_PA_LOW</span><span class="p">);</span><span class="w">  </span><span class="c1">// RF24_PA_MAX is default.</span>
+
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">setPayloadSize</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w">  </span><span class="c1">// float datatype occupies 4 bytes</span>
+
+<span class="w">  </span><span class="c1">// set the TX address of the RX node into the TX pipe</span>
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">openWritingPipe</span><span class="p">(</span><span class="n">address</span><span class="p">[</span><span class="n">radioNumber</span><span class="p">]);</span><span class="w">  </span><span class="c1">// always uses pipe 0</span>
+
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">stopListening</span><span class="p">();</span><span class="w">  </span><span class="c1">// put radio in TX mode</span>
+
+<span class="w">  </span><span class="c1">// For debugging info</span>
+<span class="w">  </span><span class="n">printf_begin</span><span class="p">();</span><span class="w">              </span><span class="c1">// needed only once for printing details</span>
+<span class="w">  </span><span class="n">radio</span><span class="p">.</span><span class="n">printPrettyDetails</span><span class="p">();</span><span class="w">  </span><span class="c1">// (larger) function that prints human readable data</span>
+
+
+<span class="w">  </span><span class="c1">//start mpu</span>
+<span class="w">  </span><span class="c1">// Try to initialize!</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to find MPU6050 chip&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="cm">/* Get new sensor events with the readings */</span>
+<span class="w">  </span><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/*Serial.print(&quot;Acceleration X: &quot;);</span>
+<span class="cm">  Serial.print(a.acceleration.x);</span>
+<span class="cm">  Serial.print(&quot;, Y: &quot;);</span>
+<span class="cm">  Serial.print(a.acceleration.y);</span>
+<span class="cm">  Serial.println(&quot; m/s^2&quot;);</span>
+<span class="cm">*/</span>
+
+<span class="w">  </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">-10.0</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span><span class="w">            </span><span class="c1">// start the timer</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w">  </span><span class="c1">// transmit &amp; save the report</span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">end_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span><span class="w">              </span><span class="c1">// end the timer</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">report</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/*Serial.print(F(&quot;Transmission successful! &quot;));  // payload was delivered</span>
+<span class="cm">    Serial.print(F(&quot;Time to transmit = &quot;));</span>
+<span class="cm">    Serial.print(end_timer - start_timer);  // print the timer result</span>
+<span class="cm">    Serial.print(F(&quot; us. Sent: &quot;));</span>
+<span class="cm">    Serial.print(data[0]);  // print payload sent</span>
+<span class="cm">    Serial.print(&quot; : &quot;);</span>
+<span class="cm">    Serial.println(data[1]);*/</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//Serial.println(F(&quot;Transmission failed or timed out&quot;));  // payload was not delivered</span>
+<span class="w">    </span><span class="c1">//radio.printPrettyDetails();                             // (larger) function that prints human readable data</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// to make this example readable in the serial monitor</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w">  </span><span class="c1">// slow transmissions down by 1 second</span>
+<span class="p">}</span>
+</code></pre></div>
               
             </div>
           </div><footer>

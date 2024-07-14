@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Putting everything together - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Putting everything together";
+        var mkdocs_page_input_path = "00_Getting_started\\Arduino\\putting_everything_together\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Arduino</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Putting everything together</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#key-concepts-learned">Key Concepts Learned</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#introduction-to-arduino-and-the-ide">Introduction to Arduino and the IDE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-programming-concepts">Basic Programming Concepts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structure-of-an-arduino-program">Structure of an Arduino Program</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#control-structures">Control Structures</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#serial-communication">Serial Communication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-serial-plotter">Using the Serial Plotter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#putting-everything-together_1">Putting Everything Together</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../01_Sensors/Distance/ultraschall/README.md">Ultrasonic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03_Power/">Power</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../../04_Communication/I2C/README.md">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+          <li class="breadcrumb-item">Arduino</li>
+      <li class="breadcrumb-item active">Putting everything together</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="putting-everything-together">Putting Everything Together<a class="headerlink" href="#putting-everything-together" title="Permanent link">&para;</a></h1>
+<p>In this section, we will combine the concepts learned in the previous sections to create a more complex Arduino sketch. We will use the Serial Monitor to interact with the Arduino board, control the built-in LED using a sine wave, and allow the user to input parameters to adjust the behavior of the sketch in real-time.</p>
+<h3 id="key-concepts-learned">Key Concepts Learned<a class="headerlink" href="#key-concepts-learned" title="Permanent link">&para;</a></h3>
+<h3 id="introduction-to-arduino-and-the-ide">Introduction to Arduino and the IDE<a class="headerlink" href="#introduction-to-arduino-and-the-ide" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Arduino IDE</strong>:<ul>
+<li><strong>Purpose</strong>: The Arduino Integrated Development Environment (IDE) is used to write and upload code to the Arduino board.</li>
+<li><strong>Key Functions</strong>: <ul>
+<li><strong>Upload</strong>: Transfers the code from your computer to the Arduino board.</li>
+<li><strong>Compile/Verify</strong>: Checks the code for errors before uploading.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-programming-concepts">Basic Programming Concepts<a class="headerlink" href="#basic-programming-concepts" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Data Types</strong>:</p>
+<ul>
+<li><strong>Floats</strong>: Used for decimal numbers (e.g., <code>float angle = 0.0;</code>).</li>
+<li><strong>Integers</strong>: Used for whole numbers (e.g., <code>int delayTime = 100;</code>).</li>
+<li><strong>Booleans</strong>: Used for true/false values (e.g., <code>bool ledState = LOW;</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Including Libraries</strong>:</p>
+<ul>
+<li><strong>Purpose</strong>: Libraries add extra functionality to your programs (e.g., <code>#include &lt;math.h&gt;</code> for mathematical functions).</li>
+</ul>
+</li>
+</ol>
+<h3 id="structure-of-an-arduino-program">Structure of an Arduino Program<a class="headerlink" href="#structure-of-an-arduino-program" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Setup Function</strong>:</li>
+<li><strong>Purpose</strong>: The <code>setup()</code> function runs once when the Arduino is powered on or reset.</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication</span>
+<span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set the built-in LED pin as an output</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li><strong>Loop Function</strong>:</li>
+<li><strong>Purpose</strong>: The <code>loop()</code> function runs continuously after the <code>setup()</code> function.</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// Your code here</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="control-structures">Control Structures<a class="headerlink" href="#control-structures" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>If Statements</strong>:</li>
+<li><strong>Purpose</strong>: Used to make decisions in the code.</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// Code to execute if data is available</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="serial-communication">Serial Communication<a class="headerlink" href="#serial-communication" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Serial Input and Output</strong>:</li>
+<li><strong>Purpose</strong>: Allows communication between the Arduino and your computer.</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Start serial communication</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print message to Serial Monitor</span>
+</code></pre></div>
+
+<ol>
+<li><strong>Reading Serial Input</strong>:</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">parseInt</span><span class="p">();</span><span class="w"> </span><span class="c1">// Read integer input from Serial Monitor</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="using-the-serial-plotter">Using the Serial Plotter<a class="headerlink" href="#using-the-serial-plotter" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Plotting Data</strong>:</li>
+<li><strong>Purpose</strong>: Visualizes data in real-time.</li>
+<li><strong>Example</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print value to Serial Plotter</span>
+</code></pre></div>
+
+<h3 id="putting-everything-together_1">Putting Everything Together<a class="headerlink" href="#putting-everything-together_1" title="Permanent link">&para;</a></h3>
+<p>Here’s an example that combines all the concepts learned:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+
+<span class="c1">// Declare variables</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">angleIncrement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Default angle increment</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">delayTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">// Fixed delay time in milliseconds</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialize serial communication</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set the built-in LED pin as an output</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Author: Your Name&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Enter a number to set the angle increment (frequency) in radians.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">parseFloat</span><span class="p">();</span><span class="w"> </span><span class="c1">// Read float input</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">angleIncrement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Angle increment set to &quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">angleIncrement</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; radians&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Invalid input. Please enter a positive number.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Clear the buffer</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span><span class="w"> </span><span class="c1">// Calculate sine of the angle</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print value to Serial Plotter</span>
+
+<span class="w">  </span><span class="c1">// Blink the LED based on the sine wave value</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn LED on</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn LED off</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">angle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">angleIncrement</span><span class="p">;</span><span class="w"> </span><span class="c1">// Increment angle</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset angle</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="n">delayTime</span><span class="p">);</span><span class="w"> </span><span class="c1">// Wait for the fixed delay time</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Arduino IDE</strong>: Use it to write, compile, verify, and upload code.</li>
+<li><strong>Data Types</strong>: Floats, integers, and booleans.</li>
+<li><strong>Libraries</strong>: Add extra functionality.</li>
+<li><strong>Setup and Loop Functions</strong>: Initialize and run your program.</li>
+<li><strong>If Statements</strong>: Make decisions in your code.</li>
+<li><strong>Serial Communication</strong>: Read from and write to the Serial Monitor.</li>
+<li><strong>Serial Plotter</strong>: Visualize data in real-time.</li>
+</ul>
+<p>This comprehensive example demonstrates how to use the Arduino IDE, handle different data types, include libraries, use control structures, read and write serial data, and visualize data with the Serial Plotter.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../serial_input/" class="btn btn-neutral float-left" title="Serial Input"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../LEDs/" class="btn btn-neutral float-right" title="LEDs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../serial_input/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../LEDs/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

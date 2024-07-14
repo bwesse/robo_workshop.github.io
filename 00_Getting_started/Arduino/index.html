@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Arduino - Robotics Workshop</title>
+    <title>Overview - Robotics Workshop</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Arduino";
+        var mkdocs_page_name = "Overview";
         var mkdocs_page_input_path = "00_Getting_started\\Arduino\\README.md";
         var mkdocs_page_url = null;
       </script>
@@ -40,54 +40,60 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../../index.html">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Arduino</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Arduino</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-gather-necessary-components">1. Gather Necessary Components:</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#1-gather-necessary-components">1. Gather Necessary Components:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-install-arduino-ide">2. Install Arduino IDE:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-install-arduino-ide">2. Install Arduino IDE:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-set-up-arduino-ide">3. Set Up Arduino IDE:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-set-up-arduino-ide">3. Set Up Arduino IDE:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-write-your-first-sketch">4. Write Your First Sketch:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-write-your-first-sketch">4. Write Your First Sketch:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-understand-arduino-code-structure">5. Understand Arduino Code Structure:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#5-understand-arduino-code-structure">5. Understand Arduino Code Structure:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-basic-arduino-code-example-blink">6. Basic Arduino Code Example (Blink):</a>
+    <li class="toctree-l3"><a class="reference internal" href="#6-basic-arduino-code-example-blink">6. Basic Arduino Code Example (Blink):</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-key-concepts-in-arduino-programming">7. Key Concepts in Arduino Programming:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#7-key-concepts-in-arduino-programming">7. Key Concepts in Arduino Programming:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#8-using-libraries">8. Using Libraries:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide-for-starting-with-the-arduino-ide">Troubleshooting Guide for Starting with the Arduino IDE</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#9-expand-your-knowledge">9. Expand Your Knowledge:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-installation-issues">1. Installation Issues:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-guide-for-starting-with-the-arduino-ide">Troubleshooting Guide for Starting with the Arduino IDE</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-driver-problems">2. Driver Problems:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-installation-issues">1. Installation Issues:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-serial-port-issues">3. Serial Port Issues:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-driver-problems">2. Driver Problems:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-compilation-errors">4. Compilation Errors:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-serial-port-issues">3. Serial Port Issues:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#5-uploading-issues">5. Uploading Issues:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-compilation-errors">4. Compilation Errors:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#6-board-specific-issues">6. Board Specific Issues:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-uploading-issues">5. Uploading Issues:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#7-ide-crashes-or-freezes">7. IDE Crashes or Freezes:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-board-specific-issues">6. Board Specific Issues:</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-ide-crashes-or-freezes">7. IDE Crashes or Freezes:</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#8-general-connectivity-issues">8. General Connectivity Issues:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#8-general-connectivity-issues">8. General Connectivity Issues:</a>
     </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Components/">Components</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../LEDs/">LEDs</a>
                   </li>
@@ -128,7 +134,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Protocols</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/IC2/">I2C</a>
+                <li class="toctree-l2"><a class="" href="../../04_Communication/I2C/README.md">I2C</a>
                 </li>
     </ul>
                   </li>
@@ -182,7 +188,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Getting Started</li>
-      <li class="breadcrumb-item active">Arduino</li>
+          <li class="breadcrumb-item">Arduino</li>
+      <li class="breadcrumb-item active">Overview</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -195,12 +202,9 @@
 <p><img alt="Arduino" src="../../99_Resources/images/arduino.jpg" /></p>
 <h4 id="1-gather-necessary-components">1. <strong>Gather Necessary Components:</strong><a class="headerlink" href="#1-gather-necessary-components" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Arduino Board:</strong> Choose an appropriate board (e.g., Arduino Uno, Nano).</li>
+<li><strong>Arduino Board:</strong> Choose an appropriate board (e.g., Arduino Nano).</li>
 <li><strong>USB Cable:</strong> For connecting the Arduino to your computer.</li>
 <li><strong>Computer:</strong> To install software and write code.</li>
-<li><strong>Breadboard and Jumper Wires:</strong> For prototyping circuits.</li>
-<li><strong>Basic Components:</strong> LEDs, sensors, etc., for initial projects.
-         <a href="../Components/">Components used in our project</a></li>
 </ul>
 <h4 id="2-install-arduino-ide">2. <strong>Install Arduino IDE:</strong><a class="headerlink" href="#2-install-arduino-ide" title="Permanent link">&para;</a></h4>
 <ul>
@@ -235,20 +239,21 @@ After downloading -&gt; unzip -&gt; install</p>
 </li>
 </ul>
 <h4 id="6-basic-arduino-code-example-blink">6. <strong>Basic Arduino Code Example (Blink):</strong><a class="headerlink" href="#6-basic-arduino-code-example-blink" title="Permanent link">&para;</a></h4>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// The setup function runs once when you press reset or power the board</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// The loop function runs over and over again forever</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w">   </span><span class="c1">// turn the LED on (HIGH is the voltage level)</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w">    </span><span class="c1">// turn the LED off by making the voltage LOW</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
-</span></code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1">// The setup function runs once when you press reset or power the board</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
+<span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// The loop function runs over and over again forever</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w">   </span><span class="c1">// turn the LED on (HIGH is the voltage level)</span>
+<span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
+<span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w">    </span><span class="c1">// turn the LED off by making the voltage LOW</span>
+<span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">                       </span><span class="c1">// wait for a second</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h4 id="7-key-concepts-in-arduino-programming">7. <strong>Key Concepts in Arduino Programming:</strong><a class="headerlink" href="#7-key-concepts-in-arduino-programming" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Functions:</strong><ul>
@@ -268,26 +273,7 @@ After downloading -&gt; unzip -&gt; install</p>
 </ul>
 </li>
 </ul>
-<h4 id="8-using-libraries">8. <strong>Using Libraries:</strong><a class="headerlink" href="#8-using-libraries" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Include Libraries:</strong><ul>
-<li>Libraries extend the functionality of Arduino.</li>
-<li>To include a library, use the <code>#include</code> directive at the beginning of your sketch.</li>
-<li>Example: <code>#include &lt;Servo.h&gt;</code> for controlling servo motors.</li>
-</ul>
-</li>
-<li><strong>Installing Libraries:</strong><ul>
-<li>Navigate to <code>Sketch</code> &gt; <code>Include Library</code> &gt; <code>Manage Libraries</code>.</li>
-<li>Search for the required library and install it.</li>
-</ul>
-</li>
-</ul>
-<h4 id="9-expand-your-knowledge">9. <strong>Expand Your Knowledge:</strong><a class="headerlink" href="#9-expand-your-knowledge" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Explore Examples:</strong> The Arduino IDE comes with many built-in examples to help you learn.</li>
-<li><strong>Online Resources:</strong> Utilize tutorials, documentation, and community forums.</li>
-<li><strong>Experiment:</strong> Modify existing sketches and create your own projects to deepen understanding.</li>
-</ul>
+<hr />
 <h4 id="troubleshooting-guide-for-starting-with-the-arduino-ide">Troubleshooting Guide for Starting with the Arduino IDE<a class="headerlink" href="#troubleshooting-guide-for-starting-with-the-arduino-ide" title="Permanent link">&para;</a></h4>
 <h4 id="1-installation-issues">1. <strong>Installation Issues:</strong><a class="headerlink" href="#1-installation-issues" title="Permanent link">&para;</a></h4>
 <ul>
@@ -373,7 +359,7 @@ After downloading -&gt; unzip -&gt; install</p>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Components/" class="btn btn-neutral float-right" title="Components">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="serial_print/" class="btn btn-neutral float-right" title="Serial Print">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -399,7 +385,7 @@ After downloading -&gt; unzip -&gt; install</p>
       <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Components/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="serial_print/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
