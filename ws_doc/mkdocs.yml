@@ -19,10 +19,12 @@ nav:
           - VL53L0X ToF: 01_Sensors/Distance/VL53L0X_ToF/README.md
       - IMU: 
           - MPU 6050: 01_Sensors/MPU_6050/README.md
+  - Electricity: 
+        - Overview: 03_Power/README.md
+
   - Actuators:
       - Overview: 02_Actuators/README.md
       - Motor Driver: 02_Actuators/motor_driver/README.md
-  - Power: 03_Power/README.md
   - Communication:
       - Overview: 04_Communication/README.md
       - Protocols:

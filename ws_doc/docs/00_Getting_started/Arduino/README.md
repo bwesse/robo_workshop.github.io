@@ -27,6 +27,9 @@
 
 #### 4. **Write Your First Sketch:**
    - **Open Example:** Go to `File` > `Examples` > `01.Basics` > `Blink`.
+
+   ![alt text](image.png)
+
    - **Upload Sketch:** Click the `Upload` button (right arrow icon) to upload the sketch to the board.
    - **Observe:** The LED on the Arduino should start blinking.
 

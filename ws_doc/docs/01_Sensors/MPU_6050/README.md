@@ -23,6 +23,8 @@ The MPU6050 is a 6-axis motion tracking device that combines a 3-axis gyroscope 
 3. **SCL** (Clock) -> Connect to Arduino Nano A5 (SCL pin).
 4. **SDA** (Data) -> Connect to Arduino Nano A4 (SDA pin).
 
+![alt text](image-1.png)
+
 ### Installing the MPU6050 Library
 
 1. Open the Arduino IDE.

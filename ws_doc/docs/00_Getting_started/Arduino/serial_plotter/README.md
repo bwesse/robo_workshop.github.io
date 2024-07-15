@@ -8,6 +8,9 @@ The Arduino Serial Plotter is a tool that allows you to visualize data from your
 
 A very simple way to try out the Arduino Serial Plotter is to create a sketch that sends some varying data to the serial port. The Serial Plotter can graph this data in real-time. One of the simplest examples is to plot a sine wave. Here’s a basic sketch to do this:
 
+![Arduino Serial Plotter](../../../99_Resources/Screen/serial_plotter.gif)
+
+
 ```cpp
 // Include the math library to use the sin() function
 #include <math.h>

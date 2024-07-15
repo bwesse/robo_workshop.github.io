@@ -9,6 +9,8 @@ Here's a basic Arduino example using `Serial.print()` to demonstrate how coding 
 #### Objective:
 To introduce the basics of Arduino coding by printing a message to the Serial Monitor.
 
+![alt text](2022008100-9.jpg)
+
 #### Components Needed:
 - Arduino board (e.g., Arduino Uno)
 - USB cable to connect the Arduino to your computer
@@ -114,12 +116,13 @@ void loop() {
 
 Write a program that implements a counter which increments every second and prints the value to the Serial Monitor.
 
-<details>
-<summary>Hints</summary>
 
 <details>
 <summary>Hint 1</summary>
 Use a variable to store the counter value.
+```cpp
+int counter = 0;
+```
 </details>
 
 <details>
@@ -130,8 +133,6 @@ Utilize the recurring `loop()` function to increment the counter.
 <details>
 <summary>Hint 3</summary>
 Use `delay(1000);` to create a 1-second delay.
-</details>
-
 </details>
 
 <details>
@@ -155,24 +156,27 @@ void loop() {
 
 ### 4. Implement a Counter with a Reset
 
-Write a program that introduces an `i` and resets the counter when it reaches a certain value.
+Write a program that introduces an `counter` and resets when it reaches a certain value.
 
-<details>
-<summary>Hints</summary>
 
 <details>
 <summary>Hint 1</summary>
-Use a variable `i` to store the current count.
+Use a variable `counter` to store the current count.
 </details>
 
 <details>
 <summary>Hint 2</summary>
-Add a conditional statement to check if `i` has reached the reset value.
+Add a conditional statement to check if `counter` has reached the reset value.
+```cpp
+if (counter >= resetValue) {
+// Reset the counter
+}
+```
 </details>
 
 <details>
 <summary>Hint 3</summary>
-Reset `i` to zero inside the conditional statement.
+Reset `counter` to zero inside the conditional statement.
 </details>
 
 <details>
@@ -180,7 +184,6 @@ Reset `i` to zero inside the conditional statement.
 Use `delay(1000);` to create a 1-second delay.
 </details>
 
-</details>
 
 <details>
 <summary>Solution</summary>
