@@ -92,65 +92,49 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Motor Driver</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#wiring-the-l298-motor-driver-to-arduino-nano-and-n20-gear-motor">Wiring the L298 Motor Driver to Arduino Nano and N20 Gear Motor</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installing-the-arduino-motor-library">Installing the Arduino Motor Library</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#basic-code-example">Basic Code Example</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#code-explanation">Code Explanation</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-the-code">Running the Code</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#task-1-change-the-motor-speed">Task 1: Change the Motor Speed</a>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#objective">Objective</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a>
+    <li class="toctree-l3"><a class="reference internal" href="#components-needed">Components Needed</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#code-example">Code Example</a>
+    <li class="toctree-l3"><a class="reference internal" href="#key-learning-points">Key Learning Points</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#explanation">Explanation</a>
+    <li class="toctree-l3"><a class="reference internal" href="#steps-to-follow">Steps to Follow</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#expected-outcomes">Expected Outcomes</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#task-2-connect-the-second-motor">Task 2: Connect the Second Motor</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#objective_1">Objective</a>
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#code-example_1">Code Example</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#explanation_1">Explanation</a>
+    <li class="toctree-l3"><a class="reference internal" href="#safety-notes">Safety Notes</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#task-3-execute-a-turn">Task 3: Execute a Turn</a>
+    <li class="toctree-l2"><a class="reference internal" href="#theory-input">Theory Input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simplified-example-code">Simplified Example Code</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#objective_2">Objective</a>
+    <li class="toctree-l3"><a class="reference internal" href="#wiring-instructions">Wiring Instructions:</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#instructions_1">Instructions</a>
+        </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#code-example_2">Code Example</a>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-tasks">Additional Tasks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#task-1-change-the-motor-speed">Task 1: Change the Motor Speed</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#explanation_2">Explanation</a>
+    <li class="toctree-l3"><a class="reference internal" href="#task-2-execute-a-turn">Task 2: Execute a Turn</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#theory-behind-pulse-width-modulation-pwm">Theory Behind Pulse Width Modulation (PWM)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#key-concepts">Key Concepts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-pwm-controls-motor-speed">How PWM Controls Motor Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-of-using-pwm">Benefits of Using PWM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pwm-in-arduino">PWM in Arduino</a>
     </li>
         </ul>
     </li>
@@ -233,286 +217,371 @@
               
                 <h1 id="l298-motor-driver-and-n20-gear-motor-tutorial-with-arduino-nano-and-9v-battery">L298 Motor Driver and N20 Gear Motor Tutorial with Arduino Nano and 9V Battery<a class="headerlink" href="#l298-motor-driver-and-n20-gear-motor-tutorial-with-arduino-nano-and-9v-battery" title="Permanent link">&para;</a></h1>
 <p><img alt="L298_motor_driver" src="../../99_Resources/images/l298n_pinout.png" /></p>
-<p>The L298 motor driver is a versatile component that can drive two DC motors or one stepper motor. This tutorial will guide you through the basics of setting up and using the L298 motor driver with an N20 gear motor and an Arduino Nano powered by a 9V battery.</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<ul>
-<li>L298 Motor Driver</li>
-<li>Arduino Nano</li>
-<li>N20 Gear Motor</li>
-<li>9V Battery and battery clip</li>
-<li>Breadboard and jumper wires</li>
-<li>Arduino IDE installed on your computer</li>
-</ul>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<h3 id="wiring-the-l298-motor-driver-to-arduino-nano-and-n20-gear-motor">Wiring the L298 Motor Driver to Arduino Nano and N20 Gear Motor<a class="headerlink" href="#wiring-the-l298-motor-driver-to-arduino-nano-and-n20-gear-motor" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Power and Ground Connections</strong></li>
-<li><strong>12V and GND on L298</strong>: Connect the positive terminal of the 9V battery to the 12V input of the L298 motor driver and the negative terminal to the GND input.</li>
-<li><strong>5V on L298</strong>: Connect the 5V output of the L298 to the 5V pin on the Arduino Nano.</li>
-<li>
-<p><strong>GND on L298</strong>: Connect one of the GND pins on the L298 to the GND pin on the Arduino Nano.</p>
-</li>
-<li>
-<p><strong>Control Pins</strong></p>
-</li>
-<li><strong>IN1 (L298) -&gt; D2 (Nano)</strong></li>
-<li><strong>IN2 (L298) -&gt; D3 (Nano)</strong></li>
-<li>
-<p><strong>ENA (L298) -&gt; D9 (Nano)</strong> (If PWM speed control is needed)</p>
-</li>
-<li>
-<p><strong>Motor Connections</strong></p>
-</li>
-<li><strong>OUT1 (L298) -&gt; Motor Terminal 1</strong></li>
-<li><strong>OUT2 (L298) -&gt; Motor Terminal 2</strong></li>
-</ol>
-<h3 id="installing-the-arduino-motor-library">Installing the Arduino Motor Library<a class="headerlink" href="#installing-the-arduino-motor-library" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Open the Arduino IDE.</li>
-<li>Go to <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Manage Libraries</strong>.</li>
-<li>In the Library Manager, search for "AFMotor".</li>
-<li>Find the "Adafruit Motor Shield library" and click <strong>Install</strong>.</li>
-</ol>
-<h2 id="basic-code-example">Basic Code Example<a class="headerlink" href="#basic-code-example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Define motor pins</span>
-<span class="cp">#define IN1 2</span>
-<span class="cp">#define IN2 3</span>
-<span class="cp">#define ENA 9</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Initialize motor control pins</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Start serial communication</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Motor forward</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Motor stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-
-<span class="w">  </span><span class="c1">// Motor backward</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Motor stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Pin Definitions</strong>: Sets up the pin connections for controlling the motor.</li>
-<li><strong>Motor Control</strong>: Uses <code>digitalWrite</code> and <code>analogWrite</code> functions to control the direction and speed of the motor.</li>
-<li><strong>Motor Forward</strong>: Sets IN1 high and IN2 low to drive the motor forward.</li>
-<li><strong>Motor Backward</strong>: Sets IN1 low and IN2 high to drive the motor backward.</li>
-<li><strong>Motor Stop</strong>: Sets the ENA pin to 0 to stop the motor.</li>
-</ul>
-<h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Connect your Arduino Nano to your computer via USB.</li>
-<li>Open the Arduino IDE and paste the code above.</li>
-<li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
-<li>Upload the code to your Arduino Nano.</li>
-<li>The motor should run forward for 2 seconds, stop for 1 second, run backward for 2 seconds, and then stop for 1 second, repeating this cycle.</li>
-</ol>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Ensure your wiring is secure to avoid intermittent connections.</li>
-<li>Use a heat sink on the L298 motor driver if you are running the motor for extended periods or under heavy load.</li>
-<li>Adjust the <code>analogWrite</code> value on the ENA pin to control the motor speed (0-255).</li>
-</ul>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Motor Not Running</strong>: Check the wiring, ensure the correct voltage is supplied.</li>
-<li><strong>Incorrect Direction</strong>: Swap the motor connections or check the control pin logic.</li>
-<li><strong>No Output</strong>: Verify the baud rate of the Serial Monitor matches the one set in the code (if applicable).</li>
-</ul>
-<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://www.sparkfun.com/datasheets/Robotics/L298_H_Bridge.pdf">L298 Motor Driver Datasheet</a></li>
-<li><a href="https://github.com/adafruit/Adafruit_Motor_Shield_V2_Library">Arduino Motor Shield Library Documentation</a></li>
-</ul>
-<p>This simple tutorial should get you started with using the L298 motor driver with your N20 gear motor and Arduino Nano. Experiment with different setups and speeds to fully explore its capabilities. Happy experimenting!</p>
-<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
-<p>Now that you have the basic setup, here are three tasks of increasing difficulty to help you further explore the capabilities of the L298N motor driver with your N20 gear motors.</p>
-<h2 id="task-1-change-the-motor-speed">Task 1: Change the Motor Speed<a class="headerlink" href="#task-1-change-the-motor-speed" title="Permanent link">&para;</a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>In this tutorial, we will learn how to control N20 motors using an L298 motor driver and Arduino Nano. This guide covers the essential components, wiring setup, and programming to help you get started with motor control.</p>
 <h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
-<p>Modify the motor speed using PWM (Pulse Width Modulation).</p>
-<h3 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h3>
-<ol>
-<li>In the existing code, adjust the <code>analogWrite</code> value on the ENA pin to control the motor speed.</li>
-<li>Experiment with different values (0-255) to observe the speed changes.</li>
-</ol>
-<h3 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Motor forward at half speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// Half speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Motor stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-
-<span class="w">  </span><span class="c1">// Motor backward at quarter speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">   </span><span class="c1">// Quarter speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Motor stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h3 id="explanation">Explanation<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Speed Control</strong>: The <code>analogWrite</code> function controls the speed of the motor by varying the PWM signal. Values range from 0 (stop) to 255 (full speed).</li>
+<li>Learn how to control N20 motors using an L298 motor driver and Arduino.</li>
 </ul>
-<h2 id="task-2-connect-the-second-motor">Task 2: Connect the Second Motor<a class="headerlink" href="#task-2-connect-the-second-motor" title="Permanent link">&para;</a></h2>
-<h3 id="objective_1">Objective<a class="headerlink" href="#objective_1" title="Permanent link">&para;</a></h3>
-<p>Connect and control a second N20 gear motor using the second channel of the L298N motor driver.</p>
-<h3 id="wiring">Wiring<a class="headerlink" href="#wiring" title="Permanent link">&para;</a></h3>
+<h3 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Arduino Uno</li>
+<li>L298 Motor Driver</li>
+<li>N20 Motors (2x)</li>
+<li>Breadboard</li>
+<li>Jumper wires</li>
+<li>9V battery with connector</li>
+<li>9V battery clip</li>
+</ul>
+<h3 id="key-learning-points">Key Learning Points<a class="headerlink" href="#key-learning-points" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Understand the wiring and connection setup for controlling motors.</li>
+<li>Write Arduino code to control motor speed and direction.</li>
+<li>Utilize the L298 motor driver to interface between Arduino and N20 motors.</li>
+</ul>
+<h3 id="steps-to-follow">Steps to Follow<a class="headerlink" href="#steps-to-follow" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Motor Connections</strong></li>
-<li><strong>OUT3 (L298N) -&gt; Motor2 Terminal 1</strong></li>
-<li>
-<p><strong>OUT4 (L298N) -&gt; Motor2 Terminal 2</strong></p>
-</li>
-<li>
-<p><strong>Control Pins</strong></p>
-</li>
-<li><strong>IN3 (L298N) -&gt; D4 (Nano)</strong></li>
-<li><strong>IN4 (L298N) -&gt; D5 (Nano)</strong></li>
-<li><strong>EN B (L298N) -&gt; D10 (Nano)</strong> (If PWM speed control is needed)</li>
+<li>Connect the L298 motor driver to the Arduino.</li>
+<li>Connect the N20 motors to the L298 motor driver.</li>
+<li>Make necessary power connections with the 9V battery.</li>
+<li>Upload and execute the Arduino code to test motor control.</li>
 </ol>
-<h3 id="code-example_1">Code Example<a class="headerlink" href="#code-example_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Define motor pins</span>
-<span class="cp">#define IN1 2</span>
-<span class="cp">#define IN2 3</span>
-<span class="cp">#define ENA 9</span>
-<span class="cp">#define IN3 4</span>
-<span class="cp">#define IN4 5</span>
-<span class="cp">#define ENB 10</span>
+<h3 id="expected-outcomes">Expected Outcomes<a class="headerlink" href="#expected-outcomes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Successfully control the movement (forward, backward, left turn, right turn) of two N20 motors.</li>
+<li>Adjust motor speed using the enable pins on the L298 motor driver.</li>
+</ul>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Basic understanding of Arduino programming.</li>
+<li>Familiarity with breadboard and basic electronics.</li>
+</ul>
+<h3 id="safety-notes">Safety Notes<a class="headerlink" href="#safety-notes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ensure all connections are secure to prevent short circuits.</li>
+<li>Be cautious with the 9V battery to avoid rapid depletion and overheating.</li>
+</ul>
+<h2 id="theory-input">Theory Input<a class="headerlink" href="#theory-input" title="Permanent link">&para;</a></h2>
+<p>The L298 motor driver is an integrated circuit that allows you to control the speed and direction of two DC motors. It uses H-bridge circuits to control the motors. By adjusting the PWM (Pulse Width Modulation) signals on the enable pins, you can control the speed of the motors. The direction is controlled by setting the IN1, IN2, IN3, and IN4 pins to HIGH or LOW.</p>
+<h2 id="simplified-example-code">Simplified Example Code<a class="headerlink" href="#simplified-example-code" title="Permanent link">&para;</a></h2>
+<p>Here's a simplified example to get you started with basic motor control:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Motor A connections</span>
+<span class="cp">#define enA 3</span>
+<span class="cp">#define in1 4</span>
+<span class="cp">#define in2 5</span>
+
+<span class="c1">// Motor B connections</span>
+<span class="cp">#define enB 9</span>
+<span class="cp">#define in3 8</span>
+<span class="cp">#define in4 7</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Initialize motor control pins</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Set all the motor control pins to outputs</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Start serial communication</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Turn off motors - Initial state</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Motor1 forward at full speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-
-<span class="w">  </span><span class="c1">// Motor2 forward at half speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// Half speed</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Both motors stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-
-<span class="w">  </span><span class="c1">// Motor1 backward at half speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// Half speed</span>
-
-<span class="w">  </span><span class="c1">// Motor2 backward at full speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
-
-<span class="w">  </span><span class="c1">// Both motors stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h3 id="explanation_1">Explanation<a class="headerlink" href="#explanation_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Dual Motor Control</strong>: This code controls two motors independently using the L298N motor driver.</li>
-</ul>
-<h2 id="task-3-execute-a-turn">Task 3: Execute a Turn<a class="headerlink" href="#task-3-execute-a-turn" title="Permanent link">&para;</a></h2>
-<h3 id="objective_2">Objective<a class="headerlink" href="#objective_2" title="Permanent link">&para;</a></h3>
-<p>Execute a turn by controlling the speed and direction of two motors.</p>
-<h3 id="instructions_1">Instructions<a class="headerlink" href="#instructions_1" title="Permanent link">&para;</a></h3>
-<ol>
-<li>To turn, one motor should run forward while the other runs backward.</li>
-<li>Adjust the speed and duration to make a smooth turn.</li>
-</ol>
-<h3 id="code-example_2">Code Example<a class="headerlink" href="#code-example_2" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Move forward</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+<span class="w">  </span><span class="n">moveForward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move forward for 2 seconds</span>
 
-<span class="w">  </span><span class="c1">// Turn right</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Turn for 1 second</span>
-
-<span class="w">  </span><span class="c1">// Move forward</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">IN4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+<span class="w">  </span><span class="c1">// Move backward</span>
+<span class="w">  </span><span class="n">moveBackward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move backward for 2 seconds</span>
 
 <span class="w">  </span><span class="c1">// Stop</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">ENB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop for 2 seconds</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">moveForward</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">moveBackward</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">stopMotors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Turn off motors</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><img alt="alt text" src="image.png" /></p>
+<h3 id="wiring-instructions">Wiring Instructions:<a class="headerlink" href="#wiring-instructions" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Connect the L298 Motor Driver to the Arduino:</strong></li>
+<li>Connect <code>EN A</code> (Enable A) of L298 to Arduino <code>pin 3</code>.</li>
+<li>Connect <code>IN1</code> of L298 to Arduino <code>pin 4</code>.</li>
+<li>Connect <code>IN2</code> of L298 to Arduino <code>pin 5</code>.</li>
+<li>Connect <code>EN B</code> (Enable B) of L298 to Arduino <code>pin 9</code>.</li>
+<li>Connect <code>IN3</code> of L298 to Arduino <code>pin 7</code>.</li>
+<li>
+<p>Connect <code>IN4</code> of L298 to Arduino <code>pin 8</code>.</p>
+</li>
+<li>
+<p><strong>Connect the Motors:</strong></p>
+</li>
+<li>Connect the first N20 motor to <code>OUT1</code> and <code>OUT2</code> of L298.</li>
+<li>
+<p>Connect the second N20 motor to <code>OUT3</code> and <code>OUT4</code> of L298.</p>
+</li>
+<li>
+<p><strong>Power Connections:</strong></p>
+</li>
+<li>Connect the <code>12V</code> terminal of L298 to the positive terminal of the 9V battery.</li>
+<li>
+<p>Connect the <code>GND</code> terminal of L298 to the negative terminal of the 9V battery and also to the GND of the Arduino.</p>
+</li>
+<li>
+<p><strong>Connect the 5V and GND:</strong></p>
+</li>
+<li>Connect <code>5V</code> of L298 to the <code>5V</code> pin of the Arduino.</li>
+<li>Ensure the GND of L298, Arduino, and the 9V battery are all connected together.</li>
+</ol>
+<h2 id="additional-tasks">Additional Tasks<a class="headerlink" href="#additional-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="task-1-change-the-motor-speed">Task 1: Change the Motor Speed<a class="headerlink" href="#task-1-change-the-motor-speed" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Objective</summary>
+Modify the motor speed using PWM (Pulse Width Modulation).
+</details>
+
+<details>
+<summary>Instructions</summary>
+1. In the existing code, adjust the `analogWrite` value on the `enA` and `enB` pins to control the motor speed.
+2. Experiment with different values (0-255) to observe the speed changes.
+</details>
+
+<details>
+<summary>Code Example</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Move forward at half speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// Half speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// Half speed</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Stop motors</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
+
+<span class="w">  </span><span class="c1">// Move backward at quarter speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">   </span><span class="c1">// Quarter speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">   </span><span class="c1">// Quarter speed</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Stop motors</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
 <span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 1 second</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="explanation_2">Explanation<a class="headerlink" href="#explanation_2" title="Permanent link">&para;</a></h3>
+
+
+</details>
+
+<details>
+<summary>Hint</summary>
+Use `analogWrite(enA, speed)` and `analogWrite(enB, speed)` to control the speed, where `speed` ranges from 0 to 255.
+</details>
+
+<h3 id="task-2-execute-a-turn">Task 2: Execute a Turn<a class="headerlink" href="#task-2-execute-a-turn" title="Permanent link">&para;</a></h3>
+<details>
+<summary>Objective</summary>
+Execute a turn by controlling the speed and direction of two motors.
+</details>
+
+<details>
+<summary>Instructions</summary>
+1. To turn, one motor should run forward while the other runs backward.
+2. Adjust the speed and duration to make a smooth turn.
+</details>
+
+<details>
+<summary>Code Example</summary>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Move forward</span>
+<span class="w">  </span><span class="n">moveForward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move forward for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Turn right</span>
+<span class="w">  </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn right for 1 second</span>
+
+<span class="w">  </span><span class="c1">// Move forward</span>
+<span class="w">  </span><span class="n">moveForward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move forward for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Stop</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop for 1 second</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">turnRight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
+
+<span class="w">  </span><span class="c1">// Motor B backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// Full speed</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+</details>
+
+<details>
+<summary>Hint</summary>
+Set one motor to run forward and the other to run backward to execute a turn.
+</details>
+
+<p>These simplified tasks will help you understand how to control motor speed, connect multiple motors, and execute turns with the L298 motor driver and Arduino Nano. Experiment with different values and configurations to fully explore the capabilities of your setup. Happy tinkering!</p>
+<hr />
+<h2 id="theory-behind-pulse-width-modulation-pwm">Theory Behind Pulse Width Modulation (PWM)<a class="headerlink" href="#theory-behind-pulse-width-modulation-pwm" title="Permanent link">&para;</a></h2>
+<p>Pulse Width Modulation (PWM) is a technique used to control the amount of power delivered to an electrical device by switching the power supply on and off at a rapid rate. In the context of motor control, PWM allows you to adjust the speed of a motor by varying the duty cycle of the signal applied to it.</p>
+<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Duty Cycle</strong>:</li>
+<li>The duty cycle of a PWM signal is the percentage of one period in which the signal is high (on). It is defined as:</li>
+</ol>
+<p><img alt="alt text" src="image-1.png" /></p>
 <ul>
-<li><strong>Turning Mechanism</strong>: By setting one motor to run forward and the other to run backward, the vehicle can turn. Adjust the duration and speed to achieve the desired turning angle.</li>
+<li>
+<p>For example, a 50% duty cycle means the signal is on for half the period and off for the other half.</p>
+</li>
+<li>
+<p><strong>Frequency</strong>:</p>
+</li>
+<li>The frequency of a PWM signal is the rate at which the PWM cycles repeat per second. It is measured in Hertz (Hz).</li>
+<li>
+<p>A higher frequency results in smoother motor operation as the motor receives power more frequently.</p>
+</li>
+<li>
+<p><strong>Period</strong>:</p>
+</li>
+<li>The period of a PWM signal is the inverse of the frequency. It represents the duration of one complete cycle of the PWM signal.</li>
 </ul>
-<p>These tasks will help you understand how to control motor speed, connect multiple motors, and execute turns with the L298N motor driver and Arduino Nano. Experiment with different values and configurations to fully explore the capabilities of your setup. Happy tinkering!</p>
+<h3 id="how-pwm-controls-motor-speed">How PWM Controls Motor Speed<a class="headerlink" href="#how-pwm-controls-motor-speed" title="Permanent link">&para;</a></h3>
+<p>By varying the duty cycle of the PWM signal applied to a motor's control pin, you can effectively control the average voltage and power delivered to the motor. Here's how it works:</p>
+<ul>
+<li><strong>High Duty Cycle</strong>:</li>
+<li>
+<p>A high duty cycle (e.g., 80%) means the signal is on for 80% of the time and off for 20% of the time. This results in the motor receiving more power and running faster.</p>
+</li>
+<li>
+<p><strong>Low Duty Cycle</strong>:</p>
+</li>
+<li>A low duty cycle (e.g., 20%) means the signal is on for 20% of the time and off for 80% of the time. This results in the motor receiving less power and running slower.</li>
+</ul>
+<h3 id="benefits-of-using-pwm">Benefits of Using PWM<a class="headerlink" href="#benefits-of-using-pwm" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Efficiency</strong>:</li>
+<li>
+<p>PWM is highly efficient because it reduces power losses that occur in other methods of power control. When the switch is off, almost no power is consumed.</p>
+</li>
+<li>
+<p><strong>Smooth Control</strong>:</p>
+</li>
+<li>
+<p>PWM allows for smooth control of motor speed without introducing significant noise or vibration.</p>
+</li>
+<li>
+<p><strong>Heat Reduction</strong>:</p>
+</li>
+<li>By efficiently controlling the power, PWM reduces the amount of heat generated by the motor driver and the motor itself.</li>
+</ol>
+<h3 id="pwm-in-arduino">PWM in Arduino<a class="headerlink" href="#pwm-in-arduino" title="Permanent link">&para;</a></h3>
+<p>In Arduino, PWM is implemented using the <code>analogWrite</code> function. The <code>analogWrite</code> function generates a PWM signal on specified pins with a default frequency of approximately 490 Hz (for most pins).</p>
+<p>Here’s an example of using PWM to control motor speed in Arduino:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Motor connections</span>
+<span class="cp">#define enA 3</span>
+<span class="cp">#define in1 4</span>
+<span class="cp">#define in2 5</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Set all the motor control pins to outputs</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Move motor forward at 50% speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// 50% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Move motor forward at full speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Move motor forward at 25% speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">   </span><span class="c1">// 25% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Stop motor</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// 0% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 2 seconds</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this example:
+- <code>analogWrite(enA, 128);</code> sets a 50% duty cycle, resulting in half the maximum speed.
+- <code>analogWrite(enA, 255);</code> sets a 100% duty cycle, resulting in full speed.
+- <code>analogWrite(enA, 64);</code> sets a 25% duty cycle, resulting in quarter speed.
+- <code>analogWrite(enA, 0);</code> sets a 0% duty cycle, stopping the motor.</p>
+<p>By understanding and utilizing PWM, you can precisely control the speed and behavior of your motors in an efficient and effective manner.</p>
               
             </div>
           </div><footer>

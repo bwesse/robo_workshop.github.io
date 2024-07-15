@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Pwm - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pwm";
+        var mkdocs_page_input_path = "02_Actuators\\motor_driver\\pwm.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../00_Getting_started/LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Electricity</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../03_Power/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Motor Driver</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/I2C/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../06_Drive/transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../09_Help/">Troubleshooting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pwm</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="theory-behind-pulse-width-modulation-pwm">Theory Behind Pulse Width Modulation (PWM)<a class="headerlink" href="#theory-behind-pulse-width-modulation-pwm" title="Permanent link">&para;</a></h2>
+<p>Pulse Width Modulation (PWM) is a technique used to control the amount of power delivered to an electrical device by switching the power supply on and off at a rapid rate. In the context of motor control, PWM allows you to adjust the speed of a motor by varying the duty cycle of the signal applied to it.</p>
+<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Duty Cycle</strong>:</li>
+<li>The duty cycle of a PWM signal is the percentage of one period in which the signal is high (on). It is defined as:
+     [
+     \text{Duty Cycle} = \left( \frac{\text{Time High}}{\text{Period}} \right) \times 100\%
+     ]</li>
+<li>
+<p>For example, a 50% duty cycle means the signal is on for half the period and off for the other half.</p>
+</li>
+<li>
+<p><strong>Frequency</strong>:</p>
+</li>
+<li>The frequency of a PWM signal is the rate at which the PWM cycles repeat per second. It is measured in Hertz (Hz).</li>
+<li>
+<p>A higher frequency results in smoother motor operation as the motor receives power more frequently.</p>
+</li>
+<li>
+<p><strong>Period</strong>:</p>
+</li>
+<li>The period of a PWM signal is the inverse of the frequency. It represents the duration of one complete cycle of the PWM signal.</li>
+</ol>
+<h3 id="how-pwm-controls-motor-speed">How PWM Controls Motor Speed<a class="headerlink" href="#how-pwm-controls-motor-speed" title="Permanent link">&para;</a></h3>
+<p>By varying the duty cycle of the PWM signal applied to a motor's control pin, you can effectively control the average voltage and power delivered to the motor. Here's how it works:</p>
+<ul>
+<li><strong>High Duty Cycle</strong>:</li>
+<li>
+<p>A high duty cycle (e.g., 80%) means the signal is on for 80% of the time and off for 20% of the time. This results in the motor receiving more power and running faster.</p>
+</li>
+<li>
+<p><strong>Low Duty Cycle</strong>:</p>
+</li>
+<li>A low duty cycle (e.g., 20%) means the signal is on for 20% of the time and off for 80% of the time. This results in the motor receiving less power and running slower.</li>
+</ul>
+<h3 id="benefits-of-using-pwm">Benefits of Using PWM<a class="headerlink" href="#benefits-of-using-pwm" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Efficiency</strong>:</li>
+<li>
+<p>PWM is highly efficient because it reduces power losses that occur in other methods of power control. When the switch is off, almost no power is consumed.</p>
+</li>
+<li>
+<p><strong>Smooth Control</strong>:</p>
+</li>
+<li>
+<p>PWM allows for smooth control of motor speed without introducing significant noise or vibration.</p>
+</li>
+<li>
+<p><strong>Heat Reduction</strong>:</p>
+</li>
+<li>By efficiently controlling the power, PWM reduces the amount of heat generated by the motor driver and the motor itself.</li>
+</ol>
+<h3 id="pwm-in-arduino">PWM in Arduino<a class="headerlink" href="#pwm-in-arduino" title="Permanent link">&para;</a></h3>
+<p>In Arduino, PWM is implemented using the <code>analogWrite</code> function. The <code>analogWrite</code> function generates a PWM signal on specified pins with a default frequency of approximately 490 Hz (for most pins).</p>
+<p>Here’s an example of using PWM to control motor speed in Arduino:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Motor connections</span>
+<span class="cp">#define enA 3</span>
+<span class="cp">#define in1 4</span>
+<span class="cp">#define in2 5</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Set all the motor control pins to outputs</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Move motor forward at 50% speed</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w">  </span><span class="c1">// 50% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Move motor forward at full speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Move motor forward at 25% speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">   </span><span class="c1">// 25% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Run for 2 seconds</span>
+
+<span class="w">  </span><span class="c1">// Stop motor</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// 0% duty cycle</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">            </span><span class="c1">// Stop for 2 seconds</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this example:
+- <code>analogWrite(enA, 128);</code> sets a 50% duty cycle, resulting in half the maximum speed.
+- <code>analogWrite(enA, 255);</code> sets a 100% duty cycle, resulting in full speed.
+- <code>analogWrite(enA, 64);</code> sets a 25% duty cycle, resulting in quarter speed.
+- <code>analogWrite(enA, 0);</code> sets a 0% duty cycle, stopping the motor.</p>
+<p>By understanding and utilizing PWM, you can precisely control the speed and behavior of your motors in an efficient and effective manner.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
