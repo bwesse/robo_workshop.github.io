@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Roomba_build - Robotics Workshop</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Roomba_build";
+        var mkdocs_page_input_path = "06_Drive\\tof_roomba\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Robotics Workshop
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Arduino</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_print/">Serial Print</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_plotter/">Serial Plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/serial_input/">Serial Input</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../00_Getting_started/Arduino/putting_everything_together/">Putting everything together</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../00_Getting_started/LEDs/">LEDs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensors</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_Sensors/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Distance</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/Distance/VL53L0X_ToF/">VL53L0X ToF</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >IMU</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../01_Sensors/MPU_6050/">MPU 6050</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Electricity</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../03_Power/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Actuators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_Actuators/motor_driver/">Motor Driver</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Communication</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Protocols</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/I2C/">I2C</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >nRF</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../04_Communication/nRF/">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_Communication/remote/">Remote</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Assembly</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/receiver/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_Assembly/transmitter/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Drive</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Roomba_build</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#components-needed">Components Needed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#circuit-diagram">Circuit Diagram</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vl53l0x-tof-sensor">VL53L0X ToF Sensor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#motor-driver-l298n">Motor Driver (L298N)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-explanation">Code Explanation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#steps">Steps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adjustments">Adjustments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-tasks">Additional Tasks</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../receiver_code/">Receiver</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../transmitter_code/">Transmitter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Transition to Drone</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_Robo_Drone/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Outlook</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_Outlook/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09_Help/">Troubleshooting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Robotics Workshop</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Drive</li>
+      <li class="breadcrumb-item active">Roomba_build</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="tutorial-using-vl53l0x-tof-sensor-with-motors-for-obstacle-detection-and-avoidance">Tutorial: Using VL53L0X ToF Sensor with Motors for Obstacle Detection and Avoidance<a class="headerlink" href="#tutorial-using-vl53l0x-tof-sensor-with-motors-for-obstacle-detection-and-avoidance" title="Permanent link">&para;</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
+<p>In this tutorial, you will learn how to use the VL53L0X Time-of-Flight (ToF) sensor to detect obstacles and make a robot avoid them by turning 90 degrees when an obstacle is detected. The robot will use two DC motors for movement.</p>
+<h3 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Arduino board (e.g., Uno, Nano)</li>
+<li>VL53L0X ToF sensor</li>
+<li>2 DC motors</li>
+<li>L298N motor driver or any suitable motor driver</li>
+<li>Breadboard and jumper wires</li>
+<li>Power supply for the motors</li>
+</ul>
+<h3 id="circuit-diagram">Circuit Diagram<a class="headerlink" href="#circuit-diagram" title="Permanent link">&para;</a></h3>
+<p>Connect the components as follows:</p>
+<h4 id="vl53l0x-tof-sensor">VL53L0X ToF Sensor<a class="headerlink" href="#vl53l0x-tof-sensor" title="Permanent link">&para;</a></h4>
+<ul>
+<li>VCC to 5V (or 3.3V depending on your sensor)</li>
+<li>GND to GND</li>
+<li>SDA to A4 (or the SDA pin on your Arduino)</li>
+<li>SCL to A5 (or the SCL pin on your Arduino)</li>
+</ul>
+<h4 id="motor-driver-l298n">Motor Driver (L298N)<a class="headerlink" href="#motor-driver-l298n" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ENA to PWM pin 3</li>
+<li>IN1 to digital pin 4</li>
+<li>IN2 to digital pin 5</li>
+<li>ENB to PWM pin 9</li>
+<li>IN3 to digital pin 8</li>
+<li>IN4 to digital pin 7</li>
+<li>Motor A connections to one motor</li>
+<li>Motor B connections to the other motor</li>
+<li>Connect VCC and GND of the motor driver to the power supply (make sure the GND is common with the Arduino)</li>
+</ul>
+<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
+<p>Here's the code we'll be using:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
+
+<span class="c1">// Motor A connections</span>
+<span class="cp">#define enA 3</span>
+<span class="cp">#define in1 4</span>
+<span class="cp">#define in2 5</span>
+
+<span class="c1">// Motor B connections</span>
+<span class="cp">#define enB 9</span>
+<span class="cp">#define in3 8</span>
+<span class="cp">#define in4 7</span>
+
+<span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Initialize ToF sensor</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Set all the motor control pins to outputs</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Turn off motors - Initial state</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Read distance from sensor</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Print distance to serial monitor</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// If an obstacle is detected within 100 mm</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Short delay before turning</span>
+
+<span class="w">    </span><span class="c1">// Turn 90 degrees</span>
+<span class="w">    </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Adjust this delay to achieve a 90-degree turn</span>
+
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Short delay after turning</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Move forward if no obstacle is detected</span>
+<span class="w">    </span><span class="n">moveForward</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">moveForward</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">stopMotors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Turn off motors</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">turnRight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Connect the Hardware:</strong></li>
+<li>
+<p>Follow the circuit diagram to connect the VL53L0X sensor, motors, and motor driver to the Arduino.</p>
+</li>
+<li>
+<p><strong>Upload the Code:</strong></p>
+</li>
+<li>Open the Arduino IDE.</li>
+<li>Copy and paste the provided code into the IDE.</li>
+<li>Select the correct board and port from the Tools menu.</li>
+<li>
+<p>Upload the code to your Arduino board.</p>
+</li>
+<li>
+<p><strong>Test the Robot:</strong></p>
+</li>
+<li>Place your robot in an open area.</li>
+<li>Power it on.</li>
+<li>The robot should move forward until it detects an obstacle within 100 mm.</li>
+<li>When an obstacle is detected, the robot will stop, turn 90 degrees to the right, and then continue moving forward.</li>
+</ol>
+<h3 id="adjustments">Adjustments<a class="headerlink" href="#adjustments" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Turning Delay:</strong></li>
+<li>
+<p>Adjust the <code>delay(500);</code> in the <code>turnRight()</code> function to fine-tune the turning angle. Increase the delay if the robot turns less than 90 degrees or decrease it if it turns more.</p>
+</li>
+<li>
+<p><strong>Obstacle Distance:</strong></p>
+</li>
+<li>Change the <code>if (distance &lt; 100)</code> condition to adjust the detection range. For example, use <code>if (distance &lt; 200)</code> to detect obstacles within 200 mm.</li>
+</ul>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Sensor Not Detected:</strong></li>
+<li>Ensure the VL53L0X sensor is properly connected and powered.</li>
+<li>
+<p>Check the I2C connections (SDA and SCL).</p>
+</li>
+<li>
+<p><strong>Motors Not Working:</strong></p>
+</li>
+<li>Verify the motor driver connections and power supply.</li>
+<li>
+<p>Check the motor driver enable pins (ENA and ENB).</p>
+</li>
+<li>
+<p><strong>Unexpected Behavior:</strong></p>
+</li>
+<li>Make sure the code is correctly uploaded.</li>
+<li>Use the Serial Monitor to debug distance readings from the sensor.</li>
+</ul>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>You have successfully built a simple obstacle-avoiding robot using the VL53L0X ToF sensor and two DC motors. This basic framework can be expanded to create more complex robotics projects by adding additional sensors, functionality, and refining the control logic.</p>
+<hr />
+<h3 id="additional-tasks">Additional Tasks<a class="headerlink" href="#additional-tasks" title="Permanent link">&para;</a></h3>
+<p><strong>Task 1: Fine-Tuning the Turning Angle</strong>
+- <strong>Description:</strong> Adjust the delay in the <code>turnRight()</code> function to achieve a perfect 90-degree turn.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Experiment with different delay values in the `turnRight()` function. For example, try `delay(400);` or `delay(600);` and observe the turning angle. Adjust the delay until the robot turns exactly 90 degrees.
+  </details>
+</p>
+<p><strong>Task 2: Adjusting the Obstacle Detection Range</strong>
+- <strong>Description:</strong> Modify the distance threshold for obstacle detection to make the robot stop at a different distance from obstacles.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Change the condition `if (distance < 100)` to `if (distance < 200)` to detect obstacles within 200 mm instead of 100 mm. You can set any value depending on your requirement.
+  </details>
+</p>
+<p><strong>Task 3: Implementing Left Turn as an Alternative</strong>
+- <strong>Description:</strong> Modify the code to make the robot turn left instead of right when an obstacle is detected.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Create a new function `turnLeft()` similar to `turnRight()`, but swap the motor directions. For example:
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">turnLeft</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+  Replace `turnRight();` with `turnLeft();` in the `loop()`.
+  </details>
+</p>
+<p><strong>Task 4: Implementing a Three-Point Turn</strong>
+- <strong>Description:</strong> Make the robot perform a three-point turn when an obstacle is detected.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Implement a three-point turn by combining forward, backward, and turning movements. For example:
+
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">threePointTurn</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">moveBackward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move backward for 1 second</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Short delay</span>
+
+<span class="w">  </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn right for 0.5 second</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Short delay</span>
+
+<span class="w">  </span><span class="n">moveForward</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move forward for 1 second</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Short delay</span>
+
+<span class="w">  </span><span class="n">turnLeft</span><span class="p">();</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// Turn left for 0.5 second</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+  Call `threePointTurn();` in the `loop()` when an obstacle is detected.
+  </details>
+</p>
+<p><strong>Task 5: Adding LED Strip with FastLED</strong>
+- <strong>Description:</strong> Connect an 8-LED WS2812B strip to the Arduino and use the FastLED library to light up the strip when an obstacle is detected.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Install the FastLED library from the Arduino Library Manager. Connect the data pin of the WS2812B strip to a digital pin on the Arduino (e.g., pin 6). Use the following code snippet to control the LED strip:
+
+
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
+
+<span class="cp">#define LED_PIN     6</span>
+<span class="cp">#define NUM_LEDS    8</span>
+
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">WS2812</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">GRB</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">).</span><span class="n">setCorrection</span><span class="p">(</span><span class="n">TypicalLEDStrip</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">setBrightness</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Other setup code...</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Light up the LED strip when an obstacle is detected</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">moveForward</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Turn off the LED strip when no obstacle is detected</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Black</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Other functions (moveForward, stopMotors, turnRight, etc.) remain the same...</span>
+</code></pre></div>
+
+
+  </details>
+</p>
+<p><strong>Task 6: Adding MPU6050 for Movement Detection</strong>
+- <strong>Description:</strong> Connect an MPU6050 to the Arduino to detect movement in the Z direction and stop the motors when the robot is picked up.
+- <strong>Hint:</strong>
+<br />
+<details>
+  <summary>Click to expand hint</summary>
+  Install the MPU6050 library from the Arduino Library Manager. Connect the MPU6050 as follows:
+  - VCC to 5V
+  - GND to GND
+  - SDA to A4 (or the SDA pin on your Arduino)
+  - SCL to A5 (or the SCL pin on your Arduino)
+
+  Use the following code snippet to integrate the MPU6050:
+
+
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VL53L0X.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;FastLED.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
+
+<span class="c1">// Motor A connections</span>
+<span class="cp">#define enA 3</span>
+<span class="cp">#define in1 4</span>
+<span class="cp">#define in2 5</span>
+
+<span class="c1">// Motor B connections</span>
+<span class="cp">#define enB 9</span>
+<span class="cp">#define in3 8</span>
+<span class="cp">#define in4 7</span>
+
+<span class="c1">// LED strip connections</span>
+<span class="cp">#define LED_PIN 6</span>
+<span class="cp">#define NUM_LEDS 8</span>
+
+<span class="n">CRGB</span><span class="w"> </span><span class="n">leds</span><span class="p">[</span><span class="n">NUM_LEDS</span><span class="p">];</span>
+<span class="n">VL53L0X</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+<span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Initialize ToF sensor</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">startContinuous</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Initialize MPU6050</span>
+<span class="w">  </span><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">testConnection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;MPU6050 connection failed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Initialize FastLED</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">addLeds</span><span class="o">&lt;</span><span class="n">WS2812</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">GRB</span><span class="o">&gt;</span><span class="p">(</span><span class="n">leds</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">).</span><span class="n">setCorrection</span><span class="p">(</span><span class="n">TypicalLEDStrip</span><span class="p">);</span>
+<span class="w">  </span><span class="n">FastLED</span><span class="p">.</span><span class="n">setBrightness</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set all the motor control pins to outputs</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Turn off motors - Initial state</span>
+<span class="w">  </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">readRangeContinuousMillimeters</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Read Z-axis acceleration</span>
+<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">az</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationZ</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">turnRight</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Light up the LED strip when an obstacle is detected</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">az</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">15000</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">az</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">-15000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Adjust threshold as needed</span>
+<span class="w">    </span><span class="n">stopMotors</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Light up the LED strip in blue when picked up</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Blue</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">moveForward</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Turn off the LED strip when no obstacle is detected</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="o">::</span><span class="n">Black</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">moveForward</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">stopMotors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Turn off motors</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">turnRight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Motor A forward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Motor B backward</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">in4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set speed</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enA</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor A</span>
+<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">enB</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Max speed for Motor B</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+  This code will stop the motors and change the LED strip to blue when the robot is picked up (i.e., significant movement detected in the Z direction).
+  </details>
+</p>
+<p>By completing these additional tasks, you can enhance your robot's functionality and gain more experience with Arduino programming and sensor integration. Each task builds on the basic framework provided, allowing you to create a more versatile and interactive robot.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../receiver_code/" class="btn btn-neutral float-right" title="Receiver">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../receiver_code/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

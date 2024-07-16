@@ -111,56 +111,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Remote</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#understanding-the-flysky-remote-system">Understanding the FlySky Remote System</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#components-needed">Components Needed</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#wiring-the-flysky-receiver-to-the-arduino">Wiring the FlySky Receiver to the Arduino</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#connections">Connections</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#reading-pwm-signals-from-the-receiver">Reading PWM Signals from the Receiver</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-code-for-reading-pwm-signals">Example Code for Reading PWM Signals</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#interpreting-the-pwm-signals">Interpreting the PWM Signals</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#controlling-a-robot-with-pwm-signals">Controlling a Robot with PWM Signals</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#example-controlling-a-motor">Example: Controlling a Motor</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#task-1-reading-additional-channels-easy">Task 1: Reading Additional Channels (Easy)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#task-2-control-multiple-leds-medium">Task 2: Control Multiple LEDs (Medium)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#advanced-task-control-motors-using-pwm-signals">Advanced Task: Control Motors Using PWM Signals</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#objective">Objective</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#wiring-the-motors-and-l298n-motor-driver">Wiring the Motors and L298N Motor Driver</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#code-example">Code Example</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#code-explanation">Code Explanation</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-the-code">Running the Code</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a>
-    </li>
     </ul>
                   </li>
               </ul>
@@ -174,6 +124,8 @@
               <p class="caption"><span class="caption-text">Drive</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../06_Drive/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../06_Drive/tof_roomba/">Roomba_build</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../06_Drive/receiver_code/">Receiver</a>
                   </li>
@@ -219,206 +171,200 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="using-a-standard-flysky-remote-and-receiver-with-arduino">Using a Standard FlySky Remote and Receiver with Arduino<a class="headerlink" href="#using-a-standard-flysky-remote-and-receiver-with-arduino" title="Permanent link">&para;</a></h1>
-<p><img alt="Flysky_remot" src="../../99_Resources/images/flysky.jpg" /></p>
-<p>In this section, we'll learn how to integrate a standard FlySky remote control and its corresponding receiver with an Arduino. This setup allows you to remotely control your robot with a professional-grade RC transmitter.</p>
-<h2 id="understanding-the-flysky-remote-system">Understanding the FlySky Remote System<a class="headerlink" href="#understanding-the-flysky-remote-system" title="Permanent link">&para;</a></h2>
-<p>FlySky remotes are popular in the RC (radio control) hobby community due to their reliability and ease of use. They typically come with a transmitter (the remote control) and a receiver, which communicates wirelessly with the transmitter to relay commands to your project.</p>
-<h2 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Permanent link">&para;</a></h2>
+                <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
+<p>In this tutorial, we will guide you through the process of setting up and programming a remote-controlled robot using an Arduino. The robot will be controlled using an IBus receiver and transmitter. We will simplify the setup by removing additional sensors and LEDs to focus solely on motor control via the remote.</p>
+<h3 id="materials-needed">Materials Needed<a class="headerlink" href="#materials-needed" title="Permanent link">&para;</a></h3>
 <ul>
-<li>FlySky FS-i6 Transmitter</li>
-<li>FlySky FS-iA6B Receiver</li>
-<li>Arduino Nano</li>
+<li>Arduino (e.g., Arduino Uno)</li>
+<li>Motor Driver </li>
+<li>IBus Receiver and Transmitter</li>
+<li>DC Motors (x2)</li>
+<li>Battery pack</li>
 <li>Jumper wires</li>
-<li>Breadboard</li>
+<li>Breadboard (optional)</li>
 </ul>
-<h2 id="wiring-the-flysky-receiver-to-the-arduino">Wiring the FlySky Receiver to the Arduino<a class="headerlink" href="#wiring-the-flysky-receiver-to-the-arduino" title="Permanent link">&para;</a></h2>
-<p>The FlySky FS-iA6B receiver outputs PWM (Pulse Width Modulation) signals for each channel. Each channel corresponds to a control on the transmitter, such as a joystick or switch.</p>
-<h3 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h3>
+<h3 id="wiring">Wiring<a class="headerlink" href="#wiring" title="Permanent link">&para;</a></h3>
+<p>Here's how you should wire your components:</p>
 <ol>
-<li><strong>Power the Receiver:</strong><ul>
-<li><strong>VCC</strong> (5V) on the receiver to <strong>5V</strong> on the Arduino</li>
-<li><strong>GND</strong> on the receiver to <strong>GND</strong> on the Arduino</li>
+<li><strong>Motors to Motor Driver:</strong></li>
+<li>Motor 1: Connect one motor to the output terminals of the first VNH3SP30 motor driver.</li>
+<li>
+<p>Motor 2: Connect the second motor to the output terminals of the second VNH3SP30 motor driver.</p>
+</li>
+<li>
+<p><strong>Motor Drivers to Arduino:</strong></p>
+</li>
+<li>Motor Driver 1:<ul>
+<li>PWM Pin: Connect to Arduino pin 9</li>
+<li>INA Pin: Connect to Arduino pin 8</li>
+<li>INB Pin: Connect to Arduino pin 7</li>
 </ul>
 </li>
-<li><strong>Connect PWM Channels to Arduino:</strong><ul>
-<li><strong>Channel 1</strong> (CH1) on the receiver to a digital input pin (e.g., <strong>D2</strong> on the Arduino)</li>
-<li><strong>Channel 2</strong> (CH2) on the receiver to a digital input pin (e.g., <strong>D3</strong> on the Arduino)</li>
-<li>Repeat for additional channels as needed</li>
-</ul>
-</li>
-</ol>
-<h2 id="reading-pwm-signals-from-the-receiver">Reading PWM Signals from the Receiver<a class="headerlink" href="#reading-pwm-signals-from-the-receiver" title="Permanent link">&para;</a></h2>
-<p>The receiver outputs PWM signals, which the Arduino can read and interpret. Each PWM signal consists of a series of pulses where the pulse width represents the position of the control on the transmitter.</p>
-<h2 id="example-code-for-reading-pwm-signals">Example Code for Reading PWM Signals<a class="headerlink" href="#example-code-for-reading-pwm-signals" title="Permanent link">&para;</a></h2>
-<p>We'll use the <code>pulseIn</code> function to measure the duration of the high pulse from the receiver, which corresponds to the position of the joystick or other control.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ch1Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH1</span>
-<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ch2Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to CH2</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Read the pulse width from CH1</span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// Read the pulse width from CH2</span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch2PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Print the pulse widths to the Serial Monitor</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;CH1: &quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; CH2: &quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ch2PulseWidth</span><span class="p">);</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="interpreting-the-pwm-signals">Interpreting the PWM Signals<a class="headerlink" href="#interpreting-the-pwm-signals" title="Permanent link">&para;</a></h2>
-<p>The <code>pulseIn</code> function measures the duration of the high pulse in microseconds. The pulse width typically ranges from 1000 to 2000 microseconds:</p>
+<li>
+<p>Motor Driver 2:</p>
 <ul>
-<li><strong>1000 microseconds</strong>: Control is at one extreme (e.g., joystick fully left or down)</li>
-<li><strong>1500 microseconds</strong>: Control is centered</li>
-<li><strong>2000 microseconds</strong>: Control is at the other extreme (e.g., joystick fully right or up)</li>
+<li>PWM Pin: Connect to Arduino pin 3</li>
+<li>INA Pin: Connect to Arduino pin 5</li>
+<li>INB Pin: Connect to Arduino pin 4</li>
 </ul>
-<h2 id="controlling-a-robot-with-pwm-signals">Controlling a Robot with PWM Signals<a class="headerlink" href="#controlling-a-robot-with-pwm-signals" title="Permanent link">&para;</a></h2>
-<p>Once you have the pulse widths, you can map these values to control various aspects of your robot, such as motor speed, direction, or servo position.</p>
-<h3 id="example-controlling-a-motor">Example: Controlling a Motor<a class="headerlink" href="#example-controlling-a-motor" title="Permanent link">&para;</a></h3>
-<p>Let's assume you want to control the speed of a motor using the joystick on your FlySky transmitter.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">motorPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pin connected to the motor driver</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ch1PulseWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Map the pulse width to a PWM value (0-255) for motor speed</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">ch1PulseWidth</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Set the motor speed</span>
-<span class="w">  </span><span class="n">analogWrite</span><span class="p">(</span><span class="n">motorPin</span><span class="p">,</span><span class="w"> </span><span class="n">motorSpeed</span><span class="p">);</span>
-
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Motor Speed: &quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">motorSpeed</span><span class="p">);</span>
-
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
-<h3 id="task-1-reading-additional-channels-easy">Task 1: Reading Additional Channels (Easy)<a class="headerlink" href="#task-1-reading-additional-channels-easy" title="Permanent link">&para;</a></h3>
-<p><strong>Objective</strong>: Extend the example to read additional channels from the receiver, such as CH3 and CH4. Display these values on the Serial Monitor.</p>
-<p><strong>Hint</strong>: 
-- Connect additional channels (CH3, CH4) to digital pins on the Arduino.
-- Use the <code>pulseIn</code> function to read the pulse widths from these channels.
-- Display the pulse widths for all channels on the Serial Monitor.</p>
-<h3 id="task-2-control-multiple-leds-medium">Task 2: Control Multiple LEDs (Medium)<a class="headerlink" href="#task-2-control-multiple-leds-medium" title="Permanent link">&para;</a></h3>
-<p><strong>Objective</strong>: Use the FlySky remote to control multiple LEDs connected to the receiver Arduino. For example, use one channel to control the brightness of an LED and another channel to switch between different LEDs.</p>
-<p><strong>Hint</strong>:
-- Connect multiple LEDs to different digital pins on the Arduino.
-- Map the PWM values from the remote to control LED brightness using <code>analogWrite</code>.
-- Implement logic to switch between different LEDs based on the received PWM values.</p>
-<h2 id="advanced-task-control-motors-using-pwm-signals">Advanced Task: Control Motors Using PWM Signals<a class="headerlink" href="#advanced-task-control-motors-using-pwm-signals" title="Permanent link">&para;</a></h2>
-<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
-<p>Use the PWM signals from the FlySky remote to control motors using the L298N motor driver.</p>
-<h3 id="wiring-the-motors-and-l298n-motor-driver">Wiring the Motors and L298N Motor Driver<a class="headerlink" href="#wiring-the-motors-and-l298n-motor-driver" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Connect the L298N Motor Driver</strong>: Follow the wiring instructions from previous tutorials to connect the motor driver to the Arduino Nano and motors.</li>
-<li><strong>Connect PWM Outputs</strong>: Use the PWM values from the FlySky remote to control the speed and direction of the motors.</li>
+</li>
+<li>
+<p><strong>IBus Receiver to Arduino:</strong></p>
+</li>
+<li>Connect the IBus signal pin to the Arduino's RX pin.</li>
+<li>Connect the IBus power and ground pins to the Arduino's 5V and GND pins, respectively.</li>
 </ol>
-<h3 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h3>
+<p><strong>Important:</strong> To program the Arduino, you must disconnect the IBus receiver from the RX pin to avoid interference during uploading.</p>
+<h3 id="programming-the-arduino">Programming the Arduino<a class="headerlink" href="#programming-the-arduino" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open the Arduino IDE on your computer.</li>
+<li>Copy and paste the following code into the IDE:</li>
+</ol>
 <div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_MotorShield.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;VNH3SP30.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IBusBM.h&gt;</span>
 
-<span class="c1">// Create the motor shield object with the default I2C address</span>
-<span class="n">Adafruit_MotorShield</span><span class="w"> </span><span class="n">AFMS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_MotorShield</span><span class="p">();</span><span class="w"> </span>
+<span class="c1">// Define motor control pins</span>
+<span class="cp">#define M1_PWM 9  </span><span class="c1">// pwm pin motor</span>
+<span class="cp">#define M1_INA 8  </span><span class="c1">// control pin INA</span>
+<span class="cp">#define M1_INB 7  </span><span class="c1">// control pin INB</span>
 
-<span class="c1">// Connect a DC motor to port M1</span>
-<span class="n">Adafruit_DCMotor</span><span class="w"> </span><span class="o">*</span><span class="n">motor1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AFMS</span><span class="p">.</span><span class="n">getMotor</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="cp">#define M2_PWM 3  </span><span class="c1">// pwm pin motor</span>
+<span class="cp">#define M2_INA 5  </span><span class="c1">// control pin INA</span>
+<span class="cp">#define M2_INB 4  </span><span class="c1">// control pin INB</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">ch1Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Channel 1 on D2</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">ch2Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Channel 2 on D3</span>
+<span class="n">VNH3SP30</span><span class="w"> </span><span class="n">Motor1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Define control object for motor 1</span>
+<span class="n">VNH3SP30</span><span class="w"> </span><span class="n">Motor2</span><span class="p">;</span><span class="w">  </span><span class="c1">// Define control object for motor 2</span>
+<span class="n">IBusBM</span><span class="w"> </span><span class="n">IBus</span><span class="p">;</span><span class="w">      </span><span class="c1">// IBus object for receiving signals from transmitter/receiver</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
 <span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\r\n</span><span class="s">Bens Bot&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;By Tim Schumann&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// Set pins as input</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Motor1</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">M1_PWM</span><span class="p">,</span><span class="w"> </span><span class="n">M1_INA</span><span class="p">,</span><span class="w"> </span><span class="n">M1_INB</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Motor 1 object connected through specified pins</span>
+<span class="w">  </span><span class="n">Motor2</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">M2_PWM</span><span class="p">,</span><span class="w"> </span><span class="n">M2_INB</span><span class="p">,</span><span class="w"> </span><span class="n">M2_INA</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Motor 2 object connected through specified pins</span>
 
-<span class="w">  </span><span class="c1">// Start the motor shield</span>
-<span class="w">  </span><span class="n">AFMS</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">  </span><span class="n">IBus</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">Serial</span><span class="p">);</span><span class="w">  </span><span class="c1">// IBus connected to Serial1: 1 (RX)</span>
 
-<span class="w">  </span><span class="c1">// Set the speed to 0 to start</span>
-<span class="w">  </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">setSpeed</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// We have to wait for the receiver to receive data from the transmitter (transmitter needs to be turned on)</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Wait for receiver&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">IBus</span><span class="p">.</span><span class="n">cnt_rec</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Init done&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Read the PWM values</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ch1Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch1Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ch2Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ch2Pin</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Map the PWM values to motor speed (0-255)</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">ch1Value</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">spd</span><span class="p">,</span><span class="w"> </span><span class="n">turn</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Speed depends on front switch (channel 5) (forward/backwards) and channel 2 (speed)</span>
+<span class="w">    </span><span class="n">spd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">IBus</span><span class="p">.</span><span class="n">readChannel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1500</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Every value below 1050 we interpret as stop</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">spd</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">spd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">-50</span><span class="p">)</span><span class="w"> </span><span class="n">spd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">spd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">spd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w">                   </span><span class="c1">// Value could reach (2000-1050)*4/9 = 422, but setSpeed() will max at 400</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IBus</span><span class="p">.</span><span class="n">readChannel</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1500</span><span class="p">)</span><span class="w"> </span><span class="n">spd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">spd</span><span class="p">;</span><span class="w">  </span><span class="c1">// Backward/forward depends on switch at channel 6</span>
 
-<span class="w">  </span><span class="c1">// Set motor direction based on Channel 2</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch2Value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">(</span><span class="n">FORWARD</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">(</span><span class="n">BACKWARD</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Turn depends on channel 0, scale down to -200, +200</span>
+<span class="w">    </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="p">(((</span><span class="kt">int</span><span class="p">)</span><span class="n">IBus</span><span class="p">.</span><span class="n">readChannel</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1500</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turn</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">-20</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// Set motor speed</span>
-<span class="w">  </span><span class="n">motor1</span><span class="o">-&gt;</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Set combined speed and turn (if speed==0, then only turn in place)</span>
+<span class="w">    </span><span class="n">speedturn</span><span class="p">(</span><span class="n">spd</span><span class="p">,</span><span class="w"> </span><span class="n">turn</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Print the values to the Serial Monitor</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Channel 1: &quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ch1Value</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;  Channel 2: &quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">ch2Value</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setSpeed</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Motor1</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Motor2</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">brake</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">brakePower</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Motor1</span><span class="p">.</span><span class="n">brake</span><span class="p">(</span><span class="n">brakePower</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Motor2</span><span class="p">.</span><span class="n">brake</span><span class="p">(</span><span class="n">brakePower</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">turn</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">angle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Turn vehicle by providing different speed settings to the motors.</span>
+<span class="w">  </span><span class="c1">// Angle can be positive (right turn) or negative (left turn).</span>
+<span class="w">  </span><span class="c1">// If the vehicle is already stopped, the vehicle will turn in place.</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">currentSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Motor1</span><span class="p">.</span><span class="n">speed</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Motor2</span><span class="p">.</span><span class="n">speed</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Motor1</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">currentSpeed</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">angle</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Motor2</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">currentSpeed</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">angle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">speedturn</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">angle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Set speed (-400 -&gt; +400) and turn (-400 -&gt; +400)</span>
+<span class="w">  </span><span class="c1">// Turn vehicle by providing different speed settings to the motors.</span>
+<span class="w">  </span><span class="c1">// Angle can be positive (right turn) or negative (left turn).</span>
+<span class="w">  </span><span class="c1">// If the vehicle is already stopped, the vehicle will turn in place.</span>
+<span class="w">  </span><span class="n">Motor1</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">angle</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Motor2</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">speed</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">angle</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Motor Control</strong>: The motor speed is set based on the PWM value from Channel 1, and the direction is controlled by Channel 2.</li>
-<li><strong>Mapping PWM Values</strong>: The <code>map</code> function converts the PWM values from the FlySky receiver to a range suitable for motor control.</li>
-</ul>
-<h2 id="running-the-code">Running the Code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Connect your FlySky receiver and motors to your Arduino Nano as described.</li>
-<li>Open the Arduino IDE and paste the advanced code.</li>
-<li>Select the correct board (Arduino Nano) and port under <strong>Tools</strong>.</li>
-<li>Upload the code to your Arduino Nano.</li>
-<li>Use the FlySky remote to control the motors.</li>
+<li>Upload the code to your Arduino (remember to disconnect the IBus receiver first).</li>
+<li>Reconnect the IBus receiver after the code is successfully uploaded.</li>
 </ol>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Secure Connections</strong>: Ensure your wiring is secure to avoid intermittent connections.</li>
-<li><strong>Power Supply</strong>: Use a stable power supply to avoid fluctuations in motor speed.</li>
-<li><strong>Calibration</strong>: Calibrate the PWM values if needed to match the range of your remote.</li>
-</ul>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>No Response</strong>: Check the wiring, ensure the correct power supply is used, and verify the PWM pins are correctly connected.</li>
-<li><strong>Incorrect Motor Behavior</strong>: Ensure the motor driver is correctly connected and the PWM values are properly mapped.</li>
-</ul>
-<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://www.flysky-cn.com/download.html">FlySky FS-i6 Manual</a></li>
-<li><a href="https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein/">Arduino PulseIn Function Documentation</a></li>
-<li><a href="https://learn.adafruit.com/adafruit-motor-shield">Adafruit Motor Shield Documentation</a></li>
-</ul>
-<p>This tutorial should help you get started with using the FlySky remote and receiver to control motors with your Arduino Nano. Experiment with different configurations and setups to fully explore the capabilities of your project. Happy experimenting!</p>
+<h3 id="additional-task">Additional Task<a class="headerlink" href="#additional-task" title="Permanent link">&para;</a></h3>
+<p>To help you understand the code better and make small modifications, here are some tasks you can try:</p>
+<ol>
+<li><strong>Change the motor speed scaling:</strong>
+   Adjust the scaling factor for the motor speed in the code.</li>
+</ol>
+<details>
+   <summary>Hint</summary>
+   Look for the line that scales the speed in the `loop` function.
+   </details>
+
+<details>
+   <summary>Solution</summary>
+   Replace `spd = (spd * 4) / 15;` with `spd = (spd * 3) / 10;` to change the scaling factor.
+   </details>
+
+<ol>
+<li><strong>Add a brake function:</strong>
+   Implement a function that stops the motors when a specific channel value is read. -&gt; Arms switch</li>
+</ol>
+<details>
+   <summary>Hint</summary>
+   You will need to use the `brake` function in the `loop` function.
+   </details>
+
+<details>
+   <summary>Solution</summary>
+   Add the following code to the `loop` function:
+
+   ```cpp
+   if (IBus.readChannel(4) > 1500) {  // Brake switch
+
+      //previous code
+
+   }else{ 
+    brake(400); // Maximum brake power
+   }
+   ```
+
+   </details>
+
+<ol>
+<li><strong>Modify the turn sensitivity:</strong>
+   Adjust the sensitivity of the turning mechanism.</li>
+</ol>
+<details>
+   <summary>Hint</summary>
+   Look for the line that scales the turn value in the `loop` function.
+   </details>
+
+<details>
+   <summary>Solution</summary>
+   Replace `turn = -(((int)IBus.readChannel(3) - 1500) * 4) / 10;` with `turn = -(((int)IBus.readChannel(3) - 1500) * 3) / 10;` to make the turning less sensitive.
+   </details>
+
+<p>By following this tutorial, you should have a functional remote-controlled robot and a better understanding of how to program and modify it. Enjoy building and experimenting with your robot!</p>
               
             </div>
           </div><footer>
